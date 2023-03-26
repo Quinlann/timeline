@@ -1,0 +1,263 @@
+body {
+	margin: 0;
+	font-family: sans-serif;
+	font-size: 1rem;
+}
+
+#navigation {
+	background-color: white;
+	height: 3rem;
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+}
+
+.settings {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.settings .nav__btn {
+	padding: .5rem 0;
+	border-radius: .5rem;
+	background-color: lightgrey;
+	margin: 0 .25rem;
+	font-weight: bold;
+	min-width: 10rem;
+	text-align: center;
+	position: relative;
+}
+
+.settings .nav__btn:hover {
+	background-color: grey;
+	border-radius: .5rem .5rem 0 0;
+}
+
+.dropdown {
+	position: relative;
+}
+
+.nav__btn .search {
+	margin-bottom: .5rem;
+	background-color: rgba(255,255,255,.5);
+}
+
+.nav__btn-list {
+	display: none;
+	position: absolute;
+	top: 100%;
+	list-style: none;
+	text-align: left;
+	padding: .5rem;
+	margin: 0;
+	background-color: lightgrey;
+	border-radius: 0 0 .5rem .5rem;
+	//width: 100%;
+}
+
+.nav__btn ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.nav__btn ul li {
+	padding: .5rem;
+	border-radius: .5rem;
+	list-style-type: none;
+	margin-bottom: .25rem;
+	background-color: rgba(255,255,255,.2);
+	font-size: .8rem;
+}
+
+.nav__btn ul li:hover {
+	background-color: grey;
+}
+
+.nav__btn ul li.add {
+	text-align: center;
+	color: white;
+	font-size: 1rem;
+}
+
+.dropdown:hover > .nav__btn-list {
+	display: block;
+}
+
+li.dropdown .nav__btn-list {
+	top: -.5rem;
+	left: 100%;
+	width: 100%;
+}
+
+li.dropdown:after {
+	content: '>';
+	float: right;
+	color: white;
+}
+
+#wrapper {
+	background-color: lightblue;
+	min-height: calc(100vh - 3rem);
+	position: relative;
+	padding-top: 3rem;
+}
+
+.sidebar {
+	width: 15rem;
+	position: fixed;
+	top: 3rem;
+	opacity: .5;
+	transition: .5s;
+	z-index: 1;
+}
+
+.sidebar:hover {
+	opacity: 1;
+}
+
+.sidebar.left {
+	left: 0;
+}
+
+.sidebar.right {
+	right: 0;
+}
+
+.sidebar .section {
+	padding: 1rem;
+}
+
+.category {
+	padding: .25rem .5rem;
+	outline: 1px solid black;
+	border-radius: 1.5rem;
+	font-weight: bold;
+	margin-bottom: .5rem;
+	width: 100%;
+	background-color: transparent;
+}
+
+.category:after {
+	content: 'v';
+	float: right;
+}
+
+.category:hover {
+	background-color: rgba(255,255,255,.2);
+}
+
+.search {
+	padding: .5rem;
+	border-radius: 1rem;
+	background-color: rgba(0,0,0,.2);
+	text-align: center;
+	border: none;
+	width: 100%;
+}
+
+.search:hover {
+	background-color: rgba(255,255,255,.3);
+}
+
+.character {
+	height: 2rem;
+	display: flex;
+	border-radius: 2rem;
+	padding: .5rem;
+	cursor: pointer;
+}
+
+.character:hover {
+	background-color: rgba(255,255,255,.2);
+}
+
+.character div {
+	height: 2rem;
+	line-height: 2rem;
+}
+
+.character .icon {
+	min-width: 2rem;
+	width: 2rem;
+	border-radius: 50%;
+	outline: 1px solid #ffffff;
+	text-align: center;
+	color: #ffffff;
+}
+
+.icon.red { background-color: red }
+.icon.purple { background-color: purple }
+.icon.green { background-color: green }
+.icon.blue { background-color: blue }
+.icon.brown { background-color: brown }
+.icon.orange { background-color: orange }
+
+.character .name {
+	float: left;
+	margin-left: .5rem;
+	font-weight: bold;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.timeline__container {
+	position: fixed;
+	bottom: 0;
+	height: 10rem;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+    justify-content: center;
+	z-index: 1;
+}
+
+.timeline__container:hover .timeline::-webkit-slider-thumb {
+	height: 1rem;
+	width: 2rem;
+}
+
+.timeline__container:active .timeline__counter {
+	transform: scale(1.5);
+	color: red;
+}
+
+.timeline__counter {
+	font-size: 2rem;
+	transform-origin: bottom;
+	transition: .2s;
+}
+
+.timeline {
+	margin: 2rem;
+	width: calc(100% - 4rem);
+	height: 2px;
+	-webkit-appearance: none;
+	cursor: pointer;
+	background: red;
+}
+
+.timeline::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 2px;
+  height: 1.5rem;
+  border-radius: 1rem;
+  background: red;
+  transition: .2s;
+}
+
+.timeline::-moz-range-thumb {
+  width: 1.2rem;
+  height: 3rem;
+  border-radius: .5rem;
+  background: red;
+}
+
+.map {
+	height: 30rem;
+}
