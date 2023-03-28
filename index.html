@@ -1,114 +1,12 @@
-<html>
-<head>
-	<link href="style.css" type="text/css" rel="stylesheet">
-	<link href="test.css" type="text/css" rel="stylesheet">
-	<link href="./css/testingLessCompiler.css" type="text/css" rel="stylesheet">
-	<link href="./css/testingLessCompiler2.css" type="text/css" rel="stylesheet">
-</head>
-<body>
-	<div id="navigation">
-		<div class="settings">
-			<div class="nav__btn dropdown">
-				Worlds
-				<div class="nav__btn-list">
-					<input class="search" value="Search">
-					<ul>
-						<li>World 1</li>
-						<li>World 2</li>
-						<li class="add">+</li>
-					</ul>
-				</div>
-			</div>
-			<div class="nav__btn dropdown">
-				Locations
-				<div class="nav__btn-list">
-					<input class="search" value="Search">
-					<ul>
-						<li class="dropdown">
-							Danmark
-							<div class="nav__btn-list">
-								<ul>
-									<li>Roskilde</li>
-									<li class="dropdown">
-										Jyllinge
-										<div class="nav__btn-list">
-											<ul>
-												<li>Roma Pizzaria</li>
-												<li class="add">+</li>
-											</ul>
-										</div>
-									</li>
-									<li>Hedehusene</li>
-									<li class="add">+</li>
-								</ul>
-							</div>
-						</li>
-						<li>Norge</li>
-						<li>Sverige</li>
-						<li class="add">+</li>
-					</ul>
-				</div>
-			</div>
-			<div class="nav__btn dropdown">
-				Entities
-				<div class="nav__btn-list">
-					<input class="search" value="Search">
-					<ul>
-						<li>Benjamin Bak Egede</li>
-						<li>Henrik Tobiesen Aabom</li>
-						<li>Han Solo</li>
-						<li>Philip Marquard</li>
-						<li>Obi-Wan Kenobi</li>
-						<li>Jack Boone</li>
-						<li class="add">+</li>
-					</ul>
-				</div>
-			</div>
-		</div>	
-	</div>
-	<div class="sidebar left">
-		<div class="section">
-			<select class="category" name="Category" id="category">
-				<option value="Category">Category</option>
-				<option value="Stories">Stories</option>
-				<option value="Locations">Locations</option>
-			</select>
-			<input class="search" value="Search">
-		</div>
-		<div class="section">
-			<div class="character">
-				<div class="icon red">B</div>
-				<div class="name">Benjamin Bak Egede</div>
-			</div>
-			<div class="character">
-				<div class="icon purple">H</div>
-				<div class="name">Henrik Tobiesen Aabom</div>
-			</div>
-			<div class="character">
-				<div class="icon green">H</div>
-				<div class="name">Han Solo</div>
-			</div>
-			<div class="character">
-				<div class="icon blue">P</div>
-				<div class="name">Philip Marquard</div>
-			</div>
-			<div class="character">
-				<div class="icon brown">L</div>
-				<div class="name">Obi-Wan Kenobi</div>
-			</div>
-			<div class="character">
-				<div class="icon orange">J</div>
-				<div class="name">Jack Boone</div>
-			</div>
-		</div>
-	</div>
-	<div class="timeline__container">
-		<div class="timeline__counter">1974</div>
-		<input type="range" class="timeline">
-		<div class="timeline__selection"></div>
-	</div>
-	<div id="wrapper">
-		<div class="map"></div>
-	</div>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
