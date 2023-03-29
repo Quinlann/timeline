@@ -1,5 +1,5 @@
 {
-  "name": "timelinevue",
+  "name": "timeline",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -12,6 +12,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
+    "less": "^4.1.3",
+    "less-loader": "^11.1.0",
     "vite": "^4.1.4"
   }
 }

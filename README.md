@@ -1,4 +1,4 @@
-# TimelineVue
+# Timeline
 
 
 ## Project Setup

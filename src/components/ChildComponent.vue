@@ -12,8 +12,12 @@ export default {
 <template>
   <h1>{{ parentProp }}</h1>
   {{  myProp }}
+  <div id="my-class">Now with Less</div>
 </template>
 
-<style scoped>
-
+<style scoped lang="less">
+@my-color: yellow;
+#my-class {
+  background-color: @my-color;
+}
 </style>
