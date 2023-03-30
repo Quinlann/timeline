@@ -1,0 +1,41 @@
+<script>
+import SidebarSearch from './SidebarSearch.vue'
+import SidebarResults from './SidebarResults.vue'
+
+export default{
+    components: {SidebarSearch,SidebarResults}
+}
+</script>
+
+<template>
+    <div class="sidebar left">
+        <SidebarSearch/>
+        <SidebarResults/>
+    </div>
+</template>
+
+<style lang="less">
+.sidebar .section {
+	padding: 1rem;
+}
+.sidebar {
+	width: 15rem;
+	position: fixed;
+	top: 3rem;
+	opacity: .5;
+	transition: .5s;
+	z-index: 1;
+}
+
+.sidebar:hover {
+	opacity: 1;
+}
+
+.sidebar.left {
+	left: 0;
+}
+
+.sidebar.right {
+	right: 0;
+}
+</style>
