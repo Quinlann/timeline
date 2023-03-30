@@ -1,19 +1,22 @@
 <script>
-import ChildComponent from './components/ChildComponent.vue'
+import Navigation from './components/Navigation.vue'
 
 export default {
-  components: {ChildComponent},
+  components: {Navigation},
   data() {
-    return {
-      propForChild: 'Hello from parent'
-    }
+    return {}
   }
 }
 </script>
 
 <template>
-  <ChildComponent :parentProp="propForChild" />
+  <Navigation/>
 </template>
 
 <style scoped>
+body {
+	margin: 0;
+	font-family: sans-serif;
+	font-size: 1rem;
+}
 </style>
