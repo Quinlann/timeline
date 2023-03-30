@@ -6,7 +6,7 @@
 </div>
 </template>
 
-<style scoped lang="less">
+<style lang="less">
 #wrapper {
 	background-color: @blueLight;
 	min-height: calc(100vh - 3rem);
