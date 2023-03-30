@@ -19,7 +19,7 @@ export default {
   <Wrapper/>
 </template>
 
-<style scoped land="less">
+<style lang="less">
 body {
 	margin: 0;
 	font-family: sans-serif;
