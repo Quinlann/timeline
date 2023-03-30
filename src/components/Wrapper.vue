@@ -8,7 +8,7 @@
 
 <style scoped lang="less">
 #wrapper {
-	background-color: lightblue;
+	background-color: @blueLight;
 	min-height: calc(100vh - 3rem);
 	position: relative;
 	padding-top: 3rem;
