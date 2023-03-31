@@ -7,7 +7,10 @@
             <option value="Stories">Stories</option>
             <option value="Locations">Locations</option>
         </select>
-        <input class="search" value="Search">
+		<div class="search-container">
+			<font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+			<input class="search" value="Search">
+		</div>
     </div>
 </template>
 
@@ -38,9 +41,15 @@
 	text-align: center;
 	border: none;
 	width: 100%;
+	margin-left: 10px;
 }
 
 .search:hover {
 	background-color: rgba(255,255,255,.3);
+}
+
+.search-container {
+	display: flex;
+    align-items: center;
 }
 </style>

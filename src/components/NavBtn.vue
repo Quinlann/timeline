@@ -1,17 +1,23 @@
 <script>
 export default {
   props: ['title', 'dropdownOptions'],
+  data() {}
 }
 </script>
 
 <template>
 <div class="nav__btn dropdown">
-  {{ title }}
+	<font-awesome-icon v-if="title === 'Worlds'" icon="fa-solid fa-globe" />
+	<font-awesome-icon v-if="title === 'Locations'" icon="fa-solid fa-location-dot" />
+	<font-awesome-icon v-if="title === 'Entities'" icon="fa-solid fa-location-crosshairs" />
+	{{ title }}
     <div class="nav__btn-list">
       <input class="search" value="Search">
       <ul>
         <li v-for="option in dropdownOptions">{{ option }}</li>
-        <li class="add">+</li>
+        <li class="add">
+			<font-awesome-icon icon="fa-solid fa-plus" />
+		</li>
       </ul>
     </div>
 </div>
