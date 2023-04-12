@@ -32,7 +32,7 @@ export default {
 	border-radius: @navBtn-radius;
 	background-color: lightgrey;
 	margin: 0 (@navBtn-padding / 2);
-	font-weight: bold;
+	//font-weight: bold;
 	min-width: 10rem;
 	text-align: center;
 	position: relative;

@@ -55,6 +55,9 @@ document.addEventListener("wheel", function(e) {
 	color: white;
 	position: absolute;
 	line-height: @icon-size;
+	transition: .2s;
+	cursor: pointer;
+	&:hover { transform: scale(1.2) }
 	
 	&.red { background-color: red }
 	&.purple { background-color: purple }

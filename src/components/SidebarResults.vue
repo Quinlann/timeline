@@ -64,7 +64,7 @@
 	.name {
 		float: left;
 		margin-left: (@icon-size / 4);
-		font-weight: bold;
+		//font-weight: bold;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		white-space: nowrap;

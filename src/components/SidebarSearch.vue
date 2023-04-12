@@ -23,33 +23,27 @@
 	margin-bottom: .5rem;
 	width: 100%;
 	background-color: transparent;
-}
-
-.category:after {
-	content: 'v';
-	float: right;
-}
-
-.category:hover {
-	background-color: rgba(255,255,255,.2);
+	&:hover { background-color: fade(white, 20%) }
+	
+	&:after {
+		content: 'v';
+		float: right;
+	}
 }
 
 .search {
 	padding: .5rem;
 	border-radius: 1rem;
-	background-color: rgba(0,0,0,.2);
+	background-color: fade(black, 20%);
 	text-align: center;
 	border: none;
 	width: 100%;
 	margin-left: 10px;
-}
-
-.search:hover {
-	background-color: rgba(255,255,255,.3);
-}
-
-.search-container {
-	display: flex;
-    align-items: center;
+	&:hover { background-color: fade(black, 30%) }
+	
+	&-container {
+		display: flex;
+		align-items: center;
+	}
 }
 </style>

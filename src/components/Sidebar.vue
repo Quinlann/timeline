@@ -22,9 +22,13 @@ export default{
 	opacity: .5;
 	transition: .5s;
 	z-index: 1;
-	&:hover { opacity: 1 }
 	&.left { left: 0 }
 	&.right { right: 0 }
 	.section { padding: 1rem }
+	
+	&:hover {
+		opacity: 1;
+		background-color: fade(white, 80%);
+	}
 }
 </style>
