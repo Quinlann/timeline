@@ -27,9 +27,11 @@ export default {
 </template>
 
 <style scoped lang="less">
+@import "/src/global.less";
+
 #navigation {
-	background-color: white;
-	height: 3rem;
+	background-color: fade(white, 60%);
+	height: @navigation-height;
 	width: 100%;
 	position: fixed;
 	z-index: 1;

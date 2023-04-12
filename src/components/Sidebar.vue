@@ -15,9 +15,6 @@ export default{
 </template>
 
 <style lang="less">
-.sidebar .section {
-	padding: 1rem;
-}
 .sidebar {
 	width: 15rem;
 	position: fixed;
@@ -25,17 +22,9 @@ export default{
 	opacity: .5;
 	transition: .5s;
 	z-index: 1;
-}
-
-.sidebar:hover {
-	opacity: 1;
-}
-
-.sidebar.left {
-	left: 0;
-}
-
-.sidebar.right {
-	right: 0;
+	&:hover { opacity: 1 }
+	&.left { left: 0 }
+	&.right { right: 0 }
+	.section { padding: 1rem }
 }
 </style>

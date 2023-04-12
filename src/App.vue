@@ -25,7 +25,4 @@ body {
 	font-family: sans-serif;
 	font-size: 1rem;
 }
-
-@blueLight: lightblue;
-
 </style>

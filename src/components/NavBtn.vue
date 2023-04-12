@@ -24,11 +24,14 @@ export default {
 </template>
 
 <style scoped lang="less">
+@navBtn-padding: .5rem;
+@navBtn-radius: 1rem;
+
 .nav__btn {
-	padding: .5rem 0;
-	border-radius: .5rem;
+	padding: @navBtn-padding 0;
+	border-radius: @navBtn-radius;
 	background-color: lightgrey;
-	margin: 0 .25rem;
+	margin: 0 (@navBtn-padding / 2);
 	font-weight: bold;
 	min-width: 10rem;
 	text-align: center;
@@ -36,13 +39,12 @@ export default {
 	
 	&:hover {
 		background-color: grey;
-		border-radius: .5rem .5rem 0 0;
+		border-radius: @navBtn-radius @navBtn-radius 0 0;
 	}
 }
 
 .dropdown {
 	position: relative;
-	display: none;
 	&:hover > .list { display: block }
 	
 	.search {
@@ -57,10 +59,10 @@ export default {
 		top: 100%;
 		list-style: none;
 		text-align: left;
-		padding: .5rem;
+		padding: @navBtn-padding;
 		margin: 0;
 		background-color: lightgrey;
-		border-radius: 0 0 .5rem .5rem;
+		border-radius: 0 0 @navBtn-radius @navBtn-radius;
 	}
 	
 	ul {
@@ -70,18 +72,18 @@ export default {
 	}
 	
 	li {
-		padding: .5rem;
-		border-radius: .5rem;
+		padding: @navBtn-padding;
+		border-radius: @navBtn-radius;
 		list-style-type: none;
-		margin-bottom: .25rem;
+		margin-bottom: (@navBtn-padding / 2);
 		background-color: fade(white, 20%);
 		font-size: .8rem;
 		&:hover { background-color: grey }
 		
 		&.add {
 			text-align: center;
-			color: white;
-			font-size: 1rem;
+			//color: white;
+			//font-size: 1rem;
 		}
 		
 		&.dropdown {
