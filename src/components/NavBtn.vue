@@ -24,23 +24,23 @@ export default {
 </template>
 
 <style scoped lang="less">
+@import "/src/global.less";
 @navBtn-padding: .5rem;
 @navBtn-radius: 1rem;
+@navBtn-color: @btn-color;
+@navBtn-color-inverted: @btn-color-inverted;
 
 .nav__btn {
 	padding: @navBtn-padding 0;
 	border-radius: @navBtn-radius;
-	background-color: lightgrey;
+	background-color: @navBtn-color;
+	color: @navBtn-color-inverted;
 	margin: 0 (@navBtn-padding / 2);
 	//font-weight: bold;
 	min-width: 10rem;
 	text-align: center;
 	position: relative;
-	
-	&:hover {
-		background-color: grey;
-		border-radius: @navBtn-radius @navBtn-radius 0 0;
-	}
+	&:hover { border-radius: @navBtn-radius @navBtn-radius 0 0 }
 }
 
 .dropdown {
@@ -61,7 +61,7 @@ export default {
 		text-align: left;
 		padding: @navBtn-padding;
 		margin: 0;
-		background-color: lightgrey;
+		background-color: @navBtn-color;
 		border-radius: 0 0 @navBtn-radius @navBtn-radius;
 	}
 	
@@ -76,9 +76,13 @@ export default {
 		border-radius: @navBtn-radius;
 		list-style-type: none;
 		margin-bottom: (@navBtn-padding / 2);
-		background-color: fade(white, 20%);
+		background-color: fade(@navBtn-color-inverted, 20%);
 		font-size: .8rem;
-		&:hover { background-color: grey }
+		
+		&:hover {
+			background-color: @navBtn-color-inverted;
+			color: @navBtn-color;
+		}
 		
 		&.add {
 			text-align: center;

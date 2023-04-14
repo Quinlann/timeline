@@ -17,7 +17,7 @@ document.addEventListener("wheel", function(e) {
 <template>
 <div id="wrapper">
     <div class="map">
-		<!--<img src="/src/assets/worldmap.svg">-->
+		<img src="/src/assets/worldmap.svg">
 		<div class="entity red e1">B</div>
 		<div class="entity purple e2">H</div>
 		<div class="entity green e3">H</div>
@@ -36,13 +36,15 @@ document.addEventListener("wheel", function(e) {
 	min-height: calc(100vh - @navigation-height);
 	position: relative;
 	padding-top: @navigation-height;
+	display: flex;
+	justify-items: center;
+	align-items: center;
 }
 
 .map {
-	background: url('/src/assets/worldmap.svg') no-repeat center;
+	//background: url('/src/assets/worldmap.svg') no-repeat center;
 	background-size: contain;
 	width: 100%;
-	min-height: 100vh;
 	position: fixed;
 }
 
@@ -57,7 +59,8 @@ document.addEventListener("wheel", function(e) {
 	line-height: @icon-size;
 	transition: .2s;
 	cursor: pointer;
-	&:hover { transform: scale(1.2) }
+	transform: translate(-50%, -50%);
+	&:hover { transform: translate(-50%, -50%) scale(1.2) }
 	
 	&.red { background-color: red }
 	&.purple { background-color: purple }
