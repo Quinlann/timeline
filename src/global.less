@@ -9,6 +9,9 @@
 @pink: #E160EB;
 @purple: #8253B8;
 
+@item-color: linear-gradient(145deg, @purple, @pink) fixed;
+@item-color-inverted: @white;
+
 @primary-color: @purple;
 @primary-color-shadow: @greenDark;
 
@@ -26,3 +29,10 @@
 // Spacing
 
 @navigation-height: 3rem;
+
+
+// Mixins
+
+.gradient(@color1, @color2) {
+	background: linear-gradient(@color1, @color2) fixed;
+}

@@ -27,19 +27,19 @@ export default {
 @import "/src/global.less";
 @navBtn-padding: .5rem;
 @navBtn-radius: 1rem;
-@navBtn-color: @btn-color;
-@navBtn-color-inverted: @btn-color-inverted;
+@navBtn-color: @item-color;
+@navBtn-color-inverted: @item-color-inverted;
 
 .nav__btn {
 	padding: @navBtn-padding 0;
-	border-radius: @navBtn-radius;
-	background-color: @navBtn-color;
+	border-radius: @navBtn-radius; 
 	color: @navBtn-color-inverted;
 	margin: 0 (@navBtn-padding / 2);
 	//font-weight: bold;
 	min-width: 10rem;
 	text-align: center;
 	position: relative;
+	background: @navBtn-color;
 	&:hover { border-radius: @navBtn-radius @navBtn-radius 0 0 }
 }
 
@@ -48,9 +48,14 @@ export default {
 	&:hover > .list { display: block }
 	
 	.search {
-		margin-bottom: .5rem;
-		background-color: fade(white, 50%);
+		margin-bottom: .25rem;
+		background-color: fade(white, 20%);
 		width: 100%;
+		padding: .5rem;
+		border-radius: 1rem;
+		text-align: center;
+		border: none;
+		&:hover { background-color: @white }
 	}
 	
 	.list {
@@ -61,7 +66,7 @@ export default {
 		text-align: left;
 		padding: @navBtn-padding;
 		margin: 0;
-		background-color: @navBtn-color;
+		background: @item-color;
 		border-radius: 0 0 @navBtn-radius @navBtn-radius;
 	}
 	
@@ -79,15 +84,15 @@ export default {
 		background-color: fade(@navBtn-color-inverted, 20%);
 		font-size: .8rem;
 		
-		&:hover {
-			background-color: @navBtn-color-inverted;
-			color: @navBtn-color;
-		}
-		
 		&.add {
 			text-align: center;
-			//color: white;
+			background-color: fade(@navBtn-color-inverted, 5%);
 			//font-size: 1rem;
+		}
+		
+		&:hover {
+			background-color: @navBtn-color-inverted;
+			color: @black;
 		}
 		
 		&.dropdown {

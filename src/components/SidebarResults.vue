@@ -41,8 +41,8 @@
 	cursor: pointer;
 	
 	&:hover {
-		background-color: @btn-color;
-		color: @btn-color-inverted;
+		background: @item-color;
+		color: @item-color-inverted;
 	}
 	
 	.icon, .name {
