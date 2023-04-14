@@ -28,7 +28,7 @@ export default{
 	
 	&:hover {
 		opacity: 1;
-		background-color: fade(white, 80%);
+		background-color: fade(white, 20%);
 	}
 }
 </style>

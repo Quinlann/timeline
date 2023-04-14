@@ -30,6 +30,7 @@
 </template>
 
 <style scoped lang="less">
+@import "/src/global.less";
 @icon-size: 1.5rem;
 
 .entity {
@@ -38,7 +39,11 @@
 	border-radius: @icon-size;
 	padding: (@icon-size / 4);
 	cursor: pointer;
-	&:hover { background-color: fade(white, 20%) }
+	
+	&:hover {
+		background-color: @btn-color;
+		color: @btn-color-inverted;
+	}
 	
 	.icon, .name {
 		height: @icon-size;
