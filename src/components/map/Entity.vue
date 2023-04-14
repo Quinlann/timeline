@@ -1,11 +1,11 @@
 <script>
 export default {
-    props: ['color','coor']
+    props: ['color','x','y','name'],
 }
 </script>
 
 <template>
-    <div className="{{ this.color }}" class="entity e1">HELLO there</div>    
+    <div :style="{ left: this.x + '%', top: this.y + '%', backgroundColor: this.color}" class="entity e4">{{ this.name }}</div>    
 </template>
 
 <style></style>

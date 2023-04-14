@@ -2,7 +2,26 @@
 import Entity from './map/Entity.vue'
 
 export default {
-	components:  {Entity}
+	components:  {Entity},
+	data() {
+		return {
+			entityName: 'hello name',
+			entities: [
+				{
+					color: 'purple',
+					x: 50,
+					y: 50,
+					text: 'testtest'
+				},
+				{
+					color: 'blue',
+					x: 25,
+					y: 33,
+					text: 'blabla'
+				}
+			]
+		}
+	}
 }
 
 /*
@@ -23,12 +42,7 @@ document.addEventListener("wheel", function(e) {
 <template>
 <div id="wrapper">
     <div class="map">
-		<!--<img src="/src/assets/worldmap.svg">-->
-		<div class="entity red e1">B</div>
-		<div class="entity purple e2">H</div>
-		<div class="entity green e3">H</div>
-		<div class="entity blue e4">P</div>
-		<Entity/>
+		<Entity v-for="entity in this.entities" :color="entity.color" :x="entity.x" :y="entity.y" :name="entity.text"/>
 	</div>
 </div>
 </template>
