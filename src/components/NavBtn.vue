@@ -1,7 +1,6 @@
 <script>
 export default {
-  props: ['title', 'dropdownOptions'],
-  data() {}
+  props: ['title', 'dropdownOptions']
 }
 </script>
 

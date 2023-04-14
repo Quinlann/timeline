@@ -1,4 +1,10 @@
 <script>
+import Entity from './map/Entity.vue'
+
+export default {
+	components:  {Entity}
+}
+
 /*
 const zoomElement = document.querySelector(".map");
 let zoom = 1;
@@ -22,6 +28,7 @@ document.addEventListener("wheel", function(e) {
 		<div class="entity purple e2">H</div>
 		<div class="entity green e3">H</div>
 		<div class="entity blue e4">P</div>
+		<Entity/>
 	</div>
 </div>
 </template>
