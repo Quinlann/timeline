@@ -5,14 +5,14 @@ export default {
     components:  {NavBtn},
     props: [],
     data() {
-    return {
-        settings: {
-            worlds: ['World 1', 'World 2'],
-            locations: ['Danmark', 'Norge', 'Sverige'],
-            entities: ['Benjamin Bak Egede', 'Henrik Tobiesen Aabom', 'Han Solo', 'Philip Marquard', 'Luke Skywalker', 'Jack Boone']
+        return {
+            settings: {
+                worlds: ['World 1', 'World 2'],
+                locations: ['Danmark', 'Norge', 'Sverige'],
+                entities: ['Benjamin Bak Egede', 'Henrik Tobiesen Aabom', 'Han Solo', 'Philip Marquard', 'Luke Skywalker', 'Jack Boone']
+            }
         }
     }
-}
 }
 </script>
 
