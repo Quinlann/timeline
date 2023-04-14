@@ -42,6 +42,7 @@ document.addEventListener("wheel", function(e) {
 <template>
 <div id="wrapper">
     <div class="map">
+		<img src="/src/assets/worldmap.svg">
 		<Entity v-for="entity in this.entities" :color="entity.color" :x="entity.x" :y="entity.y" :name="entity.text"/>
 	</div>
 </div>
