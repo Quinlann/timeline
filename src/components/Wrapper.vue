@@ -26,12 +26,12 @@ export default {
 
 let zoom = 100;
 document.addEventListener("wheel", function(e) {
-	const ZOOM_SPEED = 1;
+	const ZOOM_SPEED = 10;
     const zoomElement = document.querySelector(".map");
 	if (e.deltaY > 0) {    
-        zoomElement.style.width = `${zoom += ZOOM_SPEED}%`;  
+        zoomElement.style.width = `${zoom -= ZOOM_SPEED}%`;  
     } else {    
-        zoomElement.style.width = `${zoom -= ZOOM_SPEED}%`;
+        zoomElement.style.width = `${zoom += ZOOM_SPEED}%`;
 	}
 });
 

@@ -48,13 +48,18 @@ export default {
 	
 	.search {
 		margin-bottom: .25rem;
-		background-color: fade(white, 20%);
+		background-color: fade(@item-color-inverted, 10%);
+		color: @navBtn-color-inverted;
 		width: 100%;
-		padding: .5rem;
+		padding: @navBtn-padding 0;
 		border-radius: 1rem;
 		text-align: center;
 		border: none;
-		&:hover { background-color: @white }
+		
+		&:hover {
+			background-color: @white;
+			color: @black;
+		}
 	}
 	
 	.list {
@@ -63,7 +68,7 @@ export default {
 		top: 100%;
 		list-style: none;
 		text-align: left;
-		padding: @navBtn-padding;
+		padding: 0 @navBtn-padding @navBtn-padding;
 		margin: 0;
 		background: @item-color;
 		border-radius: 0 0 @navBtn-radius @navBtn-radius;
@@ -79,14 +84,13 @@ export default {
 		padding: @navBtn-padding;
 		border-radius: @navBtn-radius;
 		list-style-type: none;
-		margin-bottom: (@navBtn-padding / 2);
 		background-color: fade(@navBtn-color-inverted, 20%);
 		font-size: .8rem;
+		&:not(:last-child) { margin-bottom: (@navBtn-padding / 2) }
 		
 		&.add {
 			text-align: center;
-			background-color: fade(@navBtn-color-inverted, 5%);
-			//font-size: 1rem;
+			background-color: fade(@navBtn-color-inverted, 10%);
 		}
 		
 		&:hover {

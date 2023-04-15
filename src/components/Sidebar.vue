@@ -25,10 +25,6 @@ export default{
 	&.left { left: 0 }
 	&.right { right: 0 }
 	.section { padding: 1rem }
-	
-	&:hover {
-		opacity: 1;
-		background-color: fade(white, 20%);
-	}
+	&:hover { opacity: 1 }
 }
 </style>
