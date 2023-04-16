@@ -13,36 +13,39 @@ export default {
 					color: 'purple',
 					x: 50,
 					y: 50,
-					text: 'A'
+					text: '0'
 				},
 				{
 					color: 'blue',
 					x: 25,
 					y: 33,
-					text: 'B'
+					text: '1'
 				}
 			]
     }
   },
   beforeMount() {
-    this.entities.forEach((obj, index) => obj.id = index);
+    this.setEntityIds();
   },
-  mounted(){
-    setTimeout(() => {
-      console.log('adding');
+  methods:{
+    setEntityIds(){
+      this.entities.forEach((obj, index) => obj.id = index);
+    },
+    addEntity(){
       this.entities.push({
         color: `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`,
         x: Math.floor(Math.random() * 101),
         y: Math.floor(Math.random() * 101),
-        text: 'C'
+        text: this.entities.length.toString(),
+        id: this.entities.length
       });
-    }, 1000);
+    }
   }
 }
 </script>
 
 <template>
-  <Navigation/>
+  <Navigation :addEntity="addEntity"/>
   <SideBar/>
   <Timeline/>
   <Wrapper :entities="entities"/>

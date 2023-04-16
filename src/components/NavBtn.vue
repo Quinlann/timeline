@@ -1,6 +1,11 @@
 <script>
 export default {
-  props: ['title', 'dropdownOptions']
+  props: ['title', 'dropdownOptions'],
+  methods:{
+	clickPlus(navBtnTitle){
+		if(navBtnTitle === 'Entities') this.$emit('add-entity');
+	}
+  }
 }
 </script>
 
@@ -14,7 +19,7 @@ export default {
       <input class="search" value="Search">
       <ul>
         <li v-for="option in dropdownOptions">{{ option }}</li>
-        <li class="add">
+        <li @click="clickPlus(title)" class="add">
 			<font-awesome-icon icon="fa-solid fa-plus" />
 		</li>
       </ul>
