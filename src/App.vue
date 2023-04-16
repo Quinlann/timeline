@@ -20,6 +20,8 @@ export default {
 </template>
 
 <style lang="less">
+* { box-sizing: border-box }
+
 body {
 	margin: 0;
 	font-family: sans-serif;

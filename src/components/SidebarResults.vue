@@ -34,7 +34,6 @@
 @icon-size: 1.5rem;
 
 .entity {
-	height: @icon-size;
 	display: flex;
 	border-radius: @icon-size;
 	padding: (@icon-size / 4);

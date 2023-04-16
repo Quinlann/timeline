@@ -51,7 +51,7 @@ export default {
 		background-color: fade(@item-color-inverted, 10%);
 		color: @navBtn-color-inverted;
 		width: 100%;
-		padding: @navBtn-padding 0;
+		padding: @navBtn-padding;
 		border-radius: 1rem;
 		text-align: center;
 		border: none;
