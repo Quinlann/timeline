@@ -59,9 +59,10 @@ document.addEventListener("wheel", function(e) {
 					<div class="time">
 						<div class="date birth">
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
-							05.10.1992
+							<input type="">
 						</div>
 						<div class="location">Jyllinge</div>
+						<div class="deleteBtn">-</div>
 					</div>
 					<div class="time">
 						<div class="date place">
@@ -69,6 +70,7 @@ document.addEventListener("wheel", function(e) {
 							03.21.2001
 						</div>
 						<div class="location">Roskilde</div>
+						<div class="deleteBtn">-</div>
 					</div>
 					<div class="time">
 						<div class="date travel">
@@ -76,6 +78,7 @@ document.addEventListener("wheel", function(e) {
 							2004
 						</div>
 						<div class="location">T: 50% L: 10%</div>
+						<div class="deleteBtn">-</div>
 					</div>
 					<div class="time">
 						<div class="date place">
@@ -83,18 +86,31 @@ document.addEventListener("wheel", function(e) {
 							03.02.2004
 						</div>
 						<div class="location">Jyllinge</div>
+						<div class="deleteBtn">-</div>
 					</div>
 					<div class="time">
-						<div class="date death">05.10.2023</div>
+						<div class="date death">
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
+							05.10.2023
+						</div>
 						<div class="location">Roskilde</div>
+						<div class="deleteBtn">-</div>
 					</div>
 					<div class="time">
-						<div class="date birth">05.10.2024</div>
+						<div class="date birth">
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
+							05.10.2024
+						</div>
 						<div class="location">Roskilde</div>
+						<div class="deleteBtn">-</div>
 					</div>
 					<div class="time">
-						<div class="date change">05.10.2024</div>
+						<div class="date change">
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
+							05.10.2024
+						</div>
 						<div class="location">Bing Bong</div>
+						<div class="deleteBtn">-</div>
 					</div>
 					<div class="time add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 				</div>
@@ -216,35 +232,49 @@ document.addEventListener("wheel", function(e) {
 			margin-bottom: .125rem;
 			font-size: .8rem;
 			&:not(:last-child) { margin-bottom: .25rem }
+			div { border-radius: .25rem }
 			
-			div {
+			.date, .location {
 				padding: .25rem;
 				width: 50%;
-				
 				position: relative;
+				margin-right: .25rem;
 			}
 
 			.date {
 				color: @white;
-				margin-right: .125rem;
-				border-radius: 1rem .25rem .25rem 1rem;
 				
-				&.birth { .gradient(rgb(173, 173, 53), darken(rgb(173, 173, 53),10%)); }
-				&.place { .gradient(red, darken(red,10%)); }
-				&.travel { .gradient(blue, darken(blue,10%)); }
-				&.death { .gradient(purple, darken(purple,10%)); }
+				&.birth { .gradient(@yellowDark, darken(@yellowDark, 10%)); }
+				&.place { .gradient(@red, darken(@red,10%)); }
+				&.travel { .gradient(@blue, darken(@blue,10%)); }
+				&.death { .gradient(@purple, darken(@purple,10%)); }
 				&.change { .gradient(grey, darken(grey,10%)); }
 
 				.icon {
 					display: inline;
 				}
+
+				input { 
+					background-color: transparent;
+					color: @white;
+					width: ~"calc(100% - 1.1rem)";
+					padding: 0;
+				}
 			}
 
 			.location {
 				text-align: right;
-				margin-left: .25rem;
 				background-color: fade(@white, 20%);
-				border-radius: .25rem 1rem 1rem .25rem;
+			}
+
+			.deleteBtn {
+				width: 1.5rem;
+				background-color: fade(@white, 20%);
+				border-radius: .25rem;
+				text-align: center;
+				color: fade(@red, 50%);
+				line-height: 1.75;
+				font-weight: bold;
 			}
 
 			&.add {
