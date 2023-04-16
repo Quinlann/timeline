@@ -7,16 +7,48 @@ import SideBar from './components/SideBar.vue'
 export default {
   components: {Navigation,Timeline,Wrapper,SideBar},
   data() {
-    return {}
+    return {
+      entities: [
+				{
+					color: 'purple',
+					x: 50,
+					y: 50,
+					text: '0'
+				},
+				{
+					color: 'blue',
+					x: 25,
+					y: 33,
+					text: '1'
+				}
+			]
+    }
+  },
+  beforeMount() {
+    this.setEntityIds();
+  },
+  methods:{
+    setEntityIds(){
+      this.entities.forEach((obj, index) => obj.id = index);
+    },
+    addEntity(){
+      this.entities.push({
+        color: `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`,
+        x: Math.floor(Math.random() * 101),
+        y: Math.floor(Math.random() * 101),
+        text: this.entities.length.toString(),
+        id: this.entities.length
+      });
+    }
   }
 }
 </script>
 
 <template>
-  <Navigation/>
+  <Navigation :addEntity="addEntity"/>
   <SideBar/>
   <Timeline/>
-  <Wrapper/>
+  <Wrapper :entities="entities"/>
 </template>
 
 <style lang="less">

@@ -3,7 +3,12 @@ import NavBtn from './NavBtn.vue'
 
 export default {
     components:  {NavBtn},
-    props: [],
+    props: {
+        addEntity: {
+            type: Function,
+            required: true
+        }
+    },
     data() {
         return {
             settings: {
@@ -21,7 +26,7 @@ export default {
     <div class="settings">
         <NavBtn title="Worlds" :dropdownOptions="settings.worlds" />
         <NavBtn title="Locations" :dropdownOptions="settings.locations" />
-        <NavBtn title="Entities" :dropdownOptions="settings.entities" />
+        <NavBtn title="Entities" :dropdownOptions="settings.entities" @add-entity="addEntity()" />
     </div>
 </div>
 </template>
