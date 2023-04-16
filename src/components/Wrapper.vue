@@ -2,25 +2,10 @@
 import Entity from './map/Entity.vue'
 
 export default {
+	props:['entities'],
 	components:  {Entity},
-	data() {
-		return {
-			entityName: 'hello name',
-			entities: [
-				{
-					color: 'purple',
-					x: 50,
-					y: 50,
-					text: 'testtest'
-				},
-				{
-					color: 'blue',
-					x: 25,
-					y: 33,
-					text: 'blabla'
-				}
-			]
-		}
+	mounted(){
+		console.log('here',this.entities);
 	}
 }
 

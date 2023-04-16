@@ -1,11 +1,22 @@
 <script>
-export default {}
+export default {
+	data() {
+		return {
+			rangeValue: 0
+		}
+	},
+	methods:{
+		changedRange() {
+			console.log(this.rangeValue);
+		}
+	}
+}
 </script>
 
 <template>
 <div class="timeline__container">
     <div class="timeline__counter">1974</div>
-    <input type="range" class="timeline">
+    <input @input="changedRange" v-model="this.rangeValue" type="range" min="0" max="1000" step="1" class="timeline">
     <div class="timeline__selection"></div>
 </div>
 </template>
