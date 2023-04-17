@@ -18,9 +18,10 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faMap,faGlobe,faLocationDot,faLocationCrosshairs,faMagnifyingGlass,faPlus);
+library.add(faMap,faGlobe,faLocationDot,faLocationCrosshairs,faMagnifyingGlass,faPlus,faUser);
 
 /* ^^^^ FONT AWSOME ^^^^ */
 

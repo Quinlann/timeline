@@ -27,7 +27,7 @@ document.addEventListener("wheel", function(e) {
     <div class="creation">
 		<div class="creation__header">
 			<div class="top">
-				<div class="icon">O</div>
+				<div class="icon"><FontAwesomeIcon icon="fa-solid fa-user" /></div>
 				<div class="name">[Name]</div>
 				<div class="closeBtn">X</div>
 			</div>
@@ -55,21 +55,21 @@ document.addEventListener("wheel", function(e) {
 		<div class="creation__timeline">
 			<div class="section">
 				<div class="section__title">Timeline</div>
-				<div class="section__content">
+				<div class="section__content">					
 					<div class="time">
-						<div class="date birth">
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
-							<input type="">
-						</div>
-						<div class="location">Jyllinge</div>
+						<div class="type birth"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
+						<div class="date"><input type=""></div>
+						<select class="setting">
+							<option value="Jyllinge">Danmark</option>
+							<option value="Jyllinge">Norge</option>
+							<option value="Jyllinge">Sverige</option>
+						</select>
 						<div class="deleteBtn">-</div>
 					</div>
 					<div class="time">
-						<div class="date place">
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
-							03.21.2001
-						</div>
-						<div class="location">Roskilde</div>
+						<div class="type place"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
+						<div class="date">03.21.2001</div>
+						<div class="setting">Roskilde</div>
 						<div class="deleteBtn">-</div>
 					</div>
 					<div class="time">
@@ -77,7 +77,7 @@ document.addEventListener("wheel", function(e) {
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
 							2004
 						</div>
-						<div class="location">T: 50% L: 10%</div>
+						<div class="setting">T: 50% L: 10%</div>
 						<div class="deleteBtn">-</div>
 					</div>
 					<div class="time">
@@ -85,7 +85,7 @@ document.addEventListener("wheel", function(e) {
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
 							03.02.2004
 						</div>
-						<div class="location">Jyllinge</div>
+						<div class="setting">Jyllinge</div>
 						<div class="deleteBtn">-</div>
 					</div>
 					<div class="time">
@@ -93,7 +93,7 @@ document.addEventListener("wheel", function(e) {
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
 							05.10.2023
 						</div>
-						<div class="location">Roskilde</div>
+						<div class="setting">Roskilde</div>
 						<div class="deleteBtn">-</div>
 					</div>
 					<div class="time">
@@ -101,7 +101,7 @@ document.addEventListener("wheel", function(e) {
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
 							05.10.2024
 						</div>
-						<div class="location">Roskilde</div>
+						<div class="setting">Roskilde</div>
 						<div class="deleteBtn">-</div>
 					</div>
 					<div class="time">
@@ -109,7 +109,7 @@ document.addEventListener("wheel", function(e) {
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
 							05.10.2024
 						</div>
-						<div class="location">Bing Bong</div>
+						<div class="setting">Bing Bong</div>
 						<div class="deleteBtn">-</div>
 					</div>
 					<div class="time add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
@@ -137,6 +137,10 @@ document.addEventListener("wheel", function(e) {
 	justify-content: center;
 	align-items: center;
 }
+
+@timelineColWidth: 18rem;
+@padding: .5rem;
+@margin: .5rem;
 
 .creation {
 	display: none;
@@ -178,13 +182,13 @@ document.addEventListener("wheel", function(e) {
 
 	&__info {
 		float: left;
-		width: ~"calc(100% - 15.5rem)";
-		margin-right: .5rem;
+		width: ~"calc(100% - (@{timelineColWidth} + @{margin}))";
+		margin-right: @margin;
 	}
 
 	&__timeline {
 		float: left;
-		width: 15rem;
+		width: @timelineColWidth;
 	}
 
 	.section {
@@ -232,49 +236,55 @@ document.addEventListener("wheel", function(e) {
 			margin-bottom: .125rem;
 			font-size: .8rem;
 			&:not(:last-child) { margin-bottom: .25rem }
-			div { border-radius: .25rem }
 			
-			.date, .location {
+			div, select {
+				border-radius: .25rem;
 				padding: .25rem;
-				width: 50%;
-				position: relative;
-				margin-right: .25rem;
+				&:not(:last-child) { margin-right: .25rem }
 			}
 
-			.date {
+			.date, .setting {
+				width: 50%;
+				background-color: fade(@white, 20%);
+				text-align: center;
+			}
+
+			.type, .deleteBtn {
+				width: 2rem;
+				text-align: center;
+				display: flex;
+				justify-content: center;
+    			align-items: center;
+			}
+			
+			.type  {
 				color: @white;
-				
 				&.birth { .gradient(@yellowDark, darken(@yellowDark, 10%)); }
 				&.place { .gradient(@red, darken(@red,10%)); }
 				&.travel { .gradient(@blue, darken(@blue,10%)); }
 				&.death { .gradient(@purple, darken(@purple,10%)); }
 				&.change { .gradient(grey, darken(grey,10%)); }
+			}
 
-				.icon {
-					display: inline;
-				}
-
+			.date {
 				input { 
 					background-color: transparent;
-					color: @white;
 					width: ~"calc(100% - 1.1rem)";
 					padding: 0;
+					text-align: center;
 				}
 			}
 
-			.location {
-				text-align: right;
-				background-color: fade(@white, 20%);
+			.setting {
+				
+				border: none;
 			}
 
 			.deleteBtn {
-				width: 1.5rem;
 				background-color: fade(@white, 20%);
-				border-radius: .25rem;
-				text-align: center;
 				color: fade(@red, 50%);
-				line-height: 1.75;
 				font-weight: bold;
+				&:hover { background-color: fade(@red, 20%) }
 			}
 
 			&.add {
