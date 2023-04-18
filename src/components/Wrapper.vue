@@ -57,21 +57,24 @@ document.addEventListener("wheel", function(e) {
 				<div class="section__title">Timeline</div>
 				<div class="section__content">					
 					<div class="time">
-						<div class="type birth"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
-						<div class="date"><input type=""></div>
-						<select class="setting">
-							<option value="Jyllinge">Danmark</option>
-							<option value="Jyllinge">Norge</option>
-							<option value="Jyllinge">Sverige</option>
-						</select>
-						<div class="deleteBtn">-</div>
+						<div class="type birth">
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
+							<div class="date">05.10.1992</div>
+							<div class="setting">Jyllinge</div>
+						</div>
+						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
+						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
 					</div>
 					<div class="time">
-						<div class="type place"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
-						<div class="date">03.21.2001</div>
-						<div class="setting">Roskilde</div>
-						<div class="deleteBtn">-</div>
+						<div class="type place">
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
+							<div class="date">03.21.2001</div>
+							<div class="setting">Roskilde</div>
+						</div>
+						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
+						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
 					</div>
+					
 					<div class="time">
 						<div class="date travel">
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
@@ -143,7 +146,7 @@ document.addEventListener("wheel", function(e) {
 @margin: .5rem;
 
 .creation {
-	display: none;
+	//display: none;
 	background-color: lightgrey;
 	max-width: 45rem;
 	width: 45rem;
@@ -232,58 +235,53 @@ document.addEventListener("wheel", function(e) {
 
 		.time {
 			display: flex;
-			justify-content: space-between;
-			margin-bottom: .125rem;
 			font-size: .8rem;
 			&:not(:last-child) { margin-bottom: .25rem }
-			
-			div, select {
-				border-radius: .25rem;
-				padding: .25rem;
-				&:not(:last-child) { margin-right: .25rem }
-			}
 
-			.date, .setting {
-				width: 50%;
-				background-color: fade(@white, 20%);
-				text-align: center;
-			}
-
-			.type, .deleteBtn {
-				width: 2rem;
+			.type {
+				width: 100%;
 				text-align: center;
 				display: flex;
 				justify-content: center;
     			align-items: center;
-			}
-			
-			.type  {
-				color: @white;
+				padding: .25rem;
+				border-radius: 1rem;
+				margin-right: .25rem;
+				.icon { color: @white }
+				
 				&.birth { .gradient(@yellowDark, darken(@yellowDark, 10%)); }
 				&.place { .gradient(@red, darken(@red,10%)); }
 				&.travel { .gradient(@blue, darken(@blue,10%)); }
 				&.death { .gradient(@purple, darken(@purple,10%)); }
 				&.change { .gradient(grey, darken(grey,10%)); }
-			}
 
-			.date {
-				input { 
-					background-color: transparent;
-					width: ~"calc(100% - 1.1rem)";
-					padding: 0;
+				div {
+					padding: .25rem;
+					border-radius: 1rem;
+					&:not(:last-child) { margin-right: .25rem }
+				}
+
+				.date, .setting {
+					width: 50%;
+					background-color: fade(@white, 60%);
 					text-align: center;
 				}
 			}
 
-			.setting {
-				
-				border: none;
+			.editBtn, .deleteBtn {
+				background-color: fade(@white, 50%);
+				padding: .5rem;
+			}
+
+			.editBtn {
+				color: fade(@black, 50%);
+				border-radius: 1rem 0 0 1rem;
+				&:hover { background-color: fade(@white, 90%) }
 			}
 
 			.deleteBtn {
-				background-color: fade(@white, 20%);
 				color: fade(@red, 50%);
-				font-weight: bold;
+				border-radius: 0 1rem 1rem 0 ;
 				&:hover { background-color: fade(@red, 20%) }
 			}
 
@@ -297,6 +295,8 @@ document.addEventListener("wheel", function(e) {
 				&:hover { background-color: fade(@black, 20%) }
 			}
 		}
+
+		
 	}
 }
 
