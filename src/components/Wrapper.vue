@@ -58,63 +58,74 @@ document.addEventListener("wheel", function(e) {
 				<div class="section__content">					
 					<div class="time">
 						<div class="type birth">
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-sun" /></div>
 							<div class="date">05.10.1992</div>
 							<div class="setting">Jyllinge</div>
 						</div>
-						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
-						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
+						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
+						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
 					</div>
+
 					<div class="time">
 						<div class="type place">
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
 							<div class="date">03.21.2001</div>
 							<div class="setting">Roskilde</div>
 						</div>
-						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
-						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
+						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
+						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
 					</div>
-					
+
 					<div class="time">
-						<div class="date travel">
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
-							2004
+						<div class="type travel">
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-route" /></div>
+							<div class="date">2004</div>
+							<div class="setting">T: 50% L: 10%</div>
 						</div>
-						<div class="setting">T: 50% L: 10%</div>
-						<div class="deleteBtn">-</div>
+						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
+						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
 					</div>
+
 					<div class="time">
-						<div class="date place">
+						<div class="type place">
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
-							03.02.2004
+							<div class="date">03.02.2004</div>
+							<div class="setting">Jyllinge</div>
 						</div>
-						<div class="setting">Jyllinge</div>
-						<div class="deleteBtn">-</div>
+						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
+						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
 					</div>
+
 					<div class="time">
-						<div class="date death">
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
-							05.10.2023
+						<div class="type death">
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-skull" /></div>
+							<div class="date">05.10.2023</div>
+							<div class="setting">Roskilde</div>
 						</div>
-						<div class="setting">Roskilde</div>
-						<div class="deleteBtn">-</div>
+						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
+						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
 					</div>
+
 					<div class="time">
-						<div class="date birth">
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
-							05.10.2024
+						<div class="type birth">
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-sun" /></div>
+							<div class="date">05.10.2024</div>
+							<div class="setting">Roskilde</div>
 						</div>
-						<div class="setting">Roskilde</div>
-						<div class="deleteBtn">-</div>
+						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
+						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
 					</div>
+
 					<div class="time">
-						<div class="date change">
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
-							05.10.2024
+						<div class="type change">
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-feather-pointed" /></div>
+							<div class="date">05.10.2024</div>
+							<div class="setting">Bing Bong</div>
 						</div>
-						<div class="setting">Bing Bong</div>
-						<div class="deleteBtn">-</div>
+						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
+						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
 					</div>
+
 					<div class="time add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 				</div>
 			</div>
@@ -146,7 +157,7 @@ document.addEventListener("wheel", function(e) {
 @margin: .5rem;
 
 .creation {
-	//display: none;
+	display: none;
 	background-color: lightgrey;
 	max-width: 45rem;
 	width: 45rem;
@@ -214,15 +225,12 @@ document.addEventListener("wheel", function(e) {
 			width: 4rem;
 			height: 5rem;
 			background-color: fade(@black, 10%);
+			&:hover { background-color: fade(@black, 20%) }
 			
 			&.add {
 				text-align: center;
 				line-height: 5rem;
 				border-radius: .5rem;
-			}
-
-			&:hover {
-				background-color: fade(@black, 20%);
 			}
 		}
 
@@ -247,7 +255,12 @@ document.addEventListener("wheel", function(e) {
 				padding: .25rem;
 				border-radius: 1rem;
 				margin-right: .25rem;
-				.icon { color: @white }
+				
+				.icon {
+					color: @white;
+					width: 2rem;
+					text-align: center;
+				}
 				
 				&.birth { .gradient(@yellowDark, darken(@yellowDark, 10%)); }
 				&.place { .gradient(@red, darken(@red,10%)); }
@@ -255,16 +268,16 @@ document.addEventListener("wheel", function(e) {
 				&.death { .gradient(@purple, darken(@purple,10%)); }
 				&.change { .gradient(grey, darken(grey,10%)); }
 
-				div {
-					padding: .25rem;
-					border-radius: 1rem;
-					&:not(:last-child) { margin-right: .25rem }
-				}
-
 				.date, .setting {
 					width: 50%;
-					background-color: fade(@white, 60%);
+					background-color: fade(@white, 50%);
 					text-align: center;
+					padding: .25rem;
+					border-radius: 1rem;
+					overflow:hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					&:not(:last-child) { margin-right: .25rem }
 				}
 			}
 
@@ -287,16 +300,14 @@ document.addEventListener("wheel", function(e) {
 
 			&.add {
 				text-align: center;
-				padding: .25rem;
-				border-radius: .25rem;
+				padding: .5rem;
+				border-radius: 1rem;
 				background-color: fade(@black, 10%);
 				display: flex;
 				justify-content: center;
 				&:hover { background-color: fade(@black, 20%) }
 			}
 		}
-
-		
 	}
 }
 

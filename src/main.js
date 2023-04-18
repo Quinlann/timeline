@@ -19,9 +19,15 @@ import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faRoute } from '@fortawesome/free-solid-svg-icons'
+import { faSun } from '@fortawesome/free-solid-svg-icons'
+import { faFeatherPointed } from '@fortawesome/free-solid-svg-icons'
+import { faSkull } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faMap,faGlobe,faLocationDot,faLocationCrosshairs,faMagnifyingGlass,faPlus,faUser);
+library.add(faMap,faGlobe,faLocationDot,faLocationCrosshairs,faMagnifyingGlass,faPlus,faUser,faPen,faTrash,faRoute,faSun,faFeatherPointed,faSkull);
 
 /* ^^^^ FONT AWSOME ^^^^ */
 
