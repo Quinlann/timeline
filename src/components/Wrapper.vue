@@ -27,7 +27,7 @@ document.addEventListener("wheel", function(e) {
     <div class="creation">
 		<div class="creation__header">
 			<div class="top">
-				<div class="icon"><FontAwesomeIcon icon="fa-solid fa-user" /></div>
+				<div class="icon"><font-awesome-icon icon="fa-solid fa-user" /></div>
 				<div class="name">[Name]</div>
 				<div class="closeBtn">X</div>
 			</div>
