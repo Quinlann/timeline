@@ -10,22 +10,65 @@ export default {
     return {
       entities: [
 				{
-					color: 'purple',
-					x: 50,
-					y: 50,
-					text: '0'
-				},
-				{
-					color: 'blue',
-					x: 25,
-					y: 33,
-					text: '1'
+					color: 'red',
+					timeline: [
+            {
+              id: 0,
+              location: 'Romania',
+              left: 54.6,
+              top: 38.6,
+              date: '1999-10-05'
+            },
+            {
+              id: 1,
+              location: 'Hongkong',
+              top: 51,
+              left: 80.7,
+              date: '2000-03-21'
+            },
+            {
+              id: 2,
+              location: 'Colombia',
+              top: 61,
+              left: 26.7,
+              date: '2000-05-10'
+            },
+            {
+              id: 3,
+              location: 'Budapest',
+              top: 37.7,
+              left: 52.8,
+              date: '2000-07-12'
+            },
+            {
+              id: 4,
+              location: 'Rotterdam',
+              top: 34.5,
+              left: 48.9,
+              date: '2000-08-26'
+            },
+            {
+              id: 5,
+              location: 'Romania',
+              left: 54.6,
+              top: 38.6,
+              date: '2000-09-04'
+            },
+          ],
+					text: '47'
 				}
 			]
     }
   },
   beforeMount() {
     this.setEntityIds();
+    this.convertDateStr();
+    this.convertDatesToPct();
+  },
+  computed: {
+    startEndDateDiff() {
+      return this.entities[0].endDate.getTime() - this.entities[0].startDate.getTime();
+    }
   },
   methods:{
     setEntityIds(){
@@ -39,6 +82,18 @@ export default {
         text: this.entities.length.toString(),
         id: this.entities.length
       });
+    },
+    convertDateStr() {
+      this.entities[0].timeline.forEach((obj) => obj.dateObj = new Date(obj.date));
+    },
+    convertDatesToPct() {
+      this.entities[0].startDate = this.entities[0].timeline[0].dateObj;
+      this.entities[0].endDate = this.entities[0].timeline[this.entities[0].timeline.length-1].dateObj;
+
+      for (let i = 0; i < this.entities[0].timeline.length; i++) {
+        const location = this.entities[0].timeline[i];
+        location.pct = (location.dateObj.getTime() - this.entities[0].timeline[0].dateObj.getTime()) / this.startEndDateDiff * 100
+      }
     }
   }
 }
