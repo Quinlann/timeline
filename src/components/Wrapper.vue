@@ -4,9 +4,6 @@ import Entity from './map/Entity.vue'
 export default {
 	props:['entities'],
 	components:  {Entity},
-	mounted(){
-		console.log('here',this.entities);
-	}
 }
 
 let zoom = 100;
@@ -133,7 +130,13 @@ document.addEventListener("wheel", function(e) {
 	</div>
 	<div class="map">
 		<img src="/src/assets/worldmap.svg">
-		<Entity v-for="entity in this.entities" :color="entity.color" :x="entity.x" :y="entity.y" :name="entity.text"/>
+		<Entity 
+			v-for="entity in this.entities"
+			:color="entity.color"
+			:x="entity.x"
+			:y="entity.y"
+			:name="entity.text"
+		/>
 	</div>
 </div>
 </template>

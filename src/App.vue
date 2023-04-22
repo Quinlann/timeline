@@ -55,7 +55,9 @@ export default {
               date: '2000-09-04'
             },
           ],
-					text: '47'
+					text: '47',
+          x: 54.6,
+          y: 38.6,
 				}
 			],
       timelinePoint: 0
@@ -104,7 +106,8 @@ export default {
     timelinePoint(point){
       const storyEntriesLowerThanPoint = this.entities[0].story.filter(x => x.pct <= point),
       closestEntry = storyEntriesLowerThanPoint[storyEntriesLowerThanPoint.length-1];
-      console.log('closestEntry:',closestEntry);
+      this.entities[0].x = closestEntry.left;
+      this.entities[0].y = closestEntry.top;
     }
   }
 }
@@ -115,6 +118,7 @@ export default {
   <SideBar/>
   <Timeline
     @update-timeline-point="updateTimelinePoint"
+    ref="timeline"
   />
   <Wrapper :entities="entities"/>
 </template>
