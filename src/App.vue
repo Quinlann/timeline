@@ -11,7 +11,7 @@ export default {
       entities: [
 				{
 					color: 'red',
-					timeline: [
+					story: [
             {
               id: 0,
               location: 'Romania',
@@ -85,15 +85,15 @@ export default {
       });
     },
     convertDateStr() {
-      this.entities[0].timeline.forEach((obj) => obj.dateObj = new Date(obj.date));
+      this.entities[0].story.forEach((obj) => obj.dateObj = new Date(obj.date));
     },
     convertDatesToPct() {
-      this.entities[0].startDate = this.entities[0].timeline[0].dateObj;
-      this.entities[0].endDate = this.entities[0].timeline[this.entities[0].timeline.length-1].dateObj;
+      this.entities[0].startDate = this.entities[0].story[0].dateObj;
+      this.entities[0].endDate = this.entities[0].story[this.entities[0].story.length-1].dateObj;
 
-      for (let i = 0; i < this.entities[0].timeline.length; i++) {
-        const location = this.entities[0].timeline[i];
-        location.pct = (location.dateObj.getTime() - this.entities[0].timeline[0].dateObj.getTime()) / this.startEndDateDiff * 100;
+      for (let i = 0; i < this.entities[0].story.length; i++) {
+        const location = this.entities[0].story[i];
+        location.pct = (location.dateObj.getTime() - this.entities[0].story[0].dateObj.getTime()) / this.startEndDateDiff * 100;
       }
     },
     updateTimelinePoint(newPoint) {
@@ -102,7 +102,7 @@ export default {
   },
   watch: {
     timelinePoint(point){
-      const storyEntriesLowerThanPoint = this.entities[0].timeline.filter(x => x.pct <= point),
+      const storyEntriesLowerThanPoint = this.entities[0].story.filter(x => x.pct <= point),
       closestEntry = storyEntriesLowerThanPoint[storyEntriesLowerThanPoint.length-1];
       console.log('closestEntry:',closestEntry);
     }
