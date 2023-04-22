@@ -60,7 +60,8 @@ export default {
           y: 38.6,
 				}
 			],
-      timelinePoint: 0
+      timelinePoint: 0,
+      timelineDate: '1999-10-05'
     }
   },
   beforeMount() {
@@ -98,9 +99,19 @@ export default {
         location.pct = (location.dateObj.getTime() - this.entities[0].story[0].dateObj.getTime()) / this.startEndDateDiff * 100;
       }
     },
+    convertPctToDate(pct) {
+      const startDateInMilSec = this.entities[0].startDate.getTime(),
+      pctDateInMilSec = startDateInMilSec + (this.startEndDateDiff * (pct/100)),
+      pctDateInString = new Date(pctDateInMilSec).toISOString().substring(0, 10);
+      return pctDateInString
+    },
     updateTimelinePoint(newPoint) {
       this.timelinePoint = newPoint / 10;
+      this.timelineDate = this.convertPctToDate(this.timelinePoint);
     }
+  },
+  mounted(){
+    console.log(this.entities[0]);
   },
   watch: {
     timelinePoint(point){
@@ -118,7 +129,7 @@ export default {
   <SideBar/>
   <Timeline
     @update-timeline-point="updateTimelinePoint"
-    ref="timeline"
+    :pointLabel="this.timelineDate"
   />
   <Wrapper :entities="entities"/>
 </template>
