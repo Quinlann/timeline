@@ -110,9 +110,6 @@ export default {
       this.timelineDate = this.convertPctToDate(this.timelinePoint);
     }
   },
-  mounted(){
-    console.log(this.entities[0]);
-  },
   watch: {
     timelinePoint(point){
       const storyEntriesLowerThanPoint = this.entities[0].story.filter(x => x.pct <= point),
