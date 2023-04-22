@@ -57,7 +57,8 @@ export default {
           ],
 					text: '47'
 				}
-			]
+			],
+      timelinePoint: 0
     }
   },
   beforeMount() {
@@ -92,8 +93,18 @@ export default {
 
       for (let i = 0; i < this.entities[0].timeline.length; i++) {
         const location = this.entities[0].timeline[i];
-        location.pct = (location.dateObj.getTime() - this.entities[0].timeline[0].dateObj.getTime()) / this.startEndDateDiff * 100
+        location.pct = (location.dateObj.getTime() - this.entities[0].timeline[0].dateObj.getTime()) / this.startEndDateDiff * 100;
       }
+    },
+    updateTimelinePoint(newPoint) {
+      this.timelinePoint = newPoint / 10;
+    }
+  },
+  watch: {
+    timelinePoint(point){
+      const storyEntriesLowerThanPoint = this.entities[0].timeline.filter(x => x.pct <= point),
+      closestEntry = storyEntriesLowerThanPoint[storyEntriesLowerThanPoint.length-1];
+      console.log('closestEntry:',closestEntry);
     }
   }
 }
@@ -102,7 +113,9 @@ export default {
 <template>
   <Navigation :addEntity="addEntity"/>
   <SideBar/>
-  <Timeline/>
+  <Timeline
+    @update-timeline-point="updateTimelinePoint"
+  />
   <Wrapper :entities="entities"/>
 </template>
 
