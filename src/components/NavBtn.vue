@@ -16,7 +16,7 @@ export default {
 	<font-awesome-icon v-if="title === 'Entities'" icon="fa-solid fa-location-crosshairs" />
 	{{ title }}
     <div class="list">
-      <input class="search" value="Search">
+      <input class="search" onfocus="this.value=''" value="Search">
       <ul>
         <li v-for="option in dropdownOptions">{{ option }}</li>
         <li @click="clickPlus(title)" class="add">
