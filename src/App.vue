@@ -14,7 +14,7 @@ export default {
 					story: [
             {
               id: 0,
-              location: 'Romania',
+              name: 'Romania',
               left: 54.6,
               top: 38.6,
               startDate: '1999-10-05',
@@ -22,43 +22,43 @@ export default {
             },
             {
               id: 1,
-              location: 'Hongkong',
+              name: 'Hongkong',
               top: 51,
               left: 80.7,
               startDate: '2000-03-21',
-              endDate: '2000-03-21'
+              endDate: '2000-03-27'
             },
             {
               id: 2,
-              location: 'Colombia',
+              name: 'Colombia',
               top: 61,
               left: 26.7,
               startDate: '2000-05-10',
-              endDate: '2000-05-10'
+              endDate: '2000-05-20'
             },
             {
               id: 3,
-              location: 'Budapest',
+              name: 'Budapest',
               top: 37.7,
               left: 52.8,
               startDate: '2000-07-12',
-              endDate: '2000-07-12'
+              endDate: '2000-07-13'
             },
             {
               id: 4,
-              location: 'Rotterdam',
+              name: 'Rotterdam',
               top: 34.5,
               left: 48.9,
               startDate: '2000-08-26',
-              endDate: '2000-08-26'
+              endDate: '2000-08-28'
             },
             {
               id: 5,
-              location: 'Romania',
+              name: 'Romania',
               left: 54.6,
               top: 38.6,
               startDate: '2000-09-04',
-              endDate: '2000-09-04'
+              endDate: '2000-09-05'
             },
           ],
 					text: '47',
@@ -74,6 +74,7 @@ export default {
   beforeMount() {
     this.setEntityIds();
     this.convertDateStrs();
+    this.setStartEndDates();
     this.convertDatesToPct();
   },
   computed: {
@@ -98,13 +99,15 @@ export default {
       this.entities[0].story.forEach((obj) => obj.startDateObj = new Date(obj.startDate));
       this.entities[0].story.forEach((obj) => obj.endDateObj = new Date(obj.endDate));
     },
-    convertDatesToPct() {
+    setStartEndDates() {
       this.entities[0].startDate = this.entities[0].story[0].startDateObj;
-      this.entities[0].endDate = this.entities[0].story[this.entities[0].story.length-1].startDateObj;
-
+      this.entities[0].endDate = this.entities[0].story[this.entities[0].story.length-1].endDateObj;
+    },
+    convertDatesToPct() {
       for (let i = 0; i < this.entities[0].story.length; i++) {
         const location = this.entities[0].story[i];
-        location.pct = (location.startDateObj.getTime() - this.entities[0].story[0].startDateObj.getTime()) / this.startEndDateDiff * 100;
+        location.startPct = (location.startDateObj.getTime() - this.entities[0].story[0].startDateObj.getTime()) / this.startEndDateDiff * 100;
+        location.endPct = (location.endDateObj.getTime() - this.entities[0].story[0].startDateObj.getTime()) / this.startEndDateDiff * 100;
       }
     },
     convertPctToDate(pct) {
@@ -120,8 +123,15 @@ export default {
   },
   watch: {
     timelinePoint(point){
-      const storyEntriesLowerThanPoint = this.entities[0].story.filter(x => x.pct <= point),
-      closestEntry = storyEntriesLowerThanPoint[storyEntriesLowerThanPoint.length-1];
+      const storyEntriesLowerThanPoint = this.entities[0].story.filter(x => x.startPct <= point && x.endPct >= point);
+
+      if(storyEntriesLowerThanPoint.length <= 0) {
+        this.entities[0].visible = false;
+        return
+      }
+
+      this.entities[0].visible = true;
+      const closestEntry = storyEntriesLowerThanPoint[storyEntriesLowerThanPoint.length-1];
       this.entities[0].x = closestEntry.left;
       this.entities[0].y = closestEntry.top;
     }
