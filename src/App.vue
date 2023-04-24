@@ -12,6 +12,7 @@ export default {
 				{
 					color: 'red',
 					story: [
+						// entries:
 						{
 							id: 0,
 							name: 'Romania',
@@ -116,6 +117,7 @@ export default {
 		this.convertDateStrs();
 		this.setStartEndDates();
 		this.convertDatesToPct();
+		this.setRoutes();
 	},
 	computed: {
 		startEndDateDiff() {
@@ -144,9 +146,17 @@ export default {
 		},
 		convertDatesToPct() {
 			for (let i = 0; i < this.entities[0].story.length; i++) {
-				const location = this.entities[0].story[i];
-				location.startPct = (location.startDateObj.getTime() - this.entities[0].story[0].startDateObj.getTime()) / this.startEndDateDiff * 100;
+				const entry = this.entities[0].story[i];
+				entry.startPct = (entry.startDateObj.getTime() - this.entities[0].story[0].startDateObj.getTime()) / this.startEndDateDiff * 100;
 			}
+		},
+		setRoutes() {
+			const travelEntries = this.entities[0].story.filter(x => x.type === 'travel');
+			for (let i = 0; i < travelEntries.length; i++) {
+				const travelEntry = travelEntries[i];
+				travelEntry.route = this.routes.find(x => x.id === travelEntry.route);
+			}
+			console.log('this.entities:',this.entities);
 		},
 		convertPctToDate(pct) {
 			const startDateInMilSec = this.entities[0].startDate.getTime(),
@@ -157,21 +167,24 @@ export default {
 		updateTimelinePoint(newPoint) {
 			this.timelinePoint = newPoint / 10;
 			this.timelineDate = this.convertPctToDate(this.timelinePoint);
+		},
+		setEntityPos(x,y){
+			this.entities[0].x = x;
+			this.entities[0].y = y;
+		},
+		updateEntity(entry){
+
+			console.log(entry);
+
+			// this.setEntityPos(entry.left, entry.top);
 		}
 	},
 	watch: {
 		timelinePoint(point){
-			const storyEntriesLowerThanPoint = this.entities[0].story.filter(x => x.startPct <= point);
+			const storyEntriesLowerThanPoint = this.entities[0].story.filter(x => x.startPct <= point),
+			closestEntry = storyEntriesLowerThanPoint[storyEntriesLowerThanPoint.length-1];
 
-			if(storyEntriesLowerThanPoint.length <= 0) {
-				this.entities[0].visible = false;
-				return
-			}
-
-			this.entities[0].visible = true;
-			const closestEntry = storyEntriesLowerThanPoint[storyEntriesLowerThanPoint.length-1];
-			this.entities[0].x = closestEntry.left;
-			this.entities[0].y = closestEntry.top;
+			this.updateEntity(closestEntry);
 		}
 	}
 }
