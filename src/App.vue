@@ -28,7 +28,7 @@ export default {
 							name: 'Romania - Hongkong',
 							left: 0,
 							top: 0,
-							startDate: '2000-03-15',
+							startDate: '2000-03-05',
 							type: 'travel',
 							location: '',
 							route: 'r_0',
@@ -104,6 +104,11 @@ export default {
 						},
 						{
 							id: 1,
+							left: 68.6,
+							top: 30.6,
+						},
+						{
+							id: 2,
 							top: 51,
 							left: 80.7,
 						}
@@ -147,14 +152,33 @@ export default {
 		convertDatesToPct() {
 			for (let i = 0; i < this.entities[0].story.length; i++) {
 				const entry = this.entities[0].story[i];
-				entry.startPct = (entry.startDateObj.getTime() - this.entities[0].story[0].startDateObj.getTime()) / this.startEndDateDiff * 100;
+				entry.startPct = this.convertDateToPct(entry.startDateObj);
 			}
 		},
+		convertDateToPct(dateObj) {
+			return (dateObj.getTime() - this.entities[0].story[0].startDateObj.getTime()) / this.startEndDateDiff * 100;
+		},
 		setRoutes() {
-			const travelEntries = this.entities[0].story.filter(x => x.type === 'travel');
-			for (let i = 0; i < travelEntries.length; i++) {
-				const travelEntry = travelEntries[i];
+			for (let i = 0; i < this.entities[0].story.length; i++) {
+				if(this.entities[0].story[i].type !== 'travel') continue
+				
+				const travelEntry = this.entities[0].story[i];
 				travelEntry.route = this.routes.find(x => x.id === travelEntry.route);
+
+				travelEntry.route.startDate = this.entities[0].story[1].startDate;
+				travelEntry.route.startDateObj = this.entities[0].story[1].startDateObj;
+				travelEntry.route.startPct = this.convertDateToPct(travelEntry.route.startDateObj);
+
+				travelEntry.route.endDate = this.entities[0].story[i+1].startDate;
+				travelEntry.route.endDateObj = this.entities[0].story[i+1].startDateObj;
+				travelEntry.route.endPct = this.convertDateToPct(travelEntry.route.endDateObj);
+
+				const pctPrPin = (travelEntry.route.endPct - travelEntry.route.startPct) / (travelEntry.route.pins.length - 1);
+				
+				travelEntry.route.pins[0].pct = travelEntry.route.startPct;
+				for (let i = 1; i < travelEntry.route.pins.length; i++) {
+					travelEntry.route.pins[i].pct = travelEntry.route.startPct + (i * pctPrPin);
+				}
 			}
 			console.log('this.entities:',this.entities);
 		},
@@ -173,10 +197,8 @@ export default {
 			this.entities[0].y = y;
 		},
 		updateEntity(entry){
-
 			console.log(entry);
-
-			// this.setEntityPos(entry.left, entry.top);
+			if(entry.type === 'place') this.setEntityPos(entry.left, entry.top);
 		}
 	},
 	watch: {
