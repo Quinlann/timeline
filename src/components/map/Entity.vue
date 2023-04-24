@@ -1,11 +1,17 @@
 <script>
 export default {
-    props: ['color','x','y','name'],
+    props: ['color','x','y','name','visible'],
 }
 </script>
 
 <template>
-    <div :style="{ left: this.x + '%', top: this.y + '%', backgroundColor: this.color}" class="entity e4">{{ this.name }}</div>    
+    <div :style="{ 
+        left: this.x + '%',
+        top: this.y + '%',
+        backgroundColor: this.color,
+        display: this.visible ? 'block' : 'none'
+        }" 
+        class="entity e4">{{ this.name }}</div>    
 </template>
 
 <style></style>

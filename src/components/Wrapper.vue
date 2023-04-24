@@ -136,6 +136,7 @@ document.addEventListener("wheel", function(e) {
 			:x="entity.x"
 			:y="entity.y"
 			:name="entity.text"
+			:visible="entity.visible"
 		/>
 	</div>
 </div>
