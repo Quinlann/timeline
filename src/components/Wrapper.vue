@@ -133,7 +133,7 @@ document.addEventListener("wheel", function(e) {
 		</div>
 	</div>
 	<div class="map">
-		<img src="/src/assets/worldmap.svg">
+		<img src="/src/assets/worldmap_w.svg">
 		<Entity 
 			v-for="entity in this.entities"
 			:color="entity.color"
