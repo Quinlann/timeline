@@ -15,6 +15,7 @@
 </template>
 
 <style scoped lang="less">
+@import "/src/global.less";
 .category {
 	padding: .25rem .5rem;
 	outline: 1px solid black;
@@ -23,6 +24,7 @@
 	margin-bottom: .5rem;
 	width: 100%;
 	background-color: transparent;
+	color: @background-color-inverted;
 	&:hover { background-color: fade(white, 20%) }
 	
 	&:after {
@@ -39,11 +41,13 @@
 	border: none;
 	width: 100%;
 	margin-left: 10px;
+	color: @background-color-inverted;
 	&:hover { background-color: fade(black, 30%) }
 	
 	&-container {
 		display: flex;
 		align-items: center;
+		color: @background-color-inverted;
 	}
 }
 </style>

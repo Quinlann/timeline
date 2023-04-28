@@ -158,6 +158,8 @@ document.addEventListener("wheel", function(e) {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background: @background-color;
+	color: @background-color-inverted;
 }
 
 @timelineColWidth: 18rem;
@@ -166,7 +168,8 @@ document.addEventListener("wheel", function(e) {
 
 .creation {
 	//display: none;
-	background-color: lightgrey;
+	background-color: fade(black, 20%);
+	backdrop-filter: blur(10px);
 	max-width: 45rem;
 	width: 45rem;
 	border-radius: .5rem;
@@ -228,13 +231,13 @@ document.addEventListener("wheel", function(e) {
 
 		&__content {
 			padding: .5rem;
-			background-color: fade(@white, 20%);
+			background-color: fade(black, 20%);
 			border-radius: 1.5rem;
 			display: flex;
 		}
 
 		.info-bit {
-			background-color: fade(@white, 50%);
+			background-color: fade(@white, 20%);
 			border-radius: 1rem;
 			display: inline-block;
 			padding: 0 .5rem;
@@ -248,11 +251,11 @@ document.addEventListener("wheel", function(e) {
 		}
 
 		.btn {
-			background-color: fade(@black, 10%);
+			background-color: fade(@white, 5%);
 			border-radius: 1rem;
 			width: 1.5rem;
 			padding: 0;
-			&:hover { background-color: fade(@black, 20%) }
+			&:hover { background-color: fade(@white, 20%) }
 			&.add { text-align: center }
 		}
 
@@ -266,8 +269,9 @@ document.addEventListener("wheel", function(e) {
 			width: 100%;
 			border: none;
 			padding: .25rem;
-			background-color: fade(white, 50%);
+			background-color: fade(white, 20%);
 			border-radius: 1rem;
+			color: @background-color-inverted;
 		}
 
 		.time {
@@ -299,7 +303,7 @@ document.addEventListener("wheel", function(e) {
 
 				.date, .setting {
 					width: 50%;
-					background-color: fade(@white, 50%);
+					background-color: fade(@black, 20%);
 					text-align: center;
 					padding: .25rem;
 					border-radius: 1rem;
