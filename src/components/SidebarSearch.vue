@@ -18,12 +18,12 @@
 @import "/src/global.less";
 .category {
 	padding: .25rem .5rem;
-	outline: 1px solid black;
+	border: none;
 	border-radius: 1.5rem;
 	font-weight: bold;
 	margin-bottom: .5rem;
 	width: 100%;
-	background-color: transparent;
+	background-color: fade(black, 20%);
 	color: @background-color-inverted;
 	&:hover { background-color: fade(white, 20%) }
 	
