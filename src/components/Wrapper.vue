@@ -174,7 +174,7 @@ document.addEventListener("wheel", function(e) {
 	width: 45rem;
 	border-radius: .5rem;
 	padding: 1rem;
-	box-shadow: 0 5px 10px fade(black, 20%);
+	//box-shadow: 0 5px 10px fade(black, 20%);
 	z-index: 1;
 
 	&.entityCreator {
@@ -314,14 +314,15 @@ document.addEventListener("wheel", function(e) {
 			}
 
 			.editBtn, .deleteBtn {
-				background-color: fade(@white, 50%);
+				background-color: fade(@white, 10%);
 				padding: .5rem;
+				transition: .2s;
 			}
 
 			.editBtn {
-				color: fade(@black, 50%);
+				color: fade(@white, 50%);
 				border-radius: 1rem 0 0 1rem;
-				&:hover { background-color: fade(@white, 90%) }
+				&:hover { background-color: fade(@white, 20%) }
 			}
 
 			.deleteBtn {
@@ -334,10 +335,11 @@ document.addEventListener("wheel", function(e) {
 				text-align: center;
 				padding: .5rem;
 				border-radius: 1rem;
-				background-color: fade(@black, 10%);
+				background-color: fade(@white, 10%);
 				display: flex;
 				justify-content: center;
-				&:hover { background-color: fade(@black, 20%) }
+				transition: .2s;
+				&:hover { background-color: fade(@white, 20%) }
 			}
 		}
 	}
