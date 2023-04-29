@@ -26,5 +26,5 @@ export default{
 	&.right { right: 0 }
 	.section { padding: 1rem }
 	&:hover { opacity: 1 }
-}
+} 
 </style>
