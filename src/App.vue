@@ -23,10 +23,11 @@ export default {
 		return {
 			entities: [
 				{
+					text: '47',
+					visible: true,
 					color: 'black',
 					story: [
 						{
-							id: 0,
 							name: 'Romania',
 							left: 54.6,
 							top: 38.6,
@@ -36,7 +37,6 @@ export default {
 							route: '',
 						},
 						{
-							id: 0,
 							name: 'Romania - Hong Kong',
 							left: 0,
 							top: 0,
@@ -46,7 +46,6 @@ export default {
 							route: 'r_0',
 						},
 						{
-							id: 1,
 							name: 'Hong Kong',
 							top: 51,
 							left: 80.7,
@@ -56,7 +55,6 @@ export default {
 							route: '',
 						},
 						{
-							id: 2,
 							name: 'Colombia',
 							top: 61,
 							left: 26.7,
@@ -66,7 +64,6 @@ export default {
 							route: '',
 						},
 						{
-							id: 3,
 							name: 'Budapest',
 							top: 37.7,
 							left: 52.8,
@@ -76,7 +73,6 @@ export default {
 							route: '',
 						},
 						{
-							id: 4,
 							name: 'Rotterdam',
 							top: 34.5,
 							left: 48.9,
@@ -86,7 +82,6 @@ export default {
 							route: '',
 						},
 						{
-							id: 5,
 							name: 'Romania',
 							left: 54.6,
 							top: 38.6,
@@ -96,12 +91,10 @@ export default {
 							route: '',
 						},
 					],
-					text: '47',
-					x: 54.6,
-					y: 38.6,
-					visible: true
 				},
 				{
+					text: '17',
+					visible: true,
 					color: 'orange',
 					story: [
 						{
@@ -145,11 +138,7 @@ export default {
 							route: '',
 						},
 					],
-					text: '17',
-					x: 25.6,
-					y: 25.6,
-					visible: true
-				}
+				},
 			],
 			routes: [
 				{
@@ -204,7 +193,7 @@ export default {
 				}
 			],
 			timelinePoint: 0,
-			timelineDate: '1999-10-05',
+			timelineDate: '',
 			timelineStartDateStr: '1999-10-05',
 			timelineEndDateStr: '2000-09-04',
 		}
@@ -215,6 +204,8 @@ export default {
 		this.setStartEndDates();
 		this.convertDatesToPct();
 		this.setRoutes();
+		this.setTimelineDate();
+		this.setEntitiesStartPos();
 	},
 	computed: {
 		startEndDateDiff() {
@@ -274,6 +265,15 @@ export default {
 						travelEntry.route.pins[i].pct = travelEntry.route.startPct + (i * pctPrPin);
 					}
 				}
+			});
+		},
+		setTimelineDate() {
+			this.timelineDate = this.timelineStartDateStr;
+		},
+		setEntitiesStartPos() {
+			this.entities.forEach((entity) => {
+				entity.x = entity.story[0].left;
+				entity.y = entity.story[0].top;
 			});
 		},
 		convertPctToDate(pct) {
