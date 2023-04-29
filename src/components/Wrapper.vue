@@ -21,11 +21,11 @@ document.addEventListener("wheel", function(e) {
 
 <template>
 <div id="wrapper">
-    <div class="creation">
+    <div class="creation entityCreator">
 		<div class="creation__header">
 			<div class="top">
 				<div class="icon"><font-awesome-icon icon="fa-solid fa-user" /></div>
-				<div class="name">[Name]</div>
+				<div class="name">Benjamin Bak Egede</div>
 				<div class="closeBtn">X</div>
 			</div>
 			<div class="bottom">
@@ -33,30 +33,34 @@ document.addEventListener("wheel", function(e) {
 			</div>
 		</div>
 		<div class="creation__info">
-			<div class="section">
-				<div class="section__title">Nickname</div>
-				<div class="section__content"><input type="text"></div>
+			<div class="block">
+				<div class="block__title">Nickname</div>
+				<div class="block__content">
+					<div class="info-bit">Bem</div>
+					<div class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+				</div>
 			</div>
-			<div class="section">
-				<div class="section__title">Description</div>
-				<div class="section__content"><input type="text"></div>
+			<div class="block">
+				<div class="block__title">Description</div>
+				<div class="block__content"><input type="text"></div>
 			</div>
-			<div class="section">
-				<div class="section__title">Images</div>
-				<div class="section__content">
-					<div class="btn add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+			<div class="block">
+				<div class="block__title">Images</div>
+				<div class="block__content">
+					<div class="info-bit img"></div>
+					<div class="info-bit img btn add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 				</div>
 			</div>
 		</div>
 
 		<div class="creation__timeline">
-			<div class="section">
-				<div class="section__title">Timeline</div>
-				<div class="section__content">					
+			<div class="block">
+				<div class="block__title">Timeline</div>
+				<div class="block__content">					
 					<div class="time">
 						<div class="type birth">
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-sun" /></div>
 							<div class="date">05.10.1992</div>
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-sun" /></div>
 							<div class="setting">Jyllinge</div>
 						</div>
 						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
@@ -65,8 +69,8 @@ document.addEventListener("wheel", function(e) {
 
 					<div class="time">
 						<div class="type place">
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
 							<div class="date">03.21.2001</div>
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
 							<div class="setting">Roskilde</div>
 						</div>
 						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
@@ -75,8 +79,8 @@ document.addEventListener("wheel", function(e) {
 
 					<div class="time">
 						<div class="type travel">
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-route" /></div>
 							<div class="date">2004</div>
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-route" /></div>
 							<div class="setting">T: 50% L: 10%</div>
 						</div>
 						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
@@ -85,8 +89,8 @@ document.addEventListener("wheel", function(e) {
 
 					<div class="time">
 						<div class="type place">
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
 							<div class="date">03.02.2004</div>
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
 							<div class="setting">Jyllinge</div>
 						</div>
 						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
@@ -95,8 +99,8 @@ document.addEventListener("wheel", function(e) {
 
 					<div class="time">
 						<div class="type death">
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-skull" /></div>
 							<div class="date">05.10.2023</div>
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-skull" /></div>
 							<div class="setting">Roskilde</div>
 						</div>
 						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
@@ -105,8 +109,8 @@ document.addEventListener("wheel", function(e) {
 
 					<div class="time">
 						<div class="type birth">
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-sun" /></div>
 							<div class="date">05.10.2024</div>
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-sun" /></div>
 							<div class="setting">Roskilde</div>
 						</div>
 						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
@@ -115,8 +119,8 @@ document.addEventListener("wheel", function(e) {
 
 					<div class="time">
 						<div class="type change">
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-feather-pointed" /></div>
 							<div class="date">05.10.2024</div>
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-feather-pointed" /></div>
 							<div class="setting">Bing Bong</div>
 						</div>
 						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
@@ -161,25 +165,28 @@ document.addEventListener("wheel", function(e) {
 @margin: .5rem;
 
 .creation {
-	display: none;
+	//display: none;
 	background-color: lightgrey;
 	max-width: 45rem;
 	width: 45rem;
 	border-radius: .5rem;
-	padding: .5rem;
+	padding: 1rem;
 	box-shadow: 0 5px 10px fade(black, 20%);
 	z-index: 1;
+
+	&.entityCreator {
+		.creation__header .path { display: none }
+	}
 
 	&__header {
 		display: flex;
 		flex-direction: column;
 		border-bottom: 1px solid @black;
 		padding-bottom: .5rem;
-		margin-bottom: .5rem;
-		.top { margin-bottom: .25rem }
+		margin-bottom: 1rem;
 		
 		.icon {
-			margin-right: .25rem;
+			margin-right: .5rem;
 			float: left;
 		}
 		
@@ -207,10 +214,11 @@ document.addEventListener("wheel", function(e) {
 	&__timeline {
 		float: left;
 		width: @timelineColWidth;
+		.block__content { flex-direction: column }
 	}
 
-	.section {
-		&:not(:last-child) { margin-bottom: .5rem }
+	.block {
+		&:not(:last-child) { margin-bottom: 1rem }
 		
 		&__title {
 			text-transform: uppercase;
@@ -221,21 +229,37 @@ document.addEventListener("wheel", function(e) {
 		&__content {
 			padding: .5rem;
 			background-color: fade(@white, 20%);
-			border-radius: .5rem;
+			border-radius: 1.5rem;
+			display: flex;
+		}
+
+		.info-bit {
+			background-color: fade(@white, 50%);
+			border-radius: 1rem;
+			display: inline-block;
+			padding: 0 .5rem;
+			font-size: .8rem;
+			height: 1.5rem;
+			line-height: 1.5rem;
+			overflow: hidden;
+			transition: .2s;
+			&:not(:last-child) { margin-right: .25rem }
+			&:not(.btn):hover { padding-right: 2rem }
 		}
 
 		.btn {
-			min-width: 4rem;
-			width: 4rem;
-			height: 5rem;
 			background-color: fade(@black, 10%);
+			border-radius: 1rem;
+			width: 1.5rem;
+			padding: 0;
 			&:hover { background-color: fade(@black, 20%) }
-			
-			&.add {
-				text-align: center;
-				line-height: 5rem;
-				border-radius: .5rem;
-			}
+			&.add { text-align: center }
+		}
+
+		.img {
+			height: 5rem;
+			width: 4rem;
+			&.add { line-height: 5rem }
 		}
 
 		input {
@@ -243,6 +267,7 @@ document.addEventListener("wheel", function(e) {
 			border: none;
 			padding: .25rem;
 			background-color: fade(white, 50%);
+			border-radius: 1rem;
 		}
 
 		.time {
@@ -262,8 +287,8 @@ document.addEventListener("wheel", function(e) {
 				
 				.icon {
 					color: @white;
-					width: 2rem;
 					text-align: center;
+					width: 2rem;
 				}
 				
 				&.birth { .gradient(@yellowDark, darken(@yellowDark, 10%)); }
@@ -281,7 +306,6 @@ document.addEventListener("wheel", function(e) {
 					overflow:hidden;
 					white-space: nowrap;
 					text-overflow: ellipsis;
-					&:not(:last-child) { margin-right: .25rem }
 				}
 			}
 
