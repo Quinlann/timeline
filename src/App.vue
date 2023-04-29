@@ -5,7 +5,10 @@
 		@update-timeline-point="updateTimelinePoint"
 		:pointLabel="`${this.timelineDate} | ${this.timelineEntryName}`"
 	/>
-	<Wrapper :entities="entities"/>
+	<Wrapper 
+		:entities="entities"
+		ref="wrapper"
+	/>
 </template>
 
 <script>
@@ -175,6 +178,8 @@ export default {
 			this.entities.forEach((obj, index) => obj.id = index);
 		},
 		addEntity(){
+			this.$refs.wrapper.addEntity();
+			return
 			this.entities.push({
 				color: `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`,
 				x: Math.floor(Math.random() * 101),

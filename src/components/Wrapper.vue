@@ -5,6 +5,22 @@ import Creation from './creation/Creation.vue'
 export default {
 	props:['entities'],
 	components:  {Entity,Creation},
+	data() {
+		return {
+			showCreationPop: false,
+		}
+	},
+	methods: {
+		openCreationPop() {
+			this.showCreationPop = true;
+		},
+		closeCreationPop() {
+			this.showCreationPop = false;
+		},
+		addEntity(){
+			this.openCreationPop();
+		},
+	},
 }
 
 let zoom = 100;
@@ -22,7 +38,10 @@ document.addEventListener("wheel", function(e) {
 
 <template>
 <div id="wrapper">
-    <Creation />
+    <Creation 
+		v-if="showCreationPop"
+		:closePop="closeCreationPop"
+	/>
 	<div class="map">
 		<img src="/src/assets/worldmap.svg">
 		<Entity 
