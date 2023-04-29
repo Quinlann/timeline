@@ -3,7 +3,8 @@ export default {
 	props: ['pointLabel'],
 	data() {
 		return {
-			rangeValue: 0
+			rangeValue: 0,
+			steps: 1000,
 		}
 	},
 	methods:{
@@ -17,7 +18,8 @@ export default {
 <template>
 <div class="timeline__container">
     <div class="timeline__counter">{{ this.pointLabel }}</div>
-    <input type="range" min="0" max="1000" step="1" class="timeline"
+    <input type="range" min="0" step="1" class="timeline"
+		:max="steps"
 		@input="changedRange"
 		v-model="this.rangeValue"
 	>
