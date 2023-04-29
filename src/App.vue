@@ -1,3 +1,13 @@
+<template>
+	<Navigation :addEntity="addEntity"/>
+	<SideBar/>
+	<Timeline
+		@update-timeline-point="updateTimelinePoint"
+		:pointLabel="`${this.timelineDate} | ${this.timelineEntryName}`"
+	/>
+	<Wrapper :entities="entities"/>
+</template>
+
 <script>
 import Navigation from './components/Navigation.vue'
 import Timeline from './components/Timeline.vue'
@@ -26,7 +36,7 @@ export default {
 						},
 						{
 							id: 0,
-							name: 'Romania - Hongkong',
+							name: 'Romania - Hong Kong',
 							left: 0,
 							top: 0,
 							startDate: '2000-03-05',
@@ -36,12 +46,12 @@ export default {
 						},
 						{
 							id: 1,
-							name: 'Hongkong',
+							name: 'Hong Kong',
 							top: 51,
 							left: 80.7,
 							startDate: '2000-03-21',
 							type: 'place',
-							location: 'Hongkong',
+							location: 'Hong Kong',
 							route: '',
 						},
 						{
@@ -93,6 +103,7 @@ export default {
 			],
 			timelinePoint: 0,
 			timelineDate: '1999-10-05',
+			timelineEntryName: 'Romania',
 			routes: [
 				{
 					id: 'r_0',
@@ -226,6 +237,8 @@ export default {
 			this.entities[0].y = y;
 		},
 		updateEntity(entry){
+			this.timelineEntryName = entry.name;
+
 			if(entry.type === 'place') this.setEntityPos(entry.left, entry.top);
 			else if(entry.type === 'travel') {
 				this.getNextTravelPinPos(entry.route.pins);
@@ -248,16 +261,6 @@ export default {
 	}
 }
 </script>
-
-<template>
-	<Navigation :addEntity="addEntity"/>
-	<SideBar/>
-	<Timeline
-		@update-timeline-point="updateTimelinePoint"
-		:pointLabel="this.timelineDate"
-	/>
-	<Wrapper :entities="entities"/>
-</template>
 
 <style lang="less">
 * { box-sizing: border-box }
