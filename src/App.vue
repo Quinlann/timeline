@@ -3,7 +3,7 @@
 	<SideBar/>
 	<Timeline
 		@update-timeline-point="updateTimelinePoint"
-		:pointLabel="`${this.timelineDate} | ${this.timelineEntryName}`"
+		:pointLabel="timelineDate"
 	/>
 	<Wrapper 
 		:entities="entities"
@@ -23,15 +23,14 @@ export default {
 		return {
 			entities: [
 				{
-					color: 'red',
+					color: 'black',
 					story: [
-						// entries:
 						{
 							id: 0,
 							name: 'Romania',
 							left: 54.6,
 							top: 38.6,
-							startDate: '1999-10-05',
+							startDateStr: '1999-10-05',
 							type: 'place',
 							location: 'Romania',
 							route: '',
@@ -41,7 +40,7 @@ export default {
 							name: 'Romania - Hong Kong',
 							left: 0,
 							top: 0,
-							startDate: '2000-03-05',
+							startDateStr: '2000-03-05',
 							type: 'travel',
 							location: '',
 							route: 'r_0',
@@ -51,7 +50,7 @@ export default {
 							name: 'Hong Kong',
 							top: 51,
 							left: 80.7,
-							startDate: '2000-03-21',
+							startDateStr: '2000-03-21',
 							type: 'place',
 							location: 'Hong Kong',
 							route: '',
@@ -61,7 +60,7 @@ export default {
 							name: 'Colombia',
 							top: 61,
 							left: 26.7,
-							startDate: '2000-05-10',
+							startDateStr: '2000-05-10',
 							type: 'place',
 							location: 'Colombia',
 							route: '',
@@ -71,7 +70,7 @@ export default {
 							name: 'Budapest',
 							top: 37.7,
 							left: 52.8,
-							startDate: '2000-07-12',
+							startDateStr: '2000-07-12',
 							type: 'place',
 							location: 'Budapest',
 							route: '',
@@ -81,7 +80,7 @@ export default {
 							name: 'Rotterdam',
 							top: 34.5,
 							left: 48.9,
-							startDate: '2000-08-26',
+							startDateStr: '2000-08-26',
 							type: 'place',
 							location: 'Rotterdam',
 							route: '',
@@ -91,7 +90,7 @@ export default {
 							name: 'Romania',
 							left: 54.6,
 							top: 38.6,
-							startDate: '2000-09-04',
+							startDateStr: '2000-09-04',
 							type: 'place',
 							location: 'Romania',
 							route: '',
@@ -101,11 +100,57 @@ export default {
 					x: 54.6,
 					y: 38.6,
 					visible: true
+				},
+				{
+					color: 'orange',
+					story: [
+						{
+							id: 0,
+							name: 'Romania',
+							left: 25.6,
+							top: 25.6,
+							startDateStr: '1999-10-15',
+							type: 'place',
+							location: 'Romania',
+							route: '',
+						},
+						{
+							id: 1,
+							name: 'Hong Kong',
+							top: 51,
+							left: 51,
+							startDateStr: '2000-03-01',
+							type: 'place',
+							location: 'Hong Kong',
+							route: '',
+						},
+						{
+							id: 0,
+							name: 'Romania - Hong Kong',
+							left: 0,
+							top: 0,
+							startDateStr: '2000-03-23',
+							type: 'travel',
+							location: '',
+							route: 'r_0',
+						},
+						{
+							id: 2,
+							name: 'Colombia',
+							top: 33,
+							left: 73,
+							startDateStr: '2000-06-15',
+							type: 'place',
+							location: 'Colombia',
+							route: '',
+						},
+					],
+					text: '17',
+					x: 25.6,
+					y: 25.6,
+					visible: true
 				}
 			],
-			timelinePoint: 0,
-			timelineDate: '1999-10-05',
-			timelineEntryName: 'Romania',
 			routes: [
 				{
 					id: 'r_0',
@@ -157,7 +202,11 @@ export default {
 						}
 					],
 				}
-			]
+			],
+			timelinePoint: 0,
+			timelineDate: '1999-10-05',
+			timelineStartDateStr: '1999-10-05',
+			timelineEndDateStr: '2000-09-04',
 		}
 	},
 	beforeMount() {
@@ -169,7 +218,7 @@ export default {
 	},
 	computed: {
 		startEndDateDiff() {
-			return this.entities[0].endDate.getTime() - this.entities[0].startDate.getTime();
+			return this.timelineEndDate.getTime() - this.timelineStartDate.getTime();
 		}
 	},
 	methods:{
@@ -178,56 +227,57 @@ export default {
 		},
 		addEntity(){
 			this.$refs.wrapper.addEntity();
-			return
-			this.entities.push({
-				color: `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`,
-				x: Math.floor(Math.random() * 101),
-				y: Math.floor(Math.random() * 101),
-				text: this.entities.length.toString(),
-				id: this.entities.length
-			});
 		},
 		convertDateStrs() {
-			this.entities[0].story.forEach((obj) => obj.startDateObj = new Date(obj.startDate));
+			this.timelineStartDate = new Date(this.timelineStartDateStr);
+			this.timelineEndDate = new Date(this.timelineEndDateStr);
+
+			this.entities.forEach((entity) => {
+				entity.story.forEach((obj) => obj.startDate = new Date(obj.startDateStr));
+			});
 		},
 		setStartEndDates() {
-			this.entities[0].startDate = this.entities[0].story[0].startDateObj;
-			this.entities[0].endDate = this.entities[0].story[this.entities[0].story.length-1].startDateObj;
+			this.entities.forEach((entity) => {
+				entity.startDate = entity.story[0].startDate;
+				entity.endDate = entity.story[entity.story.length-1].startDate;
+			});
 		},
 		convertDatesToPct() {
-			for (let i = 0; i < this.entities[0].story.length; i++) {
-				const entry = this.entities[0].story[i];
-				entry.startPct = this.convertDateToPct(entry.startDateObj);
-			}
+			this.entities.forEach((entity) => {
+				entity.story.forEach((entry) => {
+					entry.startPct = this.convertDateToPct(entry.startDate);
+				});
+			});
 		},
 		convertDateToPct(dateObj) {
-			return (dateObj.getTime() - this.entities[0].story[0].startDateObj.getTime()) / this.startEndDateDiff * 100;
+			return (dateObj.getTime() - this.timelineStartDate.getTime()) / this.startEndDateDiff * 100;
 		},
 		setRoutes() {
-			for (let i = 0; i < this.entities[0].story.length; i++) {
-				if(this.entities[0].story[i].type !== 'travel') continue
-				
-				const travelEntry = this.entities[0].story[i];
-				travelEntry.route = this.routes.find(x => x.id === travelEntry.route);
+			this.entities.forEach((entity) => {
+				for (let i = 0; i < entity.story.length; i++) {
+					if(entity.story[i].type !== 'travel') continue
+					
+					const travelEntry = entity.story[i],
+					reouteRawData = this.routes.find(x => x.id === travelEntry.route);
+					travelEntry.route = JSON.parse(JSON.stringify(reouteRawData));
 
-				travelEntry.route.startDate = this.entities[0].story[1].startDate;
-				travelEntry.route.startDateObj = this.entities[0].story[1].startDateObj;
-				travelEntry.route.startPct = this.convertDateToPct(travelEntry.route.startDateObj);
+					travelEntry.route.startDate = entity.story[1].startDate;
+					travelEntry.route.startPct = this.convertDateToPct(travelEntry.route.startDate);
 
-				travelEntry.route.endDate = this.entities[0].story[i+1].startDate;
-				travelEntry.route.endDateObj = this.entities[0].story[i+1].startDateObj;
-				travelEntry.route.endPct = this.convertDateToPct(travelEntry.route.endDateObj);
+					travelEntry.route.endDate = entity.story[i+1].startDate;
+					travelEntry.route.endPct = this.convertDateToPct(travelEntry.route.endDate);
 
-				const pctPrPin = (travelEntry.route.endPct - travelEntry.route.startPct) / (travelEntry.route.pins.length - 1);
-				
-				travelEntry.route.pins[0].pct = travelEntry.route.startPct;
-				for (let i = 1; i < travelEntry.route.pins.length; i++) {
-					travelEntry.route.pins[i].pct = travelEntry.route.startPct + (i * pctPrPin);
+					const pctPrPin = (travelEntry.route.endPct - travelEntry.route.startPct) / (travelEntry.route.pins.length - 1);
+					
+					travelEntry.route.pins[0].pct = travelEntry.route.startPct;
+					for (let i = 1; i < travelEntry.route.pins.length; i++) {
+						travelEntry.route.pins[i].pct = travelEntry.route.startPct + (i * pctPrPin);
+					}
 				}
-			}
+			});
 		},
 		convertPctToDate(pct) {
-			const startDateInMilSec = this.entities[0].startDate.getTime(),
+			const startDateInMilSec = this.timelineStartDate.getTime(),
 			pctDateInMilSec = startDateInMilSec + (this.startEndDateDiff * (pct/100)),
 			pctDateInString = new Date(pctDateInMilSec).toISOString().substring(0, 10);
 			return pctDateInString
@@ -236,31 +286,36 @@ export default {
 			this.timelinePoint = newPoint;
 			this.timelineDate = this.convertPctToDate(this.timelinePoint);
 		},
-		setEntityPos(x,y){
-			this.entities[0].x = x;
-			this.entities[0].y = y;
+		setEntityPos(entity,x,y){
+			entity.x = x;
+			entity.y = y;
 		},
-		updateEntity(entry){
+		updateEntity(entity,entry){
 			this.timelineEntryName = entry.name;
 
-			if(entry.type === 'place') this.setEntityPos(entry.left, entry.top);
+			if(entry.type === 'place') this.setEntityPos(entity, entry.left, entry.top);
 			else if(entry.type === 'travel') {
-				this.getNextTravelPinPos(entry.route.pins);
+				this.getNextTravelPinPos(entity, entry.route.pins);
 			}
 		},
-		getNextTravelPinPos(routePins){
+		getNextTravelPinPos(entity, routePins){
 			const pinLowerThanPoint = routePins.filter(x => x.pct <= this.timelinePoint),
 			closestPin = pinLowerThanPoint[pinLowerThanPoint.length-1];
 
-			this.setEntityPos(closestPin.left, closestPin.top);
+			this.setEntityPos(entity, closestPin.left, closestPin.top);
 		}
 	},
 	watch: {
 		timelinePoint(point){
-			const storyEntriesLowerThanPoint = this.entities[0].story.filter(x => x.startPct <= point),
-			closestEntry = storyEntriesLowerThanPoint[storyEntriesLowerThanPoint.length-1];
+			this.entities.forEach((entity) => {
+				const storyEntriesLowerThanPoint = entity.story.filter(x => x.startPct <= point);
+			
+				if(storyEntriesLowerThanPoint.length < 1) return
 
-			this.updateEntity(closestEntry);
+				const closestEntry = storyEntriesLowerThanPoint[storyEntriesLowerThanPoint.length-1];
+
+				this.updateEntity(entity,closestEntry);
+			});
 		}
 	}
 }
