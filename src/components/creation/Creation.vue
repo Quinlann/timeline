@@ -1,6 +1,3 @@
-<script>
-</script>
-
 <template>
     
     <div class="creation entityCreator">
@@ -9,7 +6,9 @@
 				<div class="icon"><font-awesome-icon icon="fa-solid fa-user" /></div>
 				<div class="name">Benjamin Bak Egede</div>
 				<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
-				<div class="closeBtn"><font-awesome-icon icon="fa-solid fa-xmark" /></div>
+				<div class="closeBtn"
+					@click="closePop"
+				><font-awesome-icon icon="fa-solid fa-xmark" /></div>
 			</div>
 			<div class="bottom">
 				<div class="path">World 1</div>
@@ -132,6 +131,12 @@
 		</div>
 	</div>
 </template>
+
+<script>
+export default {
+	props: ['closePop'],
+}
+</script>
 
 <style scoped lang="less">
 
