@@ -16,7 +16,6 @@ import Navigation from './components/Navigation.vue'
 import Timeline from './components/Timeline.vue'
 import Wrapper from './components/Wrapper.vue'
 import SideBar from './components/SideBar.vue'
-import Entity from './components/map/Entity.vue'
 
 export default {
 	components: {Navigation,Timeline,Wrapper,SideBar},
@@ -234,7 +233,7 @@ export default {
 			return pctDateInString
 		},
 		updateTimelinePoint(newPoint) {
-			this.timelinePoint = newPoint / 10;
+			this.timelinePoint = newPoint;
 			this.timelineDate = this.convertPctToDate(this.timelinePoint);
 		},
 		setEntityPos(x,y){
