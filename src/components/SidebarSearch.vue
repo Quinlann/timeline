@@ -25,6 +25,7 @@
 	width: 100%;
 	background-color: fade(black, 20%);
 	color: @background-color-inverted;
+	option { background-color: fade(black, 80%) }
 	&:hover { background-color: fade(white, 20%) }
 	
 	&:after {
