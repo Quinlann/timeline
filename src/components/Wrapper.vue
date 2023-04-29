@@ -7,7 +7,7 @@ export default {
 	components:  {Entity,Creation},
 	data() {
 		return {
-			showCreationPop: true,
+			showCreationPop: false,
 		}
 	},
 	methods: {
@@ -16,6 +16,9 @@ export default {
 		},
 		closeCreationPop() {
 			this.showCreationPop = false;
+		},
+		addEntity(){
+			this.openCreationPop();
 		},
 	},
 }
