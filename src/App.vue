@@ -44,11 +44,12 @@ export default {
 							type: 'travel',
 							location: '',
 							route: 'r_0',
+							routeBackward: false,
 						},
 						{
 							name: 'Hong Kong',
-							top: 51,
 							left: 80.7,
+							top: 51,
 							startDateStr: '2000-03-21',
 							type: 'place',
 							location: 'Hong Kong',
@@ -56,8 +57,8 @@ export default {
 						},
 						{
 							name: 'Colombia',
-							top: 61,
 							left: 26.7,
+							top: 61,
 							startDateStr: '2000-05-10',
 							type: 'place',
 							location: 'Colombia',
@@ -65,8 +66,8 @@ export default {
 						},
 						{
 							name: 'Budapest',
-							top: 37.7,
 							left: 52.8,
+							top: 37.7,
 							startDateStr: '2000-07-12',
 							type: 'place',
 							location: 'Budapest',
@@ -74,8 +75,8 @@ export default {
 						},
 						{
 							name: 'Rotterdam',
-							top: 34.5,
 							left: 48.9,
+							top: 34.5,
 							startDateStr: '2000-08-26',
 							type: 'place',
 							location: 'Rotterdam',
@@ -98,7 +99,6 @@ export default {
 					color: 'orange',
 					story: [
 						{
-							id: 0,
 							name: 'Romania',
 							left: 25.6,
 							top: 25.6,
@@ -108,17 +108,15 @@ export default {
 							route: '',
 						},
 						{
-							id: 1,
 							name: 'Hong Kong',
-							top: 51,
 							left: 51,
+							top: 51,
 							startDateStr: '2000-03-01',
 							type: 'place',
 							location: 'Hong Kong',
 							route: '',
 						},
 						{
-							id: 0,
 							name: 'Romania - Hong Kong',
 							left: 0,
 							top: 0,
@@ -126,13 +124,32 @@ export default {
 							type: 'travel',
 							location: '',
 							route: 'r_0',
+							routeBackward: false,
 						},
 						{
-							id: 2,
 							name: 'Colombia',
+							left: 93,
 							top: 33,
-							left: 73,
 							startDateStr: '2000-06-15',
+							type: 'place',
+							location: 'Colombia',
+							route: '',
+						},
+						{
+							name: 'A to B',
+							left: 0,
+							top: 0,
+							startDateStr: '2000-06-24',
+							type: 'travel',
+							location: 'Colombia',
+							route: 'r_1',
+							routeBackward: true,
+						},
+						{
+							name: 'Colombia',
+							left: 25,
+							top: 25,
+							startDateStr: '2000-09-04',
 							type: 'place',
 							location: 'Colombia',
 							route: '',
@@ -190,7 +207,41 @@ export default {
 							top: 51,
 						}
 					],
-				}
+				},
+				{
+					id: 'r_1',
+					name: 'A - B',
+					pins: [
+						{
+							left: 33,
+							top: 33,
+						},
+						{
+							left: 43,
+							top: 33,
+						},
+						{
+							left: 53,
+							top: 33,
+						},
+						{
+							left: 63,
+							top: 33,
+						},
+						{
+							left: 73,
+							top: 33,
+						},
+						{
+							left: 83,
+							top: 33,
+						},
+						{
+							left: 93,
+							top: 33,
+						},
+					],
+				},
 			],
 			timelinePoint: 0,
 			timelineDate: '',
@@ -252,7 +303,9 @@ export default {
 					reouteRawData = this.routes.find(x => x.id === travelEntry.route);
 					travelEntry.route = JSON.parse(JSON.stringify(reouteRawData));
 
-					travelEntry.route.startDate = entity.story[1].startDate;
+					if(travelEntry.routeBackward) travelEntry.route.pins.reverse();
+
+					travelEntry.route.startDate = entity.story[i].startDate;
 					travelEntry.route.startPct = this.convertDateToPct(travelEntry.route.startDate);
 
 					travelEntry.route.endDate = entity.story[i+1].startDate;
