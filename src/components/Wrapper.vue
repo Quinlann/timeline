@@ -1,6 +1,26 @@
+<template>
+	<div id="wrapper">
+		<Creation 
+			v-if="showCreationPop"
+			:closePop="closeCreationPop"
+		/>
+		<div class="map">
+			<img src="/src/assets/worldmap.svg">
+			<Entity 
+				v-for="entity in this.entities"
+				:color="entity.color"
+				:x="entity.x"
+				:y="entity.y"
+				:name="entity.text"
+				:visible="entity.visible"
+			/>
+		</div>
+	</div>
+</template>
+
 <script>
-import Entity from './map/Entity.vue'
-import Creation from './creation/Creation.vue'
+import Entity from './wrapper/Entity.vue'
+import Creation from './wrapper/Creation.vue'
 
 export default {
 	props:['entities'],
@@ -35,26 +55,6 @@ document.addEventListener("wheel", function(e) {
 });
 
 </script>
-
-<template>
-<div id="wrapper">
-    <Creation 
-		v-if="showCreationPop"
-		:closePop="closeCreationPop"
-	/>
-	<div class="map">
-		<img src="/src/assets/worldmap.svg">
-		<Entity 
-			v-for="entity in this.entities"
-			:color="entity.color"
-			:x="entity.x"
-			:y="entity.y"
-			:name="entity.text"
-			:visible="entity.visible"
-		/>
-	</div>
-</div>
-</template>
 
 <style scoped lang="less">
 @import "/src/global.less";

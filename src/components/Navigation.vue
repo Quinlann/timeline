@@ -1,5 +1,39 @@
+<template>
+    <div id="navigation">
+        <div class="dropdowns">
+            <NavBtn title="Worlds" :dropdownOptions="settings.worlds" />
+            <NavBtn title="Locations" :dropdownOptions="settings.locations" />
+            <NavBtn title="Entities" :dropdownOptions="settings.entities" @add-entity="addEntity()" />
+        </div>
+        <div class="settings">
+            <font-awesome-icon icon="fa-solid fa-sliders" />
+            <div class="settings__panel">
+                <div class="settings__block">
+                    <div class="setting">Dark mode</div>
+                    <input type="checkbox">
+                </div>
+                <div class="settings__block">
+                    <div class="setting">Date format</div>
+                    <select class="date-format" id="dateFormat">
+                        <option value="dmy">d-m-y</option>
+                        <option value="mdy">d-m-y</option>
+                        <option value="ymd">y-m-d</option>
+                    </select>
+                </div>
+                <div class="settings__block">
+                    <div class="setting">Sidebar placement</div>
+                    <select class="sidebar-setting" id="sideBar">
+                        <option value="left">Left</option>
+                        <option value="right">Right</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
 <script>
-import NavBtn from './NavBtn.vue'
+import NavBtn from './navigation/NavBtn.vue'
 
 export default {
     components:  {NavBtn},
@@ -20,40 +54,6 @@ export default {
     }
 }
 </script>
-
-<template>
-<div id="navigation">
-    <div class="dropdowns">
-        <NavBtn title="Worlds" :dropdownOptions="settings.worlds" />
-        <NavBtn title="Locations" :dropdownOptions="settings.locations" />
-        <NavBtn title="Entities" :dropdownOptions="settings.entities" @add-entity="addEntity()" />
-    </div>
-    <div class="settings">
-        <font-awesome-icon icon="fa-solid fa-sliders" />
-        <div class="settings__panel">
-            <div class="settings__block">
-                <div class="setting">Dark mode</div>
-                <input type="checkbox">
-            </div>
-            <div class="settings__block">
-                <div class="setting">Date format</div>
-                <select class="date-format" id="dateFormat">
-                    <option value="dmy">d-m-y</option>
-                    <option value="mdy">d-m-y</option>
-                    <option value="ymd">y-m-d</option>
-                </select>
-            </div>
-            <div class="settings__block">
-                <div class="setting">Sidebar placement</div>
-                <select class="sidebar-setting" id="sideBar">
-                    <option value="left">Left</option>
-                    <option value="right">Right</option>
-                </select>
-            </div>
-        </div>
-    </div>
-</div>
-</template>
 
 <style scoped lang="less">
 @import "/src/global.less";

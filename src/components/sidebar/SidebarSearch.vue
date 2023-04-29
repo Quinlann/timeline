@@ -1,5 +1,3 @@
-<script></script>
-
 <template>
     <div class="section">
         <select class="category" name="Category" id="category">
@@ -13,6 +11,8 @@
 		</div>
     </div>
 </template>
+
+<script></script>
 
 <style scoped lang="less">
 @import "/src/global.less";
