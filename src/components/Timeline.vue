@@ -1,3 +1,15 @@
+<template>
+	<div class="timeline__container">
+		<div class="timeline__counter">{{ this.pointLabel }}</div>
+		<input type="range" min="0" max="100" class="timeline"
+			:step="stepPrecision"
+			@input="changedRange"
+			v-model="this.rangeValue"
+		>
+		<div class="timeline__selection"></div>
+	</div>
+</template>
+
 <script>
 export default {
 	props: ['pointLabel'],
@@ -14,18 +26,6 @@ export default {
 	}
 }
 </script>
-
-<template>
-<div class="timeline__container">
-    <div class="timeline__counter">{{ this.pointLabel }}</div>
-    <input type="range" min="0" max="100" class="timeline"
-		:step="stepPrecision"
-		@input="changedRange"
-		v-model="this.rangeValue"
-	>
-    <div class="timeline__selection"></div>
-</div>
-</template>
 
 <style scoped lang="less">
 @import "/src/global.less";

@@ -1,18 +1,18 @@
-<script>
-import SidebarSearch from './SidebarSearch.vue'
-import SidebarResults from './SidebarResults.vue'
-
-export default{
-    components: {SidebarSearch,SidebarResults}
-}
-</script>
-
 <template>
     <div class="sidebar left">
         <SidebarSearch/>
         <SidebarResults/>
     </div>
 </template>
+
+<script>
+import SidebarSearch from './sidebar/SidebarSearch.vue'
+import SidebarResults from './sidebar/SidebarResults.vue'
+
+export default{
+    components: {SidebarSearch,SidebarResults}
+}
+</script>
 
 <style lang="less">
 .sidebar {

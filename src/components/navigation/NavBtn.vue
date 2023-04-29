@@ -1,31 +1,31 @@
+<template>
+	<div class="nav__btn dropdown">
+		<font-awesome-icon v-if="title === 'Worlds'" icon="fa-solid fa-globe" />
+		<font-awesome-icon v-if="title === 'Locations'" icon="fa-solid fa-location-dot" />
+		<font-awesome-icon v-if="title === 'Entities'" icon="fa-solid fa-location-crosshairs" />
+		{{ title }}
+		<div class="list">
+		  <input class="search" onfocus="this.value=''" value="Search">
+		  <ul>
+			<li v-for="option in dropdownOptions">{{ option }}</li>
+			<li @click="clickPlus(title)" class="add">
+				<font-awesome-icon icon="fa-solid fa-plus" />
+			</li>
+		  </ul>
+		</div>
+	</div>
+</template>
+
 <script>
 export default {
-  props: ['title', 'dropdownOptions'],
-  methods:{
-	clickPlus(navBtnTitle){
-		if(navBtnTitle === 'Entities') this.$emit('add-entity');
+	props: ['title', 'dropdownOptions'],
+	methods:{
+		clickPlus(navBtnTitle){
+			if(navBtnTitle === 'Entities') this.$emit('add-entity');
+		}
 	}
-  }
 }
 </script>
-
-<template>
-<div class="nav__btn dropdown">
-	<font-awesome-icon v-if="title === 'Worlds'" icon="fa-solid fa-globe" />
-	<font-awesome-icon v-if="title === 'Locations'" icon="fa-solid fa-location-dot" />
-	<font-awesome-icon v-if="title === 'Entities'" icon="fa-solid fa-location-crosshairs" />
-	{{ title }}
-    <div class="list">
-      <input class="search" onfocus="this.value=''" value="Search">
-      <ul>
-        <li v-for="option in dropdownOptions">{{ option }}</li>
-        <li @click="clickPlus(title)" class="add">
-			<font-awesome-icon icon="fa-solid fa-plus" />
-		</li>
-      </ul>
-    </div>
-</div>
-</template>
 
 <style scoped lang="less">
 @import "/src/global.less";

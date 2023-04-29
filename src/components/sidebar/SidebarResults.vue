@@ -1,33 +1,33 @@
-<script></script>
-
 <template>
-<div class="section">
-    <div class="entity">
-        <div class="icon red">B</div>
-        <div class="name">Benjamin Bak Egede</div>
-    </div>
-    <div class="entity">
-        <div class="icon purple">H</div>
-        <div class="name">Henrik Tobiesen Aabom</div>
-    </div>
-    <div class="entity">
-        <div class="icon green">H</div>
-        <div class="name">Han Solo</div>
-    </div>
-    <div class="entity">
-        <div class="icon blue">P</div>
-        <div class="name">Philip Marquard</div>
-    </div>
-    <div class="entity">
-        <div class="icon brown">L</div>
-        <div class="name">Luke Skywalker</div>
-    </div>
-    <div class="entity">
-        <div class="icon orange">J</div>
-        <div class="name">Jack Boone</div>
-    </div>
-</div>
+	<div class="section">
+		<div class="entity">
+			<div class="icon red">B</div>
+			<div class="name">Benjamin Bak Egede</div>
+		</div>
+		<div class="entity">
+			<div class="icon purple">H</div>
+			<div class="name">Henrik Tobiesen Aabom</div>
+		</div>
+		<div class="entity">
+			<div class="icon green">H</div>
+			<div class="name">Han Solo</div>
+		</div>
+		<div class="entity">
+			<div class="icon blue">P</div>
+			<div class="name">Philip Marquard</div>
+		</div>
+		<div class="entity">
+			<div class="icon brown">L</div>
+			<div class="name">Luke Skywalker</div>
+		</div>
+		<div class="entity">
+			<div class="icon orange">J</div>
+			<div class="name">Jack Boone</div>
+		</div>
+	</div>
 </template>
+
+<script></script>
 
 <style scoped lang="less">
 @import "/src/global.less";

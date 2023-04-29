@@ -1,9 +1,3 @@
-<script>
-export default {
-    props: ['color','x','y','name','visible'],
-}
-</script>
-
 <template>
     <div :style="{ 
         left: this.x + '%',
@@ -13,5 +7,11 @@ export default {
         }" 
         class="entity e4">{{ this.name }}</div>    
 </template>
+
+<script>
+export default {
+    props: ['color','x','y','name','visible'],
+}
+</script>
 
 <style></style>
