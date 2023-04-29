@@ -2,6 +2,7 @@
 	<div class="nav__btn dropdown">
 		<font-awesome-icon v-if="title === 'Worlds'" icon="fa-solid fa-globe" />
 		<font-awesome-icon v-if="title === 'Locations'" icon="fa-solid fa-location-dot" />
+		<font-awesome-icon v-if="title === 'Routes'" icon="fa-solid fa-route" />
 		<font-awesome-icon v-if="title === 'Entities'" icon="fa-solid fa-location-crosshairs" />
 		{{ title }}
 		<div class="list">

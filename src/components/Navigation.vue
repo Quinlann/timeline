@@ -1,8 +1,11 @@
 <template>
     <div id="navigation">
         <div class="dropdowns">
-            <NavBtn title="Worlds" :dropdownOptions="settings.worlds" />
-            <NavBtn title="Locations" :dropdownOptions="settings.locations" />
+            <div class="dropdowns__collected world-specific">
+                <NavBtn title="Worlds" :dropdownOptions="settings.worlds" />
+                <NavBtn title="Locations" :dropdownOptions="settings.locations" />
+                <NavBtn title="Routes" :dropdownOptions="settings.routes" />
+            </div>
             <NavBtn title="Entities" :dropdownOptions="settings.entities" @add-entity="addEntity()" />
         </div>
         <div class="settings">
@@ -63,14 +66,23 @@ export default {
 	height: @navigation-height;
 	width: 100%;
 	position: fixed;
-    text-align: center;
 	z-index: 1;
 
     .dropdowns {
         display: inline-flex;
-        justify-content: center;
         align-items: center;
         height: 100%;
+
+        &__collected {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 .25rem;
+            &:first-child { border-radius: 0 2rem 2rem 0 }
+            &.world-specific { background: fade(@blue, 20%) }
+
+            .nav__btn, .dropdown .list { background: @blue }
+        }
     }
 
     @settingsBtnSize: 2rem;

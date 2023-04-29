@@ -1,6 +1,6 @@
 <template>
-	<Navigation :addEntity="addEntity"/>
 	<SideBar/>
+	<Navigation :addEntity="addEntity"/>
 	<Timeline
 		@update-timeline-point="updateTimelinePoint"
 		:pointLabel="`${this.timelineDate} | ${this.timelineEntryName}`"
