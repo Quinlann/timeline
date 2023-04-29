@@ -26,9 +26,10 @@ import { faSun } from '@fortawesome/free-solid-svg-icons'
 import { faFeatherPointed } from '@fortawesome/free-solid-svg-icons'
 import { faSkull } from '@fortawesome/free-solid-svg-icons'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faSliders } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faMap,faGlobe,faLocationDot,faLocationCrosshairs,faMagnifyingGlass,faPlus,faUser,faPen,faTrash,faRoute,faSun,faFeatherPointed,faSkull,faXmark);
+library.add(faMap,faGlobe,faLocationDot,faLocationCrosshairs,faMagnifyingGlass,faPlus,faUser,faPen,faTrash,faRoute,faSun,faFeatherPointed,faSkull,faXmark,faSliders);
 
 /* ^^^^ FONT AWSOME ^^^^ */
 
