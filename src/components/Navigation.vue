@@ -107,10 +107,11 @@ export default {
         }
 
         &__block {
-            padding: .5rem 0;
-            height: 2rem;
+            height: 1.5rem;
             display: flex;
+            align-items: center;
             justify-content: space-between;
+            &:not(:last-child) { margin-bottom: .5rem }
         }
 
         input { margin: 0 }
