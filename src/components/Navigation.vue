@@ -35,7 +35,7 @@ export default {
 @import "/src/global.less";
 
 #navigation {
-	background-color: fade(white, 60%);
+	background-color: fade(black, 10%);
 	height: @navigation-height;
 	width: 100%;
 	position: fixed;

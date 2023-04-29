@@ -72,6 +72,7 @@
 		text-overflow: ellipsis;
 		overflow: hidden;
 		white-space: nowrap;
+		color: @background-color-inverted;
 	}
 }
 </style>

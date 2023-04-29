@@ -26,7 +26,8 @@ document.addEventListener("wheel", function(e) {
 			<div class="top">
 				<div class="icon"><font-awesome-icon icon="fa-solid fa-user" /></div>
 				<div class="name">Benjamin Bak Egede</div>
-				<div class="closeBtn">X</div>
+				<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
+				<div class="closeBtn"><font-awesome-icon icon="fa-solid fa-xmark" /></div>
 			</div>
 			<div class="bottom">
 				<div class="path">World 1</div>
@@ -34,18 +35,27 @@ document.addEventListener("wheel", function(e) {
 		</div>
 		<div class="creation__info">
 			<div class="block">
-				<div class="block__title">Nickname</div>
+				<div class="block__header">
+					<div class="block__title">Nickname(s)</div>
+					<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
+				</div>
 				<div class="block__content">
 					<div class="info-bit">Bem</div>
 					<div class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 				</div>
 			</div>
 			<div class="block">
-				<div class="block__title">Description</div>
-				<div class="block__content"><input type="text"></div>
+				<div class="block__header">
+					<div class="block__title">Description</div>
+					<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
+				</div>
+				<div class="block__content"><input type="textarea"></div>
 			</div>
 			<div class="block">
-				<div class="block__title">Images</div>
+				<div class="block__header">
+					<div class="block__title">Images</div>
+					<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
+				</div>
 				<div class="block__content">
 					<div class="info-bit img"></div>
 					<div class="info-bit img btn add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
@@ -63,8 +73,9 @@ document.addEventListener("wheel", function(e) {
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-sun" /></div>
 							<div class="setting">Jyllinge</div>
 						</div>
-						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
-						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
+						<div class="btns">
+							<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
+						</div>
 					</div>
 
 					<div class="time">
@@ -73,8 +84,9 @@ document.addEventListener("wheel", function(e) {
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
 							<div class="setting">Roskilde</div>
 						</div>
-						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
-						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
+						<div class="btns">
+							<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
+						</div>
 					</div>
 
 					<div class="time">
@@ -83,8 +95,9 @@ document.addEventListener("wheel", function(e) {
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-route" /></div>
 							<div class="setting">T: 50% L: 10%</div>
 						</div>
-						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
-						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
+						<div class="btns">
+							<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
+						</div>
 					</div>
 
 					<div class="time">
@@ -93,8 +106,9 @@ document.addEventListener("wheel", function(e) {
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
 							<div class="setting">Jyllinge</div>
 						</div>
-						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
-						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
+						<div class="btns">
+							<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
+						</div>
 					</div>
 
 					<div class="time">
@@ -103,8 +117,9 @@ document.addEventListener("wheel", function(e) {
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-skull" /></div>
 							<div class="setting">Roskilde</div>
 						</div>
-						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
-						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
+						<div class="btns">
+							<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
+						</div>
 					</div>
 
 					<div class="time">
@@ -113,8 +128,9 @@ document.addEventListener("wheel", function(e) {
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-sun" /></div>
 							<div class="setting">Roskilde</div>
 						</div>
-						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
-						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
+						<div class="btns">
+							<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
+						</div>
 					</div>
 
 					<div class="time">
@@ -123,8 +139,9 @@ document.addEventListener("wheel", function(e) {
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-feather-pointed" /></div>
 							<div class="setting">Bing Bong</div>
 						</div>
-						<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
-						<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
+						<div class="btns">
+							<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
+						</div>
 					</div>
 
 					<div class="time add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
@@ -158,6 +175,8 @@ document.addEventListener("wheel", function(e) {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background: @background-color;
+	color: @background-color-inverted;
 }
 
 @timelineColWidth: 18rem;
@@ -166,12 +185,12 @@ document.addEventListener("wheel", function(e) {
 
 .creation {
 	//display: none;
-	background-color: lightgrey;
+	background-color: fade(black, 20%);
+	backdrop-filter: blur(10px);
 	max-width: 45rem;
 	width: 45rem;
 	border-radius: .5rem;
 	padding: 1rem;
-	box-shadow: 0 5px 10px fade(black, 20%);
 	z-index: 1;
 
 	&.entityCreator {
@@ -181,23 +200,34 @@ document.addEventListener("wheel", function(e) {
 	&__header {
 		display: flex;
 		flex-direction: column;
-		border-bottom: 1px solid @black;
+		border-bottom: 1px solid fade(black, 50%);
 		padding-bottom: .5rem;
 		margin-bottom: 1rem;
+		&:hover .editBtn { opacity: 1 }
 		
 		.icon {
-			margin-right: .5rem;
+			margin-right: 1rem;
 			float: left;
+			font-size: 1.5rem;
 		}
 		
 		.name {
-			text-transform: uppercase;
 			font-weight: bold;
 			float: left;
+			font-size: 1.5rem;
+		}
+
+		.editBtn {
+			height: 1.5rem;
+			float: left;
+			line-height: 1.5rem;
+			opacity: 0;
 		}
 
 		.closeBtn {
 			float: right;
+			opacity: .5;
+			&:hover { opacity: 1; }
 		}
 
 		.path {
@@ -220,21 +250,27 @@ document.addEventListener("wheel", function(e) {
 	.block {
 		&:not(:last-child) { margin-bottom: 1rem }
 		
+		&__header {
+			display: flex;
+			.deleteBtn { opacity: 0 }
+			&:hover .deleteBtn { opacity: 1 }
+		}
+
 		&__title {
-			text-transform: uppercase;
+			//text-transform: uppercase;
 			font-weight: bold;
 			margin: 0 0 .25rem .25rem;
 		}
 
 		&__content {
 			padding: .5rem;
-			background-color: fade(@white, 20%);
+			background-color: fade(black, 20%);
 			border-radius: 1.5rem;
 			display: flex;
 		}
 
 		.info-bit {
-			background-color: fade(@white, 50%);
+			background-color: fade(@white, 20%);
 			border-radius: 1rem;
 			display: inline-block;
 			padding: 0 .5rem;
@@ -248,11 +284,11 @@ document.addEventListener("wheel", function(e) {
 		}
 
 		.btn {
-			background-color: fade(@black, 10%);
+			background-color: fade(@white, 5%);
 			border-radius: 1rem;
 			width: 1.5rem;
 			padding: 0;
-			&:hover { background-color: fade(@black, 20%) }
+			&:hover { background-color: fade(@white, 20%) }
 			&.add { text-align: center }
 		}
 
@@ -266,14 +302,18 @@ document.addEventListener("wheel", function(e) {
 			width: 100%;
 			border: none;
 			padding: .25rem;
-			background-color: fade(white, 50%);
-			border-radius: 1rem;
+			background-color: transparent;
+			//border-radius: 1rem;
+			color: @background-color-inverted;
+			white-space:wrap;
 		}
 
 		.time {
 			display: flex;
 			font-size: .8rem;
+			position: relative;
 			&:not(:last-child) { margin-bottom: .25rem }
+			&:hover .type { width: ~"calc(100% - 2rem)"; }
 
 			.type {
 				width: 100%;
@@ -283,7 +323,9 @@ document.addEventListener("wheel", function(e) {
     			align-items: center;
 				padding: .25rem;
 				border-radius: 1rem;
-				margin-right: .25rem;
+				transition: .2s;
+				position: relative;
+				z-index: 1;
 				
 				.icon {
 					color: @white;
@@ -299,7 +341,7 @@ document.addEventListener("wheel", function(e) {
 
 				.date, .setting {
 					width: 50%;
-					background-color: fade(@white, 50%);
+					background-color: fade(@black, 20%);
 					text-align: center;
 					padding: .25rem;
 					border-radius: 1rem;
@@ -309,40 +351,42 @@ document.addEventListener("wheel", function(e) {
 				}
 			}
 
-			.editBtn, .deleteBtn {
-				background-color: fade(@white, 50%);
-				padding: .5rem;
-			}
-
-			.editBtn {
-				color: fade(@black, 50%);
-				border-radius: 1rem 0 0 1rem;
-				&:hover { background-color: fade(@white, 90%) }
-			}
-
-			.deleteBtn {
-				color: fade(@red, 50%);
-				border-radius: 0 1rem 1rem 0 ;
-				&:hover { background-color: fade(@red, 20%) }
+			.btns {
+				display: flex;
+				align-items: center;
+				position: absolute;
+				top: 0; right: 0;
+				height: 100%;
 			}
 
 			&.add {
 				text-align: center;
 				padding: .5rem;
 				border-radius: 1rem;
-				background-color: fade(@black, 10%);
+				background-color: fade(@white, 10%);
 				display: flex;
 				justify-content: center;
-				&:hover { background-color: fade(@black, 20%) }
+				transition: .2s;
+				&:hover { background-color: fade(@white, 20%) }
 			}
 		}
 	}
+
+	.editBtn, .deleteBtn {
+		padding: 0 .5rem;
+		color: fade(@white, 50%);
+		transition: .2s;
+	}
+
+	.editBtn:hover { color: fade(@white, 80%) }
+	.deleteBtn:hover { color: fade(@red, 80%) }
 }
 
 .map {
 	background-size: contain;
 	width: 100%;
 	position: fixed;
+	img { filter: invert(100%) }
 }
 
 .entity {
