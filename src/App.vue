@@ -3,6 +3,7 @@ import Navigation from './components/Navigation.vue'
 import Timeline from './components/Timeline.vue'
 import Wrapper from './components/Wrapper.vue'
 import SideBar from './components/SideBar.vue'
+import Entity from './components/map/Entity.vue'
 
 export default {
 	components: {Navigation,Timeline,Wrapper,SideBar},
@@ -98,19 +99,48 @@ export default {
 					name: 'Romania - Hongkong',
 					pins: [
 						{
-							id: 0,
 							left: 54.6,
 							top: 38.6,
 						},
 						{
-							id: 1,
-							left: 68.6,
-							top: 30.6,
+							left: 56.6,
+							top: 35.6,
 						},
 						{
-							id: 2,
+							left: 59.6,
+							top: 39.6,
+						},
+						{
+							left: 60.6,
+							top: 43.6,
+						},
+						{
+							left: 62.6,
+							top: 45.6,
+						},
+						{
+							left: 66.6,
+							top: 46.6,
+						},
+						{
+							left: 69.6,
+							top: 48.6,
+						},
+						{
+							left: 73.6,
+							top: 49.7,
+						},
+						{
+							left: 76.6,
+							top: 50.2,
+						},
+						{
+							left: 79.1,
 							top: 51,
+						},
+						{
 							left: 80.7,
+							top: 51,
 						}
 					],
 				}
@@ -180,7 +210,6 @@ export default {
 					travelEntry.route.pins[i].pct = travelEntry.route.startPct + (i * pctPrPin);
 				}
 			}
-			console.log('this.entities:',this.entities);
 		},
 		convertPctToDate(pct) {
 			const startDateInMilSec = this.entities[0].startDate.getTime(),
@@ -197,8 +226,16 @@ export default {
 			this.entities[0].y = y;
 		},
 		updateEntity(entry){
-			console.log(entry);
 			if(entry.type === 'place') this.setEntityPos(entry.left, entry.top);
+			else if(entry.type === 'travel') {
+				this.getNextTravelPinPos(entry.route.pins);
+			}
+		},
+		getNextTravelPinPos(routePins){
+			const pinLowerThanPoint = routePins.filter(x => x.pct <= this.timelinePoint),
+			closestPin = pinLowerThanPoint[pinLowerThanPoint.length-1];
+
+			this.setEntityPos(closestPin.left, closestPin.top);
 		}
 	},
 	watch: {
