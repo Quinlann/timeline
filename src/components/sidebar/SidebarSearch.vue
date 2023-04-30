@@ -23,7 +23,7 @@
 	font-weight: bold;
 	margin-bottom: .5rem;
 	width: 100%;
-	background-color: fade(black, 20%);
+	background-color: fade(black, 50%);
 	color: @background-color-inverted;
 	option { background-color: fade(black, 80%) }
 	&:hover { background-color: fade(white, 20%) }
@@ -37,7 +37,7 @@
 .search {
 	padding: .5rem;
 	border-radius: 1rem;
-	background-color: fade(black, 20%);
+	background-color: fade(black, 50%);
 	text-align: center;
 	border: none;
 	width: 100%;

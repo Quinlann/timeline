@@ -33,7 +33,7 @@ export default {
 .timeline {
 	margin: 2rem;
 	width: calc(100% - 4rem);
-	height: 5px;
+	height: .2rem;
 	border-radius: 5px;
 	-webkit-appearance: none;
 	cursor: pointer;
@@ -41,8 +41,10 @@ export default {
 
 	&__counter {
 		font-size: 2rem;
+		font-family: 'Oxanium', sans-serif;
 		transform-origin: bottom;
 		transition: .2s;
+		color: @background-color-inverted;
 	}
 	
 	&::-webkit-slider-thumb {

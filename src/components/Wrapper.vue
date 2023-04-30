@@ -83,7 +83,6 @@ document.addEventListener("wheel", function(e) {
 	width: @icon-size;
 	height: @icon-size;
 	border-radius: 50%;
-	outline: 1px solid white;
 	text-align: center;
 	color: white;
 	position: absolute;
