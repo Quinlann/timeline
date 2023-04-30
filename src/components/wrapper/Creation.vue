@@ -17,7 +17,7 @@
 		<div class="creation__info">
 			<div class="block">
 				<div class="block__header">
-					<div class="block__title">Nickname(s)</div>
+					<div class="block__title">Nicknames</div>
 					<div class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></div>
 				</div>
 				<div class="block__content">
@@ -40,6 +40,63 @@
 				<div class="block__content">
 					<div class="info-bit img"></div>
 					<div class="info-bit img btn add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+				</div>
+			</div>
+			<div class="block">
+				<div class="block__header">
+					<div class="block__title">Skills</div>
+					<div class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></div>
+				</div>
+				<div class="block__content">
+					<div class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+				</div>
+			</div>
+			<div class="block">
+				<div class="block__header">
+					<div class="block__title">Teams</div>
+					<div class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></div>
+				</div>
+				<div class="block__content">
+					<div class="info-bit">The Sith</div>
+					<div class="info-bit">Ravenclaw</div>
+					<div class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+				</div>
+			</div>
+			<div class="block">
+				<div class="block__header">
+					<div class="block__title">Categories</div>
+					<div class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></div>
+				</div>
+				<div class="block__content">
+					<div class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+				</div>
+			</div>
+			<div class="block">
+				<div class="block__add">
+					<div class="block-bit">
+						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+						Nicknames
+					</div>
+					<div class="block-bit">
+						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+						Description
+					</div>
+					<div class="block-bit">
+						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+						Images
+					</div>
+					<div class="block-bit">
+						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+						Skills
+					</div>
+					<div class="block-bit">
+						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+						Teams
+					</div>
+					<div class="block-bit">
+						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+						Categories
+					</div>
 				</div>
 			</div>
 		</div>
@@ -129,6 +186,11 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="creation__footer">
+			<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
+			<div class="acceptBtn"><font-awesome-icon icon="fa-solid fa-check" /></div>
+		</div>
 	</div>
 </template>
 
@@ -215,6 +277,32 @@ export default {
 		.block__content { flex-direction: column }
 	}
 
+	&__footer {
+		width: 100%;
+		clear: both;
+		padding-top: 1rem;
+		display: flex;
+		justify-content: space-between;
+
+		.deleteBtn, .acceptBtn {
+			width: 2.5rem;
+			height: 2.5rem;
+			line-height: 2.5rem;
+			text-align: center;
+			border-radius: 50%;
+		}
+
+		.deleteBtn {
+			background-color: fade(@red, 20%);
+			&:hover { background-color: fade(@red, 30%) }
+		}
+
+		.acceptBtn {
+			background-color: fade(@green, 20%);
+			&:hover { background-color: fade(@green, 30%) }
+		}
+	}
+
 	.block {
 		&:not(:last-child) { margin-bottom: 1rem }
 		
@@ -236,6 +324,11 @@ export default {
 			background-color: fade(black, 20%);
 			border-radius: 1.5rem;
 			display: flex;
+		}
+		
+		&__add {
+			border-top: 1px solid @black;
+			padding-top: 1rem;
 		}
 
 		.info-bit {
@@ -275,6 +368,18 @@ export default {
 			//border-radius: 1rem;
 			color: @background-color-inverted;
 			white-space:wrap;
+		}
+
+		.block-bit {
+			float: left;
+			padding: .5rem;
+			background-color: fade(@white, 10%);
+			border-radius: 1rem;
+			margin: 0 .5rem .5rem 0;
+			transition: .2s;
+			&:hover { background-color: fade(@white, 20%); }
+
+			.icon { display: inline-block }
 		}
 
 		.time {
@@ -341,7 +446,7 @@ export default {
 		}
 	}
 
-	.editBtn, .deleteBtn, .removeBtn {
+	.editBtn, .deleteBtn, .removeBtn, .acceptBtn {
 		padding: 0 .5rem;
 		color: fade(@white, 50%);
 		transition: .2s;
@@ -349,5 +454,6 @@ export default {
 
 	.editBtn:hover, .removeBtn:hover  { color: fade(@white, 80%) }
 	.deleteBtn:hover { color: fade(@red, 80%) }
+	.acceptBtn:hover { color: fade(@green, 80%) }
 }
 </style>
