@@ -58,11 +58,13 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 @import "/src/global.less";
+@worldColor: @turquoise;
 
 #navigation {
 	background-color: fade(black, 10%);
+    backdrop-filter: blur(10px);
 	height: @navigation-height;
 	width: 100%;
 	position: fixed;
@@ -78,10 +80,9 @@ export default {
             align-items: center;
             height: 100%;
             padding: 0 .25rem;
+            margin-right: .25rem;
             &:first-child { border-radius: 0 2rem 2rem 0 }
-            &.world-specific { background: fade(@blue, 20%) }
-
-            .nav__btn, .dropdown .list { background: @blue }
+            &.world-specific { background: fade(@worldColor, 10%) }
         }
     }
 
