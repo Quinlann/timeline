@@ -388,4 +388,13 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
+
+::-webkit-scrollbar { width: .25rem }
+::-webkit-scrollbar-track { border-radius: .25rem }
+
+::-webkit-scrollbar-thumb {
+	background: fade(white, 20%); 
+	border-radius: .25rem;
+	&:hover { background: fade(white, 30%) }
+}
 </style>

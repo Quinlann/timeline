@@ -32,25 +32,33 @@ export default {
 @import "/src/global.less";
 @navBtn-padding: .5rem;
 @navBtn-radius: 1rem;
-@navBtn-color: @item-color;
+@navBtn-color: fade(@white, 5%);
 @navBtn-color-inverted: @item-color-inverted;
 
 .nav__btn {
 	padding: @navBtn-padding 0;
 	border-radius: @navBtn-radius; 
-	color: @navBtn-color-inverted;
 	margin: 0 (@navBtn-padding / 2);
-	//font-weight: bold;
 	min-width: 10rem;
 	text-align: center;
 	position: relative;
 	background: @navBtn-color;
-	&:hover { border-radius: @navBtn-radius @navBtn-radius 0 0 }
+    color: @navBtn-color-inverted;
+	
+	&:hover {
+		border-radius: @navBtn-radius @navBtn-radius 0 0;
+		background: @item-color;
+	}
 }
 
 .dropdown {
 	position: relative;
-	&:hover > .list { display: block }
+	
+	&:hover > .list {
+		opacity: 1;
+		background: @item-color;
+		max-height: 20rem;
+	}
 	
 	.search {
 		margin-bottom: .25rem;
@@ -69,15 +77,17 @@ export default {
 	}
 	
 	.list {
-		display: none;
+		opacity: 0;
+		max-height: 0;
 		position: absolute;
 		top: 100%;
 		list-style: none;
 		text-align: left;
 		padding: 0 @navBtn-padding @navBtn-padding;
 		margin: 0;
-		background: @item-color;
+		background: transparent;
 		border-radius: 0 0 @navBtn-radius @navBtn-radius;
+		overflow: auto;
 	}
 	
 	ul {
