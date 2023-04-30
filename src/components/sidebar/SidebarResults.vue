@@ -53,7 +53,6 @@
 		min-width: @icon-size;
 		width: @icon-size;
 		border-radius: 50%;
-		outline: 1px solid white;
 		text-align: center;
 		color: white;
 		

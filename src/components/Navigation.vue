@@ -7,6 +7,7 @@
                 <NavBtn title="Routes" :dropdownOptions="settings.routes" />
             </div>
             <NavBtn title="Entities" :dropdownOptions="settings.entities" @add-entity="addEntity()" />
+            <NavBtn title="Events" :dropdownOptions="settings.events" />
         </div>
         <div class="settings">
             <font-awesome-icon icon="fa-solid fa-sliders" />

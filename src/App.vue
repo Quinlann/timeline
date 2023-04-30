@@ -375,11 +375,13 @@ export default {
 </script>
 
 <style lang="less">
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300&family=Rubik:wght@400;700&display=swap');
+
 * { box-sizing: border-box }
 
 body {
 	margin: 0;
-	font-family: sans-serif;
+	font-family: 'Rubik', sans-serif;
 	font-size: 1rem;
 	-webkit-touch-callout: none;
     -webkit-user-select: none;

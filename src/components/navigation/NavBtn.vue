@@ -4,6 +4,7 @@
 		<font-awesome-icon v-if="title === 'Locations'" icon="fa-solid fa-location-dot" />
 		<font-awesome-icon v-if="title === 'Routes'" icon="fa-solid fa-route" />
 		<font-awesome-icon v-if="title === 'Entities'" icon="fa-solid fa-location-crosshairs" />
+		<font-awesome-icon v-if="title === 'Events'" icon="fa-solid fa-explosion" />
 		{{ title }}
 		<div class="list">
 		  <input class="search" onfocus="this.value=''" value="Search">
