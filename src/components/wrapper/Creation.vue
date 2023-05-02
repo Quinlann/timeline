@@ -103,7 +103,7 @@
 
 		<div class="creation__timeline">
 			<div class="block">
-				<div class="block__title">Timeline</div>
+				<div class="block__title">Story</div>
 				<div class="block__content">					
 					<div class="time">
 						<div class="type birth">
