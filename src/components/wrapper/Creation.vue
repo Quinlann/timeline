@@ -4,7 +4,7 @@
 		<div class="creation__header">
 			<div class="top">
 				<div class="icon"><font-awesome-icon icon="fa-solid fa-user" /></div>
-				<div class="name">Benjamin Bak Egede</div>
+				<div class="name">{{ entity.name }}</div>
 				<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
 				<div class="closeBtn"
 					@click="closePop"
@@ -197,6 +197,18 @@
 <script>
 export default {
 	props: ['closePop'],
+	data() {
+		return {
+			entity: {
+				name:'Benjamin Bak Egede'
+			}
+		}
+	},
+	methods: {
+		setEntity(newEntity) {
+			this.entity = newEntity;
+		}
+	},
 }
 </script>
 

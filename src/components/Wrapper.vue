@@ -3,6 +3,7 @@
 		<Creation 
 			v-if="showCreationPop"
 			:closePop="closeCreationPop"
+			ref="creation"
 		/>
 		<div class="map">
 			<img src="/src/assets/worldmap.svg">
@@ -39,6 +40,12 @@ export default {
 		},
 		addEntity(){
 			this.openCreationPop();
+		},
+		openEntity(entity){
+			this.openCreationPop();
+			this.$nextTick(() => {
+				this.$refs.creation.setEntity(entity);
+			});
 		},
 	},
 }
