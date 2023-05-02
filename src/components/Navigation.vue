@@ -2,12 +2,29 @@
     <div id="navigation">
         <div class="dropdowns">
             <div class="dropdowns__collected world-specific">
-                <NavBtn title="Worlds" :dropdownOptions="settings.worlds" />
-                <NavBtn title="Locations" :dropdownOptions="settings.locations" />
-                <NavBtn title="Routes" :dropdownOptions="settings.routes" />
+                <NavBtn
+                    title="Worlds"
+                    :dropdownOptions="settings.worlds"
+                />
+                <NavBtn
+                    title="Locations"
+                    :dropdownOptions="settings.locations"
+                />
+                <NavBtn
+                    title="Routes"
+                    :dropdownOptions="settings.routes"
+                />
             </div>
-            <NavBtn title="Entities" :dropdownOptions="settings.entities" @add-entity="addEntity()" />
-            <NavBtn title="Events" :dropdownOptions="settings.events" />
+            <NavBtn 
+                title="Entities"
+                :entities="entities"
+                @add-entity="addEntity"
+                @open-entity="openEntity"
+            />
+            <NavBtn
+                title="Events"
+                :dropdownOptions="settings.events"
+            />
         </div>
         <div class="settings">
             <font-awesome-icon icon="fa-solid fa-sliders" />
@@ -42,17 +59,27 @@ import NavBtn from './navigation/NavBtn.vue'
 export default {
     components:  {NavBtn},
     props: {
+        entities: {
+            type: Array,
+            required: true,
+            default: () => {
+                return [];
+            },
+        },
         addEntity: {
             type: Function,
             required: true
-        }
+        },
+        openEntity: {
+            type: Function,
+            required: true
+        },
     },
     data() {
         return {
             settings: {
                 worlds: ['World 1', 'World 2'],
                 locations: ['Danmark', 'Norge', 'Sverige'],
-                entities: ['Benjamin Bak Egede', 'Henrik Tobiesen Aabom', 'Han Solo', 'Philip Marquard', 'Luke Skywalker', 'Jack Boone']
             }
         }
     }

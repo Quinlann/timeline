@@ -1,6 +1,10 @@
 <template>
 	<SideBar/>
-	<Navigation :addEntity="addEntity"/>
+	<Navigation 
+		:addEntity="addEntity"
+		:openEntity="openEntity"
+		:entities="entities"
+	/>
 	<Timeline
 		@update-timeline-point="updateTimelinePoint"
 		:pointLabel="timelineDate"
@@ -18,11 +22,17 @@ import Wrapper from './components/Wrapper.vue'
 import SideBar from './components/SideBar.vue'
 
 export default {
-	components: {Navigation,Timeline,Wrapper,SideBar},
+	components: {
+		Navigation,
+		Timeline,
+		Wrapper,
+		SideBar
+	},
 	data() {
 		return {
 			entities: [
 				{
+					name: 'Agent 47',
 					text: '47',
 					visible: true,
 					color: 'black',
@@ -94,6 +104,7 @@ export default {
 					],
 				},
 				{
+					name: 'Agent 17',
 					text: '17',
 					visible: true,
 					color: 'orange',
@@ -269,6 +280,9 @@ export default {
 		},
 		addEntity(){
 			this.$refs.wrapper.addEntity();
+		},
+		openEntity(entityId) {
+			this.$refs.wrapper.openEntity(this.entities[entityId]);
 		},
 		convertDateStrs() {
 			this.timelineStartDate = new Date(this.timelineStartDateStr);

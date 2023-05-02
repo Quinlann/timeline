@@ -9,8 +9,17 @@
 		<div class="list">
 		  <input class="search" onfocus="this.value=''" value="Search">
 		  <ul>
-			<li v-for="option in dropdownOptions">{{ option }}</li>
-			<li @click="clickPlus(title)" class="add">
+			<li 
+				v-for="entity in entities"
+				:key="entity.id"
+				@click="clickDropdownItem(entity.id)"
+			>
+				{{ entity.name }}
+			</li>
+			<li 
+				@click="clickPlus(title)"
+				class="add"
+			>
 				<font-awesome-icon icon="fa-solid fa-plus" />
 			</li>
 		  </ul>
@@ -20,10 +29,13 @@
 
 <script>
 export default {
-	props: ['title', 'dropdownOptions'],
+	props: ['title', 'entities'],
 	methods:{
-		clickPlus(navBtnTitle){
-			if(navBtnTitle === 'Entities') this.$emit('add-entity');
+		clickPlus(){
+			if(this.title === 'Entities') this.$emit('add-entity');
+		},
+		clickDropdownItem(entityId) {
+			if(this.title === 'Entities') this.$emit('open-entity',entityId);
 		}
 	}
 }
