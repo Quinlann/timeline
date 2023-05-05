@@ -14,6 +14,7 @@
 				:y="entity.y"
 				:name="entity.text"
 				:visible="entity.visible"
+				@click="clickEntity(entity)"
 			/>
 		</div>
 	</div>
@@ -29,6 +30,46 @@ export default {
 	data() {
 		return {
 			showCreationPop: false,
+			tempEntity: {
+				name:'Benjamin Bak Egede',
+				story: [
+					{
+						name: 'Jyllinge',
+						startDateStr: '05.10.1992',
+						type: 'birth',
+					},
+					{
+						name: 'Roskilde',
+						startDateStr: '03.21.2001',
+						type: 'place',
+					},
+					{
+						name: 'T: 50% L: 10%',
+						startDateStr: '2004',
+						type: 'travel',
+					},
+					{
+						name: 'Jyllinge',
+						startDateStr: '03.02.2004',
+						type: 'place',
+					},
+					{
+						name: 'Roskilde',
+						startDateStr: '05.10.2023',
+						type: 'death',
+					},
+					{
+						name: 'Roskilde',
+						startDateStr: '05.10.2024',
+						type: 'birth',
+					},
+					{
+						name: 'Bing Bong',
+						startDateStr: '05.10.2024',
+						type: 'change',
+					},
+				]
+			}
 		}
 	},
 	methods: {
@@ -39,7 +80,7 @@ export default {
 			this.showCreationPop = false;
 		},
 		addEntity(){
-			this.openCreationPop();
+			this.openEntity(this.tempEntity);
 		},
 		openEntity(entity){
 			this.openCreationPop();
@@ -47,6 +88,9 @@ export default {
 				this.$refs.creation.setEntity(entity);
 			});
 		},
+		clickEntity(entity) {
+			this.$parent.clickedMapEntity(entity);
+		}
 	},
 }
 
