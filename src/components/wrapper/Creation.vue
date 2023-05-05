@@ -101,68 +101,9 @@
 		</div>
 
 		<div class="creation__timeline">
-			<div class="block">
-				<div class="block__title">Story</div>
-				<div class="block__content">					
-					<div class="time">
-						<div class="type birth">
-							<div class="date">05.10.1992</div>
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-sun" /></div>
-							<div class="setting">Jyllinge</div>
-						</div>
-					</div>
-
-					<div class="time">
-						<div class="type place">
-							<div class="date">03.21.2001</div>
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
-							<div class="setting">Roskilde</div>
-						</div>
-					</div>
-
-					<div class="time">
-						<div class="type travel">
-							<div class="date">2004</div>
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-route" /></div>
-							<div class="setting">T: 50% L: 10%</div>
-						</div>
-					</div>
-
-					<div class="time">
-						<div class="type place">
-							<div class="date">03.02.2004</div>
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
-							<div class="setting">Jyllinge</div>
-						</div>
-					</div>
-
-					<div class="time">
-						<div class="type death">
-							<div class="date">05.10.2023</div>
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-skull" /></div>
-							<div class="setting">Roskilde</div>
-						</div>
-					</div>
-
-					<div class="time">
-						<div class="type birth">
-							<div class="date">05.10.2024</div>
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-sun" /></div>
-							<div class="setting">Roskilde</div>
-						</div>
-					</div>
-
-					<div class="time">
-						<div class="type change">
-							<div class="date">05.10.2024</div>
-							<div class="icon"><font-awesome-icon icon="fa-solid fa-feather-pointed" /></div>
-							<div class="setting">Bing Bong</div>
-						</div>
-					</div>
-
-					<div class="time add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
-				</div>
-			</div>
+			<Story
+				ref="story"
+			/>
 		</div>
 
 		<div class="creation__footer">
@@ -170,10 +111,14 @@
 			<div class="acceptBtn"><font-awesome-icon icon="fa-solid fa-check" /></div>
 		</div>
 	</div>
+
 </template>
 
 <script>
+import Story from './creation/Story.vue';
+
 export default {
+	components: {Story},
 	props: ['closePop'],
 	data() {
 		return {
@@ -185,6 +130,7 @@ export default {
 	methods: {
 		setEntity(newEntity) {
 			this.entity = newEntity;
+			this.$refs.story.setEntity(newEntity);
 		}
 	},
 }
@@ -258,7 +204,6 @@ export default {
 	&__timeline {
 		float: left;
 		width: @timelineColWidth;
-		.block__content { flex-direction: column }
 	}
 
 	&__footer {
