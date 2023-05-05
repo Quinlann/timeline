@@ -122,9 +122,7 @@ export default {
 	props: ['closePop'],
 	data() {
 		return {
-			entity: {
-				name:'Benjamin Bak Egede'
-			}
+			entity: {}
 		}
 	},
 	methods: {

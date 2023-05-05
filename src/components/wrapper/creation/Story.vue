@@ -24,6 +24,7 @@ export default {
 	methods: {
 		setEntity(newEntity) {
 			this.entity = newEntity;
+			console.log(this.entity);
 		}
 	},
 }
