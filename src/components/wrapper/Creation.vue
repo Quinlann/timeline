@@ -5,7 +5,6 @@
 			<div class="top">
 				<div class="icon"><font-awesome-icon icon="fa-solid fa-user" /></div>
 				<div class="name">{{ entity.name }}</div>
-				<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
 				<div class="closeBtn"
 					@click="closePop"
 				><font-awesome-icon icon="fa-solid fa-xmark" /></div>
@@ -111,9 +110,6 @@
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-sun" /></div>
 							<div class="setting">Jyllinge</div>
 						</div>
-						<div class="btns">
-							<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
-						</div>
 					</div>
 
 					<div class="time">
@@ -121,9 +117,6 @@
 							<div class="date">03.21.2001</div>
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
 							<div class="setting">Roskilde</div>
-						</div>
-						<div class="btns">
-							<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
 						</div>
 					</div>
 
@@ -133,9 +126,6 @@
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-route" /></div>
 							<div class="setting">T: 50% L: 10%</div>
 						</div>
-						<div class="btns">
-							<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
-						</div>
 					</div>
 
 					<div class="time">
@@ -143,9 +133,6 @@
 							<div class="date">03.02.2004</div>
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-location-dot" /></div>
 							<div class="setting">Jyllinge</div>
-						</div>
-						<div class="btns">
-							<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
 						</div>
 					</div>
 
@@ -155,9 +142,6 @@
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-skull" /></div>
 							<div class="setting">Roskilde</div>
 						</div>
-						<div class="btns">
-							<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
-						</div>
 					</div>
 
 					<div class="time">
@@ -166,9 +150,6 @@
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-sun" /></div>
 							<div class="setting">Roskilde</div>
 						</div>
-						<div class="btns">
-							<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
-						</div>
 					</div>
 
 					<div class="time">
@@ -176,9 +157,6 @@
 							<div class="date">05.10.2024</div>
 							<div class="icon"><font-awesome-icon icon="fa-solid fa-feather-pointed" /></div>
 							<div class="setting">Bing Bong</div>
-						</div>
-						<div class="btns">
-							<div class="editBtn"><font-awesome-icon icon="fa-solid fa-pen" /></div>
 						</div>
 					</div>
 
@@ -240,30 +218,24 @@ export default {
 		border-bottom: 1px solid fade(black, 50%);
 		padding-bottom: .5rem;
 		margin-bottom: 1rem;
-		&:hover .editBtn { opacity: 1 }
 		
+		.icon, .name {
+			padding: .25rem;
+			border-radius: .25rem;
+			font-size: 1.5rem;
+			float: left;
+			transition: .2s;
+			&:hover { background-color: fade(@white, 10%) }
+		}
+
 		.icon {
 			margin-right: .5rem;
-			float: left;
-			background-color: fade(@white, 10%);
-			padding: .25rem;
-			width: 2rem;
+			width: 2.5rem;
 			text-align: center;
-			border-radius: .25rem;
-			&:hover { background-color: fade(@white, 20%) }
 		}
 		
 		.name {
 			font-weight: bold;
-			float: left;
-			font-size: 1.5rem;
-		}
-
-		.editBtn {
-			height: 1.5rem;
-			float: left;
-			line-height: 1.5rem;
-			opacity: 0;
 		}
 
 		.closeBtn {
@@ -354,7 +326,7 @@ export default {
 			overflow: hidden;
 			transition: .2s;
 			&:not(:last-child) { margin-right: .25rem }
-			&:not(.btn):hover { padding-right: 2rem }
+			&:not(.btn):hover { background-color: fade(@white, 30%); }
 		}
 
 		.btn {
@@ -377,7 +349,6 @@ export default {
 			border: none;
 			padding: .25rem;
 			background-color: transparent;
-			//border-radius: 1rem;
 			color: @background-color-inverted;
 			white-space:wrap;
 		}
@@ -390,16 +361,13 @@ export default {
 			margin: 0 .5rem .5rem 0;
 			transition: .2s;
 			&:hover { background-color: fade(@white, 20%); }
-
 			.icon { display: inline-block }
 		}
 
 		.time {
 			display: flex;
 			font-size: .8rem;
-			position: relative;
 			&:not(:last-child) { margin-bottom: .25rem }
-			&:hover .type { width: ~"calc(100% - 2rem)"; }
 
 			.type {
 				width: 100%;
@@ -410,8 +378,8 @@ export default {
 				padding: .25rem;
 				border-radius: 1rem;
 				transition: .2s;
-				position: relative;
 				z-index: 1;
+				&:hover { opacity: .8 }
 				
 				.icon {
 					color: @white;
@@ -437,14 +405,6 @@ export default {
 				}
 			}
 
-			.btns {
-				display: flex;
-				align-items: center;
-				position: absolute;
-				top: 0; right: 0;
-				height: 100%;
-			}
-
 			&.add {
 				text-align: center;
 				padding: .5rem;
@@ -458,13 +418,13 @@ export default {
 		}
 	}
 
-	.editBtn, .deleteBtn, .removeBtn, .acceptBtn {
+	.deleteBtn, .removeBtn, .acceptBtn {
 		padding: 0 .5rem;
 		color: fade(@white, 50%);
 		transition: .2s;
 	}
 
-	.editBtn:hover, .removeBtn:hover  { color: fade(@white, 80%) }
+	.removeBtn:hover  { color: fade(@white, 80%) }
 	.deleteBtn:hover { color: fade(@red, 80%) }
 	.acceptBtn:hover { color: fade(@green, 80%) }
 }
