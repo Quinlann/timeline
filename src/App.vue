@@ -370,7 +370,10 @@ export default {
 			closestPin = pinLowerThanPoint[pinLowerThanPoint.length-1];
 
 			this.setEntityPos(entity, closestPin.left, closestPin.top);
-		}
+		},
+		clickedMapEntity(entity) {
+			this.$refs.wrapper.openEntity(entity);
+		},
 	},
 	watch: {
 		timelinePoint(point){

@@ -14,6 +14,7 @@
 				:y="entity.y"
 				:name="entity.text"
 				:visible="entity.visible"
+				@click="clickEntity(entity)"
 			/>
 		</div>
 	</div>
@@ -47,6 +48,9 @@ export default {
 				this.$refs.creation.setEntity(entity);
 			});
 		},
+		clickEntity(entity) {
+			this.$parent.clickedMapEntity(entity);
+		}
 	},
 }
 
