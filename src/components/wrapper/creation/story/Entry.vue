@@ -85,6 +85,11 @@ export default {
 			text-overflow: ellipsis;
 		}
 	}
+
+	&.active {
+		border: solid 2px yellow;
+		border-radius: 25px;
+	}
 }
 
 </style>

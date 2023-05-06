@@ -36,6 +36,7 @@ export default {
 					text: '47',
 					visible: true,
 					color: 'black',
+					activeEntryId: 0,
 					story: [
 						{
 							name: 'Romania',
@@ -108,6 +109,7 @@ export default {
 					text: '17',
 					visible: true,
 					color: 'orange',
+					activeEntryId: 0,
 					story: [
 						{
 							name: 'Romania',
@@ -262,6 +264,7 @@ export default {
 	},
 	beforeMount() {
 		this.setEntityIds();
+		this.setEntryIds();
 		this.convertDateStrs();
 		this.setStartEndDates();
 		this.convertDatesToPct();
@@ -277,6 +280,14 @@ export default {
 	methods:{
 		setEntityIds(){
 			this.entities.forEach((obj, index) => obj.id = index);
+		},
+		setEntryIds(){
+			for (let e = 0; e < this.entities.length; e++) {
+				const story = this.entities[e].story;
+				story.forEach((entry, index) => {
+					entry.id = index;
+				});
+			}
 		},
 		addEntity(){
 			this.$refs.wrapper.addEntity();
@@ -357,8 +368,8 @@ export default {
 			entity.x = x;
 			entity.y = y;
 		},
-		updateEntity(entity,entry){
-			this.timelineEntryName = entry.name;
+		updateEntity(entity, entry){
+			entity.activeEntryId = entry.id;
 
 			if(entry.type === 'place') this.setEntityPos(entity, entry.left, entry.top);
 			else if(entry.type === 'travel') {

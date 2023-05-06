@@ -5,6 +5,8 @@
 			<Entry
 				v-for="entry in this.entity.story"
 				:entry="entry"
+				:key="entry.id"
+				:class="entry.id === this.entity.activeEntryId ? 'active' : ''"
 			/>
 			<button class="entry add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
 		</div>
@@ -24,7 +26,6 @@ export default {
 	methods: {
 		setEntity(newEntity) {
 			this.entity = newEntity;
-			console.log(this.entity);
 		}
 	},
 }
