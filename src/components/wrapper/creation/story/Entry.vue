@@ -1,5 +1,5 @@
 <template>
-	<div class="entry">
+	<button class="entry">
 		<div 
 			class="type birth"
 			:class="entry.type"
@@ -14,7 +14,7 @@
 			</div>
 			<div class="setting">{{ this.entry.name }}</div>
 		</div>
-	</div>
+	</button>
 </template>
 
 <script>
@@ -47,7 +47,7 @@ export default {
 
 .entry {
 	display: flex;
-	font-size: .8rem;
+	color: @background-color-inverted;
 	&:not(:last-child) { margin-bottom: .25rem }
 
 	.type {
@@ -84,17 +84,6 @@ export default {
 			white-space: nowrap;
 			text-overflow: ellipsis;
 		}
-	}
-
-	&.add {
-		text-align: center;
-		padding: .5rem;
-		border-radius: 1rem;
-		background-color: fade(@white, 10%);
-		display: flex;
-		justify-content: center;
-		transition: .2s;
-		&:hover { background-color: fade(@white, 20%) }
 	}
 }
 

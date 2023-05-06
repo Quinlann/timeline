@@ -6,7 +6,7 @@
 				v-for="entry in this.entity.story"
 				:entry="entry"
 			/>
-			<div class="entry add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+			<button class="entry add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
 		</div>
 	</div>
 </template>
@@ -47,6 +47,18 @@ export default {
 			background-color: fade(black, 20%);
 			border-radius: 1.5rem;
 			display: flex;
+		}
+
+		.entry.add {
+			text-align: center;
+			padding: .5rem;
+			border-radius: 1rem;
+			background-color: fade(@white, 10%);
+			display: flex;
+			justify-content: center;
+			transition: .2s;
+			color: @background-color-inverted;
+			&:hover { background-color: fade(@white, 20%) }
 		}
 	}
 </style>

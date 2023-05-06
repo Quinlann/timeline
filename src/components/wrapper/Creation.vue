@@ -3,11 +3,11 @@
     <div class="creation entityCreator">
 		<div class="creation__header">
 			<div class="top">
-				<div class="icon"><font-awesome-icon icon="fa-solid fa-user" /></div>
-				<div class="name">{{ entity.name }}</div>
-				<div class="closeBtn"
+				<button class="icon"><font-awesome-icon icon="fa-solid fa-user" /></button>
+				<button class="name">{{ entity.name }}</button>
+				<button class="closeBtn"
 					@click="closePop"
-				><font-awesome-icon icon="fa-solid fa-xmark" /></div>
+				><font-awesome-icon icon="fa-solid fa-xmark" /></button>
 			</div>
 			<div class="bottom">
 				<div class="path">World 1</div>
@@ -17,98 +17,98 @@
 			<div class="block">
 				<div class="block__header">
 					<div class="block__title">Nicknames</div>
-					<div class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></div>
+					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
 				</div>
 				<div class="block__content">
-					<div class="info-bit">Bem</div>
-					<div class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+					<button class="info-bit">Bem</button>
+					<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
 				</div>
 			</div>
 			<div class="block">
 				<div class="block__header">
 					<div class="block__title">Description</div>
-					<div class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></div>
+					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
 				</div>
 				<div class="block__content"><input type="textarea"></div>
 			</div>
 			<div class="block">
 				<div class="block__header">
 					<div class="block__title">Images</div>
-					<div class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></div>
+					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
 				</div>
 				<div class="block__content">
-					<div class="info-bit img"></div>
-					<div class="info-bit img btn add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+					<button class="info-bit img"></button>
+					<button class="info-bit img btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
 				</div>
 			</div>
 			<div class="block">
 				<div class="block__header">
 					<div class="block__title">Skills</div>
-					<div class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></div>
+					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
 				</div>
 				<div class="block__content">
-					<div class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+					<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
 				</div>
 			</div>
 			<div class="block">
 				<div class="block__header">
 					<div class="block__title">Teams</div>
-					<div class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></div>
+					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
 				</div>
 				<div class="block__content">
-					<div class="info-bit">The Sith</div>
-					<div class="info-bit">Ravenclaw</div>
-					<div class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+					<button class="info-bit">The Sith</button>
+					<button class="info-bit">Ravenclaw</button>
+					<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
 				</div>
 			</div>
 			<div class="block">
 				<div class="block__header">
 					<div class="block__title">Categories</div>
-					<div class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></div>
+					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
 				</div>
 				<div class="block__content">
-					<div class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+					<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
 				</div>
 			</div>
 			<div class="block">
 				<div class="block__add">
-					<div class="block-bit">
+					<button class="block-bit">
 						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 						Nicknames
-					</div>
-					<div class="block-bit">
+					</button>
+					<button class="block-bit">
 						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 						Description
-					</div>
-					<div class="block-bit">
+					</button>
+					<button class="block-bit">
 						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 						Images
-					</div>
-					<div class="block-bit">
+					</button>
+					<button class="block-bit">
 						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 						Skills
-					</div>
-					<div class="block-bit">
+					</button>
+					<button class="block-bit">
 						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 						Teams
-					</div>
-					<div class="block-bit">
+					</button>
+					<button class="block-bit">
 						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 						Categories
-					</div>
+					</button>
 				</div>
 			</div>
 		</div>
 
-		<div class="creation__timeline">
+		<div class="creation__story">
 			<Story
 				ref="story"
 			/>
 		</div>
 
 		<div class="creation__footer">
-			<div class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></div>
-			<div class="acceptBtn"><font-awesome-icon icon="fa-solid fa-check" /></div>
+			<button class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></button>
+			<button class="acceptBtn"><font-awesome-icon icon="fa-solid fa-check" /></button>
 		</div>
 	</div>
 
@@ -151,6 +151,7 @@ export default {
 	border-radius: .5rem;
 	padding: 1rem;
 	z-index: 1;
+	button { color: @background-color-inverted }
 
 	&.entityCreator {
 		.creation__header .path { display: none }
@@ -199,7 +200,7 @@ export default {
 		margin-right: @margin;
 	}
 
-	&__timeline {
+	&__story {
 		float: left;
 		width: @timelineColWidth;
 	}
@@ -232,13 +233,12 @@ export default {
 
 	.block {
 		&:not(:last-child) { margin-bottom: 1rem }
+		&:hover .removeBtn { opacity: 1 }
 		
 		&__header {
 			display: flex;
 			justify-content: space-between;
-
 			.removeBtn { opacity: 0 }
-			&:hover .removeBtn { opacity: 1 }
 		}
 
 		&__title {
@@ -263,7 +263,6 @@ export default {
 			border-radius: 1rem;
 			display: inline-block;
 			padding: 0 .5rem;
-			font-size: .8rem;
 			height: 1.5rem;
 			line-height: 1.5rem;
 			overflow: hidden;
@@ -305,59 +304,6 @@ export default {
 			transition: .2s;
 			&:hover { background-color: fade(@white, 20%); }
 			.icon { display: inline-block }
-		}
-
-		.time {
-			display: flex;
-			font-size: .8rem;
-			&:not(:last-child) { margin-bottom: .25rem }
-
-			.type {
-				width: 100%;
-				text-align: center;
-				display: flex;
-				justify-content: center;
-    			align-items: center;
-				padding: .25rem;
-				border-radius: 1rem;
-				transition: .2s;
-				z-index: 1;
-				&:hover { opacity: .8 }
-				
-				.icon {
-					color: @white;
-					text-align: center;
-					width: 2rem;
-				}
-				
-				&.birth { .gradient(@yellowDark, darken(@yellowDark, 10%)); }
-				&.place { .gradient(@red, darken(@red,10%)); }
-				&.travel { .gradient(@blue, darken(@blue,10%)); }
-				&.death { .gradient(@purple, darken(@purple,10%)); }
-				&.change { .gradient(grey, darken(grey,10%)); }
-
-				.date, .setting {
-					width: 50%;
-					background-color: fade(@black, 20%);
-					text-align: center;
-					padding: .25rem;
-					border-radius: 1rem;
-					overflow:hidden;
-					white-space: nowrap;
-					text-overflow: ellipsis;
-				}
-			}
-
-			&.add {
-				text-align: center;
-				padding: .5rem;
-				border-radius: 1rem;
-				background-color: fade(@white, 10%);
-				display: flex;
-				justify-content: center;
-				transition: .2s;
-				&:hover { background-color: fade(@white, 20%) }
-			}
 		}
 	}
 
