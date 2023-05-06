@@ -1,5 +1,5 @@
 <template>
-	<div class="nav__btn dropdown">
+	<button class="nav__btn dropdown">
 		<font-awesome-icon v-if="title === 'Worlds'" icon="fa-solid fa-globe" />
 		<font-awesome-icon v-if="title === 'Locations'" icon="fa-solid fa-location-dot" />
 		<font-awesome-icon v-if="title === 'Routes'" icon="fa-solid fa-route" />
@@ -24,7 +24,7 @@
 			</li>
 		  </ul>
 		</div>
-	</div>
+	</button>
 </template>
 
 <script>
@@ -57,6 +57,7 @@ export default {
 	position: relative;
 	background: @navBtn-color;
     color: @navBtn-color-inverted;
+	font-size: 1rem;
 	
 	&:hover {
 		border-radius: @navBtn-radius @navBtn-radius 0 0;
