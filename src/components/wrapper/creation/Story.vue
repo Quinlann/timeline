@@ -8,7 +8,10 @@
 				:key="entry.id"
 				:class="entry.id === this.entity.activeEntryId ? 'active' : ''"
 			/>
-			<button class="entry add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
+			<button
+				class="entry add"
+				@click="this.$emit('open-entry-creator')"
+			><font-awesome-icon icon="fa-solid fa-plus" /></button>
 		</div>
 	</div>
 </template>
