@@ -48,7 +48,24 @@ export default {
 .entry {
 	display: flex;
 	color: @background-color-inverted;
+	position: relative;
 	&:not(:last-child) { margin-bottom: .25rem }
+	&.active:after { opacity: 1 }
+
+	&:after {
+		opacity: 0;
+		content: '';
+		position: absolute;
+		left: -.4rem;
+		top: 50%;
+		transform: translateY(-50%);
+		background-color: @background-color-inverted;
+		height: 1rem;
+		width: .2rem;
+		border-radius: .2rem;
+		transition: .2s;
+		pointer-events: none;
+	}
 
 	.type {
 		width: 100%;
@@ -84,11 +101,6 @@ export default {
 			white-space: nowrap;
 			text-overflow: ellipsis;
 		}
-	}
-
-	&.active {
-		border: solid 2px yellow;
-		border-radius: 25px;
 	}
 }
 
