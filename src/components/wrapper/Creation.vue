@@ -154,7 +154,6 @@ export default {
 @margin: .5rem;
 
 .creation {
-	//display: none;
 	background-color: fade(black, 20%);
 	backdrop-filter: blur(10px);
 	max-width: 45rem;
@@ -162,7 +161,6 @@ export default {
 	border-radius: .5rem;
 	padding: 1rem;
 	z-index: 1;
-	button { color: @background-color-inverted }
 
 	&.entityCreator {
 		.creation__header .path { display: none }
@@ -175,12 +173,14 @@ export default {
 		padding-bottom: .5rem;
 		margin-bottom: 1rem;
 		
+		
 		.icon, .name {
 			padding: .25rem;
 			border-radius: .25rem;
 			font-size: 1.5rem;
 			float: left;
 			transition: .2s;
+			color: @background-color-inverted;
 			&:hover { background-color: fade(@white, 10%) }
 		}
 
@@ -197,6 +197,7 @@ export default {
 		.closeBtn {
 			float: right;
 			opacity: .5;
+			color: @background-color-inverted;
 			&:hover { opacity: 1; }
 		}
 
@@ -278,6 +279,7 @@ export default {
 			line-height: 1.5rem;
 			overflow: hidden;
 			transition: .2s;
+			color: @background-color-inverted;
 			&:not(:last-child) { margin-right: .25rem }
 			&:not(.btn):hover { background-color: fade(@white, 30%); }
 		}
@@ -313,6 +315,7 @@ export default {
 			border-radius: 1rem;
 			margin: 0 .5rem .5rem 0;
 			transition: .2s;
+			color: @background-color-inverted;
 			&:hover { background-color: fade(@white, 20%); }
 			.icon { display: inline-block }
 		}

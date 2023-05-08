@@ -83,18 +83,38 @@
 		&.when input { text-align: center }
 
 		&.what {
+			.block__inner {
+				border-radius: 1.2rem;
+				padding: .25rem;
+			}
+
 			select { text-align: center }
 		}
 	}
 
+	&.birth {
+		outline: .2rem solid @yellowDark;
+		.block.what .block__inner { .gradient(@yellowDark, darken(@yellowDark,10%)) }
+	}
+	
 	&.place {
 		outline: .2rem solid @red;
-		
-		.block.what .block__inner {
-			.gradient(@red, darken(@red,10%));
-			padding: .25rem;
-			border-radius: 1.2rem;
-		}
+		.block.what .block__inner { .gradient(@red, darken(@red,10%)) }
+	}
+
+	&.travel {
+		outline: .2rem solid @blue;
+		.block.what .block__inner { .gradient(@blue, darken(@blue,10%)) }
+	}
+
+	&.death {
+		outline: .2rem solid @purple;
+		.block.what .block__inner { .gradient(@purple, darken(@purple,10%)) }
+	}
+
+	&.follow {
+		outline: .2rem solid @green;
+		.block.what .block__inner { .gradient(@purple, darken(@green,10%)) }
 	}
 
 	&__footer {
@@ -110,6 +130,7 @@
 			line-height: 2.5rem;
 			text-align: center;
 			border-radius: 50%;
+			color: fade(@white, 50%);
 		}
 
 		.deleteBtn {
