@@ -4,6 +4,7 @@
 			v-if="showCreationPop"
 			:closePop="closeCreationPop"
 			ref="creation"
+			:locations="locations"
 		/>
 		<div class="map">
 			<img src="/src/assets/worldmap.svg">
@@ -25,7 +26,10 @@ import Entity from './wrapper/Entity.vue'
 import Creation from './wrapper/Creation.vue'
 
 export default {
-	props:['entities'],
+	props:[
+		'entities',
+		'locations',
+	],
 	components:  {Entity,Creation},
 	data() {
 		return {
@@ -90,7 +94,7 @@ export default {
 		},
 		clickEntity(entity) {
 			this.$parent.clickedMapEntity(entity);
-		}
+		},
 	},
 }
 

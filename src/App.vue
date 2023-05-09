@@ -4,6 +4,7 @@
 		:addEntity="addEntity"
 		:openEntity="openEntity"
 		:entities="entities"
+		:locations="locations"
 	/>
 	<Timeline
 		@update-timeline-point="updateTimelinePoint"
@@ -12,6 +13,7 @@
 	<Wrapper 
 		:entities="entities"
 		ref="wrapper"
+		:locations="locations"
 	/>
 </template>
 
@@ -324,7 +326,7 @@ export default {
 		convertEntryLocations() {
 			for (let e = 0; e < this.entities.length; e++) {
 				const story = this.entities[e].story;
-				story.forEach((entry, index) => {
+				story.forEach((entry) => {
 					const locationName = entry.location;
 					if(locationName) {
 						const location = this.locations.find(x => x.name === locationName);
@@ -335,7 +337,6 @@ export default {
 					}
 				});
 			}
-			console.log(this.entities);
 		},
 		addEntity(){
 			this.$refs.wrapper.addEntity();
@@ -432,6 +433,13 @@ export default {
 		},
 		clickedMapEntity(entity) {
 			this.$refs.wrapper.openEntity(entity);
+		},
+		addNewLocationToEntry(entityId, entryId, newLocation) {
+			const entry = this.entities.find(x => x.id === entityId).story.find(x => x.id === entryId);
+			entry.location = newLocation;
+			entry.name = newLocation;
+			
+			this.convertEntryLocations();
 		},
 	},
 	watch: {

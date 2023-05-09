@@ -103,7 +103,7 @@
 		<div class="creation__story">
 			<Story
 				ref="story"
-				@openEntryCreator="showEntryCreator = true;"
+				@openEntryCreator="(entry) => {showEntryCreatorEntry = entry; showEntryCreator = true;}"
 			/>
 		</div>
 
@@ -116,6 +116,9 @@
 	<EntryCreator
 		v-if="showEntryCreator"
 		@closeEntryCreator="showEntryCreator = false;"
+		@saveEntryCreator="saveEntryLocation"
+		:entry="showEntryCreatorEntry"
+		:locations="locations"
 	></EntryCreator>
 
 </template>
@@ -129,17 +132,25 @@ export default {
 		Story,
 		EntryCreator,
 	},
-	props: ['closePop'],
+	props: [
+		'closePop',
+		'locations',
+	],
 	data() {
 		return {
 			entity: {},
 			showEntryCreator: false,
+			showEntryCreatorEntry: {},
 		}
 	},
 	methods: {
 		setEntity(newEntity) {
 			this.entity = newEntity;
 			this.$refs.story.setEntity(newEntity);
+		},
+		saveEntryLocation(entryId, newLocation) {
+			this.showEntryCreator = false;
+			this.$parent.$parent.addNewLocationToEntry(this.entity.id, entryId, newLocation);
 		}
 	},
 }

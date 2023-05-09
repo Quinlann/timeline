@@ -10,7 +10,7 @@
 		  <input class="search" onfocus="this.value=''" value="Search">
 		  <ul>
 			<li 
-				v-for="entity in entities"
+				v-for="entity in items"
 				:key="entity.id"
 				@click="clickDropdownItem(entity.id)"
 			>
@@ -29,7 +29,7 @@
 
 <script>
 export default {
-	props: ['title', 'entities'],
+	props: ['title', 'items'],
 	methods:{
 		clickPlus(){
 			if(this.title === 'Entities') this.$emit('add-entity');

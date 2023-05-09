@@ -3,24 +3,53 @@
 		<div class="block when">
 			<h3>When</h3>
 			<div class="block__inner">
-				<input type="text">
+				<input 
+					type="text"
+					:value="entry.startDateStr"
+					disabled
+				>
 			</div>
 		</div>
 		<div class="block what">
 			<h3>What</h3>
 			<div class="block__inner">
-				<select class="entrySetting" name="entrySetting">
-					<option value="Place">Place</option>
-					<option value="Travel">Travel</option>
+				<select 
+					class="entrySetting"
+					name="entrySetting"
+					:disabled="entry.type"
+				>
+					<option
+						value="Place"
+						:selected="entry.type === 'place'"
+					>Place</option>
+					<option
+						value="Travel"
+						:selected="entry.type === 'travel'"
+					>Travel</option>
 				</select>
-				<select class="placeSetting" name="placeSetting">
-					<option value="Location">Location</option>
+				<select
+					class="placeSetting"
+					name="placeSetting"
+					:disabled="entry.location"
+				>
+					<option
+						value="Location"
+						:selected="entry.location"
+					>Location</option>
 					<option value="Coordinates">Coordinates</option>
 					<option value="Unknown">Unknown</option>
 				</select>
-				<select class="locationList" name="locationList">
-					<option value="Location1">Location1</option>
-					<option value="Location2">Location2</option>
+				<select
+					v-if="entry.type !== 'travel'"
+					v-model="newLocation"
+					class="locationList"
+					name="locationList"
+				>
+					<option
+						v-for="location in locations"
+						:value="location.name"
+						:selected="entry.location === location.name"
+					>{{ location.name }}</option>
 				</select>
 			</div>
 		</div>
@@ -31,15 +60,39 @@
 			</div>
 		</div>
 		<div class="storyEntryCreator__footer">
-			<button class="deleteBtn"
+			<button
+				class="deleteBtn"
 				@click="this.$emit('close-entry-creator')"
 			><font-awesome-icon icon="fa-solid fa-trash" /></button>
-			<button class="acceptBtn"><font-awesome-icon icon="fa-solid fa-check" /></button>
+			<button
+				class="acceptBtn"
+				@click="this.$emit('save-entry-creator', entry.id, newLocation)"
+			><font-awesome-icon icon="fa-solid fa-check" /></button>
 		</div>
 	</div>
 </template>
 
-<script></script>
+<script>
+export default {
+	props: [
+		'entry',
+		'locations',
+	],
+	data() {
+		return {
+			newLocation: ''
+		}
+	},
+	watch: {
+		entry() {
+			this.newLocation = this.entry.location;
+		}
+	},
+	mounted() {
+		this.newLocation = this.entry.location;
+	},
+}
+</script>
 
 <style scoped lang="less">
 
