@@ -40,8 +40,8 @@ export default {
 					story: [
 						{
 							name: 'Romania',
-							left: 54.6,
-							top: 38.6,
+							left: -1,
+							top: -1,
 							startDateStr: '1999-10-05',
 							type: 'place',
 							location: 'Romania',
@@ -59,8 +59,8 @@ export default {
 						},
 						{
 							name: 'Hong Kong',
-							left: 80.7,
-							top: 51,
+							left: -1,
+							top: -1,
 							startDateStr: '2000-03-21',
 							type: 'place',
 							location: 'Hong Kong',
@@ -68,8 +68,8 @@ export default {
 						},
 						{
 							name: 'Colombia',
-							left: 26.7,
-							top: 61,
+							left: -1,
+							top: -1,
 							startDateStr: '2000-05-10',
 							type: 'place',
 							location: 'Colombia',
@@ -77,8 +77,8 @@ export default {
 						},
 						{
 							name: 'Budapest',
-							left: 52.8,
-							top: 37.7,
+							left: -1,
+							top: -1,
 							startDateStr: '2000-07-12',
 							type: 'place',
 							location: 'Budapest',
@@ -86,8 +86,8 @@ export default {
 						},
 						{
 							name: 'Rotterdam',
-							left: 48.9,
-							top: 34.5,
+							left: -1,
+							top: -1,
 							startDateStr: '2000-08-26',
 							type: 'place',
 							location: 'Rotterdam',
@@ -95,8 +95,8 @@ export default {
 						},
 						{
 							name: 'Romania',
-							left: 54.6,
-							top: 38.6,
+							left: -1,
+							top: -1,
 							startDateStr: '2000-09-04',
 							type: 'place',
 							location: 'Romania',
@@ -113,8 +113,8 @@ export default {
 					story: [
 						{
 							name: 'Romania',
-							left: 25.6,
-							top: 25.6,
+							left: -1,
+							top: -1,
 							startDateStr: '1999-10-15',
 							type: 'place',
 							location: 'Romania',
@@ -122,8 +122,8 @@ export default {
 						},
 						{
 							name: 'Hong Kong',
-							left: 51,
-							top: 51,
+							left: -1,
+							top: -1,
 							startDateStr: '2000-03-01',
 							type: 'place',
 							location: 'Hong Kong',
@@ -131,8 +131,8 @@ export default {
 						},
 						{
 							name: 'Romania - Hong Kong',
-							left: 0,
-							top: 0,
+							left: -1,
+							top: -1,
 							startDateStr: '2000-03-23',
 							type: 'travel',
 							location: '',
@@ -141,8 +141,8 @@ export default {
 						},
 						{
 							name: 'Colombia',
-							left: 93,
-							top: 33,
+							left: -1,
+							top: -1,
 							startDateStr: '2000-06-15',
 							type: 'place',
 							location: 'Colombia',
@@ -150,18 +150,18 @@ export default {
 						},
 						{
 							name: 'A to B',
-							left: 0,
-							top: 0,
+							left: -1,
+							top: -1,
 							startDateStr: '2000-06-24',
 							type: 'travel',
-							location: 'Colombia',
+							location: '',
 							route: 'r_1',
 							routeBackward: true,
 						},
 						{
 							name: 'Colombia',
-							left: 25,
-							top: 25,
+							left: -1,
+							top: -1,
 							startDateStr: '2000-09-04',
 							type: 'place',
 							location: 'Colombia',
@@ -256,6 +256,33 @@ export default {
 					],
 				},
 			],
+			locations: [
+				{
+					name: 'Romania',
+					left: 54.6,
+					top: 38.6,
+				},
+				{
+					name: 'Hong Kong',
+					left: 80.7,
+					top: 51,
+				},
+				{
+					name: 'Colombia',
+					left: 26.7,
+					top: 61,
+				},
+				{
+					name: 'Budapest',
+					left: 52.8,
+					top: 37.7,
+				},
+				{
+					name: 'Rotterdam',
+					left: 48.9,
+					top: 34.5,
+				},
+			],
 			timelinePoint: 0,
 			timelineDate: '',
 			timelineStartDateStr: '1999-10-05',
@@ -265,6 +292,8 @@ export default {
 	beforeMount() {
 		this.setEntityIds();
 		this.setEntryIds();
+		this.setLocationsId();
+		this.convertEntryLocations();
 		this.convertDateStrs();
 		this.setStartEndDates();
 		this.convertDatesToPct();
@@ -288,6 +317,25 @@ export default {
 					entry.id = index;
 				});
 			}
+		},
+		setLocationsId(){
+			this.locations.forEach((location,i) => {location.id = i;});
+		},
+		convertEntryLocations() {
+			for (let e = 0; e < this.entities.length; e++) {
+				const story = this.entities[e].story;
+				story.forEach((entry, index) => {
+					const locationName = entry.location;
+					if(locationName) {
+						const location = this.locations.find(x => x.name === locationName);
+						if(location) {
+							entry.left = location.left;
+							entry.top = location.top;
+						}
+					}
+				});
+			}
+			console.log(this.entities);
 		},
 		addEntity(){
 			this.$refs.wrapper.addEntity();
