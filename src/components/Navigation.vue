@@ -4,20 +4,18 @@
             <div class="dropdowns__collected world-specific">
                 <NavBtn
                     title="Worlds"
-                    :dropdownOptions="settings.worlds"
                 />
                 <NavBtn
                     title="Locations"
-                    :dropdownOptions="settings.locations"
+                    :items="locations"
                 />
                 <NavBtn
                     title="Routes"
-                    :dropdownOptions="settings.routes"
                 />
             </div>
             <NavBtn 
                 title="Entities"
-                :entities="entities"
+                :items="entities"
                 @add-entity="addEntity"
                 @open-entity="openEntity"
             />
@@ -60,6 +58,13 @@ export default {
     components:  {NavBtn},
     props: {
         entities: {
+            type: Array,
+            required: true,
+            default: () => {
+                return [];
+            },
+        },
+        locations: {
             type: Array,
             required: true,
             default: () => {

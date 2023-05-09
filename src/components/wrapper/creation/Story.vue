@@ -7,6 +7,7 @@
 				:entry="entry"
 				:key="entry.id"
 				:class="entry.id === this.entity.activeEntryId ? 'active' : ''"
+				@click="this.$emit('open-entry-creator', entry)"
 			/>
 			<button
 				class="entry add"
