@@ -14,12 +14,7 @@
 			</div>
 		</div>
 		<div class="creation__info">
-			<Nicknames />
-			<Description />
-			<Images />
-			<Skills />
-			<Teams />
-			<Categories />
+			<Block />
 			<div class="block">
 				<div class="block__add">
 					<button class="block-bit">
@@ -76,23 +71,13 @@
 <script>
 import Story from './creation/Story.vue';
 import EntryCreator from './creation/EntryCreator.vue'
-import Categories from './creation/infoBlocks/Categories.vue';
-import Description from './creation/infoBlocks/Description.vue';
-import Images from './creation/infoBlocks/Images.vue';
-import Nicknames from './creation/infoBlocks/Nicknames.vue';
-import Skills from './creation/infoBlocks/Skills.vue';
-import Teams from './creation/infoBlocks/Teams.vue';
+import Block from './creation/EntryCreator.vue'
 
 export default {
 	components: {
 		Story,
 		EntryCreator,
-		Categories,
-		Description,
-		Images,
-		Nicknames,
-		Skills,
-		Teams,
+		Block,
 	},
 	props: [
 		'closePop',

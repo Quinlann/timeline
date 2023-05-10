@@ -1,13 +1,11 @@
 <template>
-		<div class="block__header">
-			<div class="block__title">{{title}}</div>
-			<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
-		</div>
+	<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
 </template>
 
 <script>
 
 export default {
+
 }
 </script>
 
