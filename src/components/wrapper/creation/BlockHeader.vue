@@ -1,18 +1,13 @@
 <template>
-	<div class="block">
-		<BlockHeader title="Images" />
-		<div class="block__content">
-			<button class="info-bit img"></button>
-			<button class="info-bit img btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
+		<div class="block__header">
+			<div class="block__title">{{title}}</div>
+			<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
 		</div>
-	</div>
 </template>
 
 <script>
-import BlockHeader from '../BlockHeader.vue'
 
 export default {
-	components: { BlockHeader },
 }
 </script>
 
