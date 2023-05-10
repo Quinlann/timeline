@@ -14,62 +14,12 @@
 			</div>
 		</div>
 		<div class="creation__info">
-			<div class="block">
-				<div class="block__header">
-					<div class="block__title">Nicknames</div>
-					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
-				</div>
-				<div class="block__content">
-					<button class="info-bit">Bem</button>
-					<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
-				</div>
-			</div>
-			<div class="block">
-				<div class="block__header">
-					<div class="block__title">Description</div>
-					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
-				</div>
-				<div class="block__content"><input type="textarea"></div>
-			</div>
-			<div class="block">
-				<div class="block__header">
-					<div class="block__title">Images</div>
-					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
-				</div>
-				<div class="block__content">
-					<button class="info-bit img"></button>
-					<button class="info-bit img btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
-				</div>
-			</div>
-			<div class="block">
-				<div class="block__header">
-					<div class="block__title">Skills</div>
-					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
-				</div>
-				<div class="block__content">
-					<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
-				</div>
-			</div>
-			<div class="block">
-				<div class="block__header">
-					<div class="block__title">Teams</div>
-					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
-				</div>
-				<div class="block__content">
-					<button class="info-bit">The Sith</button>
-					<button class="info-bit">Ravenclaw</button>
-					<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
-				</div>
-			</div>
-			<div class="block">
-				<div class="block__header">
-					<div class="block__title">Categories</div>
-					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
-				</div>
-				<div class="block__content">
-					<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
-				</div>
-			</div>
+			<Nicknames />
+			<Description />
+			<Images />
+			<Skills />
+			<Teams />
+			<Categories />
 			<div class="block">
 				<div class="block__add">
 					<button class="block-bit">
@@ -126,11 +76,23 @@
 <script>
 import Story from './creation/Story.vue';
 import EntryCreator from './creation/EntryCreator.vue'
+import Categories from './creation/infoBlocks/Categories.vue';
+import Description from './creation/infoBlocks/Description.vue';
+import Images from './creation/infoBlocks/Images.vue';
+import Nicknames from './creation/infoBlocks/Nicknames.vue';
+import Skills from './creation/infoBlocks/Skills.vue';
+import Teams from './creation/infoBlocks/Teams.vue';
 
 export default {
 	components: {
 		Story,
 		EntryCreator,
+		Categories,
+		Description,
+		Images,
+		Nicknames,
+		Skills,
+		Teams,
 	},
 	props: [
 		'closePop',
