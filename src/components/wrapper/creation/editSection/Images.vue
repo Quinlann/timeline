@@ -1,17 +1,12 @@
 <template>
-	<div class="block">
-		<div class="block__header">
-			<div class="block__title">Description</div>
-			<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
-		</div>
-		<div class="block__content"><input type="textarea"></div>
-	</div>
+	<button class="info-bit img"></button>
+	<button class="info-bit img btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
 </template>
 
 <script>
 
 export default {
-
+	
 }
 </script>
 

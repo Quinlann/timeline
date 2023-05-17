@@ -1,15 +1,7 @@
 <template>
-	<div class="block">
-		<div class="block__header">
-			<div class="block__title">Teams</div>
-			<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
-		</div>
-		<div class="block__content">
-			<button class="info-bit">The Sith</button>
-			<button class="info-bit">Ravenclaw</button>
-			<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
-		</div>
-	</div>
+	<button class="info-bit">The Sith</button>
+	<button class="info-bit">Ravenclaw</button>
+	<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
 </template>
 
 <script>

@@ -11,7 +11,6 @@
 			/>
 			<button
 				class="entry add"
-				@click="this.$emit('open-entry-creator')"
 			><font-awesome-icon icon="fa-solid fa-plus" /></button>
 		</div>
 	</div>

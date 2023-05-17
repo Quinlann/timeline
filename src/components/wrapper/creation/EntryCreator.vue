@@ -1,5 +1,8 @@
 <template>
-    <div class="storyEntryCreator place">
+    <div 
+		class="storyEntryCreator"
+		:class="entry.type"
+	>
 		<div class="block when">
 			<h3>When</h3>
 			<div class="block__inner">

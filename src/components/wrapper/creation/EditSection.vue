@@ -1,20 +1,66 @@
 <template>
 	<div class="block">
 		<div class="block__header">
-			<div class="block__title">Nicknames</div>
-			<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
+			<div class="block__title">{{ title }}</div>
+			<button 
+				class="removeBtn"
+				@click="hideEditSection"
+			><font-awesome-icon icon="fa-solid fa-trash" /></button>
 		</div>
 		<div class="block__content">
-			<button class="info-bit">Bem</button>
-			<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
+			<Nicknames
+				v-if="title === 'Nickname'"
+			/>
+			<Description
+				v-if="title === 'Description'"
+			/>
+			<Images
+				v-if="title === 'Images'"
+			/>
+			<Skills
+				v-if="title === 'Skills'"
+			/>
+			<Teams
+				v-if="title === 'Teams'"
+			/>
+			<Categories
+				v-if="title === 'Categories'"
+			/>
 		</div>
 	</div>
 </template>
 
 <script>
+import Categories from './editSection/Categories.vue';
+import Description from './editSection/Description.vue';
+import Images from './editSection/Images.vue';
+import Nicknames from './editSection/Nicknames.vue';
+import Skills from './editSection/Skills.vue';
+import Teams from './editSection/Teams.vue';
 
 export default {
-
+	components: {
+		Categories,
+		Description,
+		Images,
+		Nicknames,
+		Skills,
+		Teams,
+	},
+	props: {
+		title: {
+			type: String,
+			default: () => {
+				return '';
+			}
+		}
+	},
+	methods: {
+		hideEditSection(){
+			console.log(this.title);
+			this.$parent.hideEditSection(this.title);
+		}
+	}
 }
 </script>
 

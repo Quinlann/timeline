@@ -1,34 +1,12 @@
 <template>
-	<div class="block">
-		<div class="block__title">{{blockTitle}}</div>
-		<div class="block__content">
-			<Nicknames />
-			<Description />
-			<Images />
-			<Skills />
-			<Teams />
-			<Categories />
-		</div>
-	</div>
+	<button class="info-bit">Bem</button>
+	<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
 </template>
 
 <script>
-import Categories from './creation/blockContent/Categories.vue';
-import Description from './creation/blockContent/Description.vue';
-import Images from './creation/blockContent/Images.vue';
-import Nicknames from './creation/blockContent/Nicknames.vue';
-import Skills from './creation/blockContent/Skills.vue';
-import Teams from './creation/blockContent/Teams.vue';
 
 export default {
-	components: {
-		Categories,
-		Description,
-		Images,
-		Nicknames,
-		Skills,
-		Teams,
-	},
+
 }
 </script>
 

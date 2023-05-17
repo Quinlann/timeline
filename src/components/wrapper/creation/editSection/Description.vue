@@ -1,13 +1,5 @@
 <template>
-	<div class="block">
-		<div class="block__header">
-			<div class="block__title">Skills</div>
-			<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
-		</div>
-		<div class="block__content">
-			<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
-		</div>
-	</div>
+	<input type="textarea">
 </template>
 
 <script>
