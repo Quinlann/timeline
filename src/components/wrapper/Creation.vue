@@ -14,85 +14,79 @@
 			</div>
 		</div>
 		<div class="creation__info">
-			<div class="block">
-				<div class="block__header">
-					<div class="block__title">Nicknames</div>
-					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
-				</div>
-				<div class="block__content">
-					<button class="info-bit">Bem</button>
-					<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
-				</div>
-			</div>
-			<div class="block">
-				<div class="block__header">
-					<div class="block__title">Description</div>
-					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
-				</div>
-				<div class="block__content"><input type="textarea"></div>
-			</div>
-			<div class="block">
-				<div class="block__header">
-					<div class="block__title">Images</div>
-					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
-				</div>
-				<div class="block__content">
-					<button class="info-bit img"></button>
-					<button class="info-bit img btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
-				</div>
-			</div>
-			<div class="block">
-				<div class="block__header">
-					<div class="block__title">Skills</div>
-					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
-				</div>
-				<div class="block__content">
-					<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
-				</div>
-			</div>
-			<div class="block">
-				<div class="block__header">
-					<div class="block__title">Teams</div>
-					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
-				</div>
-				<div class="block__content">
-					<button class="info-bit">The Sith</button>
-					<button class="info-bit">Ravenclaw</button>
-					<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
-				</div>
-			</div>
-			<div class="block">
-				<div class="block__header">
-					<div class="block__title">Categories</div>
-					<button class="removeBtn"><font-awesome-icon icon="fa-solid fa-minus" /></button>
-				</div>
-				<div class="block__content">
-					<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
-				</div>
-			</div>
+			
+			<EditSection 
+				v-if="showingNickname"
+				:title="'Nickname'" 
+			/>
+			<EditSection
+				v-if="showingDescription"
+				:title="'Description'"
+			/>
+			<EditSection
+				v-if="showingImages"
+				:title="'Images'"
+			/>
+			<EditSection
+				v-if="showingSkills"
+				:title="'Skills'"
+			/>
+			<EditSection
+				v-if="showingTeams"
+				:title="'Teams'"
+			/>
+			<EditSection
+				v-if="showingCategories"
+				:title="'Categories'"
+			/>
+			
 			<div class="block">
 				<div class="block__add">
-					<button class="block-bit">
+					<button
+						class="block-bit"
+						v-if="!showingNickname"
+						@click="showingNickname = true;"
+					>
 						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 						Nicknames
 					</button>
-					<button class="block-bit">
+					<button 
+						class="block-bit"
+						v-if="!showingDescription"
+						@click="showingDescription = true;"
+					>
 						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 						Description
 					</button>
-					<button class="block-bit">
+					<button 
+						class="block-bit"
+						v-if="!showingImages"
+						@click="showingImages = true;"
+					>
 						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 						Images
 					</button>
-					<button class="block-bit">
+					<button 
+						class="block-bit"
+						v-if="!showingSkills"
+						@click="showingSkills = true;"
+					>
 						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 						Skills
 					</button>
-					<button class="block-bit">
+					<button 
+						class="block-bit"
+						v-if="!showingTeams"
+						@click="showingTeams = true;"
+					>
 						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 						Teams
 					</button>
-					<button class="block-bit">
+					<button 
+						class="block-bit"
+						v-if="!showingCategories"
+						@click="showingCategories = true;"
+					>
 						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 						Categories
 					</button>
@@ -126,11 +120,13 @@
 <script>
 import Story from './creation/Story.vue';
 import EntryCreator from './creation/EntryCreator.vue'
+import EditSection from './creation/EditSection.vue'
 
 export default {
 	components: {
 		Story,
 		EntryCreator,
+		EditSection,
 	},
 	props: [
 		'closePop',
@@ -141,6 +137,12 @@ export default {
 			entity: {},
 			showEntryCreator: false,
 			showEntryCreatorEntry: {},
+			showingNickname: false,
+			showingDescription: false,
+			showingImages: false,
+			showingSkills: false,
+			showingCategories: false,
+			showingTeams: false,
 		}
 	},
 	methods: {
@@ -151,7 +153,15 @@ export default {
 		saveEntryLocation(entryId, newLocation) {
 			this.showEntryCreator = false;
 			this.$parent.$parent.addNewLocationToEntry(this.entity.id, entryId, newLocation);
-		}
+		},
+		hideEditSection(title) {
+			if(title === 'Nickname') this.showingNickname = false;
+			if(title === 'Description') this.showingDescription = false;
+			if(title === 'Images') this.showingImages = false;
+			if(title === 'Skills') this.showingSkills = false;
+			if(title === 'Categories') this.showingCategories = false;
+			if(title === 'Teams') this.showingTeams = false;
+		},
 	},
 }
 </script>
