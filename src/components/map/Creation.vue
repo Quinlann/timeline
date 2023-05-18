@@ -16,8 +16,8 @@
 		<div class="creation__info">
 			
 			<EditSection 
-				v-if="showingNickname"
-				:title="'Nickname'" 
+				v-if="showingNicknames"
+				:title="'Nicknames'" 
 			/>
 			<EditSection
 				v-if="showingDescription"
@@ -44,8 +44,8 @@
 				<div class="block__add">
 					<button
 						class="block-bit"
-						v-if="!showingNickname"
-						@click="showingNickname = true;"
+						v-if="!showingNicknames"
+						@click="showingNicknames = true;"
 					>
 						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
 						Nicknames
@@ -137,7 +137,7 @@ export default {
 			entity: {},
 			showEntryCreator: false,
 			showEntryCreatorEntry: {},
-			showingNickname: false,
+			showingNicknames: false,
 			showingDescription: false,
 			showingImages: false,
 			showingSkills: false,
@@ -155,7 +155,7 @@ export default {
 			this.$parent.$parent.addNewLocationToEntry(this.entity.id, entryId, newLocation);
 		},
 		hideEditSection(title) {
-			if(title === 'Nickname') this.showingNickname = false;
+			if(title === 'Nicknames') this.showingNicknames = false;
 			if(title === 'Description') this.showingDescription = false;
 			if(title === 'Images') this.showingImages = false;
 			if(title === 'Skills') this.showingSkills = false;
@@ -283,112 +283,18 @@ export default {
 		padding-top: 1rem;
 		display: flex;
 		justify-content: space-between;
-
-		.deleteBtn, .acceptBtn {
-			width: 2.5rem;
-			height: 2.5rem;
-			line-height: 2.5rem;
-			text-align: center;
-			border-radius: 50%;
-		}
-
-		.deleteBtn {
-			background-color: fade(@red, 20%);
-			&:hover { background-color: fade(@red, 30%) }
-		}
-
-		.acceptBtn {
-			background-color: fade(@green, 20%);
-			&:hover { background-color: fade(@green, 30%) }
-		}
 	}
 
-	.block {
-		&:not(:last-child) { margin-bottom: 1rem }
-		&:hover .removeBtn { opacity: 1 }
-		
-		&__header {
-			display: flex;
-			justify-content: space-between;
-			.removeBtn { opacity: 0 }
-		}
-
-		&__title {
-			font-weight: bold;
-			margin: 0 0 .25rem .25rem;
-		}
-
-		&__content {
-			padding: .5rem;
-			background-color: fade(black, 20%);
-			border-radius: 1.5rem;
-			display: flex;
-		}
-		
-		&__add {
-			border-top: 1px solid @black;
-			padding-top: 1rem;
-		}
-
-		.info-bit {
-			background-color: fade(@white, 20%);
-			border-radius: 1rem;
-			display: inline-block;
-			padding: 0 .5rem;
-			height: 1.5rem;
-			line-height: 1.5rem;
-			overflow: hidden;
-			transition: .2s;
-			color: @background-color-inverted;
-			&:not(:last-child) { margin-right: .25rem }
-			&:not(.btn):hover { background-color: fade(@white, 30%); }
-		}
-
-		.btn {
-			background-color: fade(@white, 5%);
-			border-radius: 1rem;
-			width: 1.5rem;
-			padding: 0;
-			&:hover { background-color: fade(@white, 20%) }
-			&.add { text-align: center }
-		}
-
-		.img {
-			height: 5rem;
-			width: 4rem;
-			&.add { line-height: 5rem }
-		}
-
-		input {
-			width: 100%;
-			border: none;
-			padding: .25rem;
-			background-color: transparent;
-			color: @background-color-inverted;
-			white-space:wrap;
-		}
-
-		.block-bit {
-			float: left;
-			padding: .5rem;
-			background-color: fade(@white, 10%);
-			border-radius: 1rem;
-			margin: 0 .5rem .5rem 0;
-			transition: .2s;
-			color: @background-color-inverted;
-			&:hover { background-color: fade(@white, 20%); }
-			.icon { display: inline-block }
-		}
+	.block-bit {
+		float: left;
+		padding: .5rem;
+		background-color: fade(@white, 10%);
+		border-radius: 1rem;
+		margin: 0 .5rem .5rem 0;
+		transition: .2s;
+		color: @background-color-inverted;
+		&:hover { background-color: fade(@white, 20%); }
+		.icon { display: inline-block }
 	}
 }
-
-.deleteBtn, .removeBtn, .acceptBtn {
-	padding: 0 .5rem;
-	color: fade(@white, 50%);
-	transition: .2s;
-}
-
-.removeBtn:hover  { color: fade(@white, 80%) }
-.deleteBtn:hover { color: fade(@red, 80%) }
-.acceptBtn:hover { color: fade(@green, 80%) }
 </style>

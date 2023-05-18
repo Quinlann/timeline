@@ -12,32 +12,6 @@ export default {
 <style scoped lang="less">
 	@import "/src/global.less";
 
-	.block {
-		&:not(:last-child) { margin-bottom: 1rem }
-		&:hover .removeBtn { opacity: 1 }
-		
-		&__header {
-			display: flex;
-			justify-content: space-between;
-			.removeBtn { opacity: 0 }
-		}
-
-		&__title {
-			font-weight: bold;
-			margin: 0 0 .25rem .25rem;
-		}
-
-		&__content {
-			padding: .5rem;
-			background-color: fade(black, 20%);
-			border-radius: 1.5rem;
-			display: flex;
-		}
-		
-		&__add {
-			border-top: 1px solid @black;
-			padding-top: 1rem;
-		}
 
 		.info-bit {
 			background-color: fade(@white, 20%);
@@ -61,32 +35,4 @@ export default {
 			&:hover { background-color: fade(@white, 20%) }
 			&.add { text-align: center }
 		}
-
-		.img {
-			height: 5rem;
-			width: 4rem;
-			&.add { line-height: 5rem }
-		}
-
-		input {
-			width: 100%;
-			border: none;
-			padding: .25rem;
-			background-color: transparent;
-			color: @background-color-inverted;
-			white-space:wrap;
-		}
-
-		.block-bit {
-			float: left;
-			padding: .5rem;
-			background-color: fade(@white, 10%);
-			border-radius: 1rem;
-			margin: 0 .5rem .5rem 0;
-			transition: .2s;
-			color: @background-color-inverted;
-			&:hover { background-color: fade(@white, 20%); }
-			.icon { display: inline-block }
-		}
-	}
 </style>
