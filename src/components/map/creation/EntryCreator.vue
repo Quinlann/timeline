@@ -180,24 +180,6 @@ export default {
 		display: flex;
 		justify-content: space-between;
 
-		.deleteBtn, .acceptBtn {
-			width: 2.5rem;
-			height: 2.5rem;
-			line-height: 2.5rem;
-			text-align: center;
-			border-radius: 50%;
-			color: fade(@white, 50%);
-		}
-
-		.deleteBtn {
-			background-color: fade(@red, 20%);
-			&:hover { background-color: fade(@red, 30%) }
-		}
-
-		.acceptBtn {
-			background-color: fade(@green, 20%);
-			&:hover { background-color: fade(@green, 30%) }
-		}
 	}
 }
 
