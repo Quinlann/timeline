@@ -1,5 +1,5 @@
 <template>
-	<div id="wrapper">
+	<div class="map__container">
 		<Creation 
 			v-if="showCreationPop"
 			:closePop="closeCreationPop"
@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import Entity from './wrapper/Entity.vue'
-import Creation from './wrapper/Creation.vue'
+import Entity from './map/Entity.vue'
+import Creation from './map/Creation.vue'
 
 export default {
 	props:[
@@ -116,22 +116,22 @@ document.addEventListener("wheel", function(e) {
 
 @icon-size: 2rem;
 
-#wrapper {
-	min-height: 100vh;
-	position: relative;
-	padding-top: @navigation-height;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: @background-color;
-	color: @background-color-inverted;
-}
-
 .map {
 	background-size: contain;
 	width: 100%;
 	position: fixed;
 	img { filter: invert(100%) }
+
+	&__container {
+		min-height: 100vh;
+		position: relative;
+		padding-top: @navigation-height;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: @background-color;
+		color: @background-color-inverted;
+	}
 }
 
 .entity {

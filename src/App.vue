@@ -10,25 +10,28 @@
 		@update-timeline-point="updateTimelinePoint"
 		:pointLabel="timelineDate"
 	/>
-	<Wrapper 
+	<Map 
 		:entities="entities"
-		ref="wrapper"
+		ref="map__container"
 		:locations="locations"
 	/>
+	<PopupContainer />
 </template>
 
 <script>
 import Navigation from './components/Navigation.vue'
 import Timeline from './components/Timeline.vue'
-import Wrapper from './components/Wrapper.vue'
+import Map from './components/Map.vue'
 import SideBar from './components/SideBar.vue'
+import PopupContainer from './components/PopupContainer.vue'
 
 export default {
 	components: {
 		Navigation,
 		Timeline,
-		Wrapper,
-		SideBar
+		Map,
+		SideBar,
+		PopupContainer
 	},
 	data() {
 		return {
@@ -339,10 +342,10 @@ export default {
 			}
 		},
 		addEntity(){
-			this.$refs.wrapper.addEntity();
+			this.$refs.map__container.addEntity();
 		},
 		openEntity(entityId) {
-			this.$refs.wrapper.openEntity(this.entities[entityId]);
+			this.$refs.map__container.openEntity(this.entities[entityId]);
 		},
 		convertDateStrs() {
 			this.timelineStartDate = new Date(this.timelineStartDateStr);
@@ -432,7 +435,7 @@ export default {
 			this.setEntityPos(entity, closestPin.left, closestPin.top);
 		},
 		clickedMapEntity(entity) {
-			this.$refs.wrapper.openEntity(entity);
+			this.$refs.map__container.openEntity(entity);
 		},
 		addNewLocationToEntry(entityId, entryId, newLocation) {
 			const entry = this.entities.find(x => x.id === entityId).story.find(x => x.id === entryId);
