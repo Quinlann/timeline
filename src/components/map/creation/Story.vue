@@ -7,7 +7,7 @@
 				:entry="entry"
 				:key="entry.id"
 				:class="entry.id === entity.activeEntryId ? 'active' : ''"
-				@click="this.$emit('open-entry-creator', entry)"
+				@click="openEntryCreator(entry)"
 			/>
 			<button
 				class="entry add"
@@ -21,11 +21,17 @@ import { ref } from 'vue';
 
 import Entry from './story/Entry.vue'
 
+const emit = defineEmits(['open-entry-creator']);
+
 let entity = ref({});
 
 const setEntity = (newEntity) => {
 	entity.value = newEntity;
 };
+
+const openEntryCreator = (entry) => {
+	emit('open-entry-creator', entry);
+}
 
 defineExpose({setEntity});
 </script>

@@ -65,11 +65,11 @@
 		<div class="storyEntryCreator__footer">
 			<button
 				class="deleteBtn"
-				@click="this.$emit('close-entry-creator')"
+				@click="closeEntryCreator"
 			><font-awesome-icon icon="fa-solid fa-trash" /></button>
 			<button
 				class="acceptBtn"
-				@click="this.$emit('save-entry-creator', entry.id, newLocation)"
+				@click="saveEntryCreator(entry.id, newLocation)"
 			><font-awesome-icon icon="fa-solid fa-check" /></button>
 		</div>
 	</div>
@@ -79,9 +79,10 @@
 import { useMapStore } from '/src/stores/MapStore.js';
 const MapStore = useMapStore(),
 	MapData = MapStore.MapData;
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const props = defineProps(['entry']);
+const emit = defineEmits(['close-entry-creator','save-entry-creator']);
 
 let newLocation = ref('');
 
@@ -89,9 +90,12 @@ onMounted(() => {
 	newLocation.value = props.entry.location;
 });
 
-// watch(entry, () => {
-// 	newLocation.value = entry.location;
-// });
+const closeEntryCreator = () => {
+	emit('close-entry-creator');
+}
+const saveEntryCreator = (entryId, newLocation) => {
+	emit('save-entry-creator', entryId, newLocation);
+}
 
 </script>
 

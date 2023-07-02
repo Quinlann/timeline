@@ -63,10 +63,6 @@ const clickDropdownItem = (entityId) => {
 	if(props.title === 'Entities') emit('open-entity', entityId);
 };
 
-const clickPlus = () => {
-	if(this.title === 'Entities') this.$emit('add-entity');
-};
-
 </script>
 
 <style scoped lang="less">

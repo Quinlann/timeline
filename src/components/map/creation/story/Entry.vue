@@ -4,15 +4,15 @@
 			class="type birth"
 			:class="entry.type"
 		>
-			<div class="date">{{ this.entry.startDateStr }}</div>
+			<div class="date">{{ entry.startDateStr }}</div>
 			<div class="icon">
 				<font-awesome-icon v-if="entry.type === 'birth'" icon="fa-solid fa-sun"/>
-				<font-awesome-icon v-if="this.entry.type === 'place'" icon="fa-solid fa-location-dot"/>
+				<font-awesome-icon v-if="entry.type === 'place'" icon="fa-solid fa-location-dot"/>
 				<font-awesome-icon v-if="entry.type === 'travel'" icon="fa-solid fa-route"/>
 				<font-awesome-icon v-if="entry.type === 'death'" icon="fa-solid fa-skull"/>
 				<font-awesome-icon v-if="entry.type === 'change'" icon="fa-solid fa-feather-pointed"/>
 			</div>
-			<div class="setting">{{ this.entry.name }}</div>
+			<div class="setting">{{ entry.name }}</div>
 		</div>
 	</button>
 </template>
@@ -23,7 +23,7 @@ import { computed } from 'vue';
 const props = defineProps(['entry']);
 
 const entryIcon = computed(() => {
-	const entryType = this.entry.type;
+	const entryType = entry.type;
 			
 	let entryIcon = '';
 
