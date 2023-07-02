@@ -1,6 +1,5 @@
 <template>
-    
-    <div class="creation entityCreator">
+	<div class="creation entityCreator">
 		<div class="creation__header">
 			<div class="top">
 				<button class="icon"><font-awesome-icon icon="fa-solid fa-user" /></button>
@@ -14,32 +13,37 @@
 			</div>
 		</div>
 		<div class="creation__info">
-			
 			<EditSection 
 				v-if="showingNicknames"
-				:title="'Nicknames'" 
+				:title="'Nicknames'"
+				@hideEditSection="hideEditSection"
 			/>
 			<EditSection
 				v-if="showingDescription"
 				:title="'Description'"
+				@hideEditSection="hideEditSection"
 			/>
 			<EditSection
 				v-if="showingImages"
 				:title="'Images'"
+				@hideEditSection="hideEditSection"
 			/>
 			<EditSection
 				v-if="showingSkills"
 				:title="'Skills'"
+				@hideEditSection="hideEditSection"
 			/>
 			<EditSection
 				v-if="showingTeams"
 				:title="'Teams'"
+				@hideEditSection="hideEditSection"
 			/>
 			<EditSection
 				v-if="showingCategories"
 				:title="'Categories'"
+				@hideEditSection="hideEditSection"
 			/>
-			
+
 			<div class="block">
 				<div class="block__add">
 					<button
@@ -96,7 +100,7 @@
 
 		<div class="creation__story">
 			<Story
-				ref="story"
+				ref="storyRef"
 				@openEntryCreator="(entry) => {showEntryCreatorEntry = entry; showEntryCreator = true;}"
 			/>
 		</div>
@@ -106,102 +110,115 @@
 			<button class="acceptBtn"><font-awesome-icon icon="fa-solid fa-check" /></button>
 		</div>
 	</div>
-	
+
 	<EntryCreator
 		v-if="showEntryCreator"
 		@closeEntryCreator="showEntryCreator = false;"
 		@saveEntryCreator="saveEntryLocation"
 		:entry="showEntryCreatorEntry"
-		:locations="locations"
 	></EntryCreator>
-
 </template>
 
-<script>
-import Story from './creation/Story.vue';
-import EntryCreator from './creation/EntryCreator.vue'
-import EditSection from './creation/EditSection.vue'
+<script setup>
+	import { ref, onMounted } from 'vue';
+	import { useMapStore } from '/src/stores/MapStore.js';
 
-export default {
-	components: {
-		Story,
-		EntryCreator,
-		EditSection,
-	},
-	props: [
-		'closePop',
-		'locations',
-	],
-	data() {
-		return {
-			entity: {},
-			showEntryCreator: false,
-			showEntryCreatorEntry: {},
-			showingNicknames: false,
-			showingDescription: false,
-			showingImages: false,
-			showingSkills: false,
-			showingCategories: false,
-			showingTeams: false,
+	const MapStore = useMapStore(),
+		MapData = MapStore.MapData;
+
+	import Story from './creation/Story.vue';
+	import EntryCreator from './creation/EntryCreator.vue';
+	import EditSection from './creation/EditSection.vue';
+
+	const props = defineProps(['closePop']);
+
+	let entity = ref({});
+
+	let showingNicknames = ref(false),
+	showingDescription = ref(false),
+	showingImages = ref(false),
+	showingSkills = ref(false),
+	showingTeams = ref(false),
+	showingCategories = ref(false);
+
+	let showEntryCreator = ref(false),
+	showEntryCreatorEntry = ref({});
+
+	const storyRef = ref(null);
+
+	const setEntity = (entityId) => {
+		if(entityId || entityId === 0) {
+			entity.value = MapData.entities[entityId];
+			storyRef.value.setEntity(entity.value);
+		} else {
+			storyRef.value.setEntity(MapData.tempEntity);
 		}
-	},
-	methods: {
-		setEntity(newEntity) {
-			this.entity = newEntity;
-			this.$refs.story.setEntity(newEntity);
-		},
-		saveEntryLocation(entryId, newLocation) {
-			this.showEntryCreator = false;
-			this.$parent.$parent.addNewLocationToEntry(this.entity.id, entryId, newLocation);
-		},
-		hideEditSection(title) {
-			if(title === 'Nicknames') this.showingNicknames = false;
-			if(title === 'Description') this.showingDescription = false;
-			if(title === 'Images') this.showingImages = false;
-			if(title === 'Skills') this.showingSkills = false;
-			if(title === 'Categories') this.showingCategories = false;
-			if(title === 'Teams') this.showingTeams = false;
-		},
-		createDrag() {
-			// https://www.w3schools.com/howto/howto_js_draggable.asp
-			const popupNode = document.querySelector('.creation');
-			dragElement(popupNode);
+	};
 
-			function dragElement(elmnt) {
-				var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-				popupNode.querySelector('.creation__header').onmousedown = dragMouseDown;
+	const saveEntryLocation = (entryId, newLocation) => {
+		showEntryCreator.value = false;
+		addNewLocationToEntry(entryId, newLocation);
+	};
 
-				function dragMouseDown(e) {
-					e = e || window.event;
-					e.preventDefault();
-					pos3 = e.clientX;
-					pos4 = e.clientY;
-					document.onmouseup = closeDragElement;
-					document.onmousemove = elementDrag;
-				}
+	const addNewLocationToEntry = (entryId, newLocation) => {
+		const entry = entity.value.story.find(x => x.id === entryId);
+		entry.location = newLocation;
+		entry.name = newLocation;
+		
+		MapStore.convertEntryLocations();
+	}
 
-				function elementDrag(e) {
-					e = e || window.event;
-					e.preventDefault();
-					pos1 = pos3 - e.clientX;
-					pos2 = pos4 - e.clientY;
-					pos3 = e.clientX;
-					pos4 = e.clientY;
-					elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-					elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-				}
+	const hideEditSection = (title) => {
+		if(title === 'Nicknames') showingNicknames.value = false;
+		if(title === 'Description') showingDescription.value = false;
+		if(title === 'Images') showingImages.value = false;
+		if(title === 'Skills') showingSkills.value = false;
+		if(title === 'Categories') showingCategories.value = false;
+		if(title === 'Teams') showingTeams.value = false;
+	};
 
-				function closeDragElement() {
-					document.onmouseup = null;
-					document.onmousemove = null;
-				}
+	const createDrag = () => {
+		// https://www.w3schools.com/howto/howto_js_draggable.asp
+		const popupNode = document.querySelector('.creation');
+		dragElement(popupNode);
+
+		function dragElement(elmnt) {
+			var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+			popupNode.querySelector('.creation__header').onmousedown = dragMouseDown;
+
+			function dragMouseDown(e) {
+				e = e || window.event;
+				e.preventDefault();
+				pos3 = e.clientX;
+				pos4 = e.clientY;
+				document.onmouseup = closeDragElement;
+				document.onmousemove = elementDrag;
 			}
-		},
-	},
-	mounted(){
-		this.createDrag();
-	},
-}
+
+			function elementDrag(e) {
+				e = e || window.event;
+				e.preventDefault();
+				pos1 = pos3 - e.clientX;
+				pos2 = pos4 - e.clientY;
+				pos3 = e.clientX;
+				pos4 = e.clientY;
+				elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+				elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+			}
+
+			function closeDragElement() {
+				document.onmouseup = null;
+				document.onmousemove = null;
+			}
+		}
+	}
+
+	onMounted(() => {
+		createDrag();
+	});
+
+	defineExpose({setEntity});
+
 </script>
 
 <style scoped lang="less">

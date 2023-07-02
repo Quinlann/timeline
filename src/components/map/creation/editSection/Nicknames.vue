@@ -3,16 +3,10 @@
 	<button class="info-bit btn add"><font-awesome-icon icon="fa-solid fa-plus" /></button>
 </template>
 
-<script>
-
-export default {
-
-}
-</script>
+<script setup></script>
 
 <style scoped lang="less">
 	@import "/src/global.less";
-
 
 		.info-bit {
 			background-color: fade(@white, 20%);

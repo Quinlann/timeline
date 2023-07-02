@@ -27,7 +27,7 @@
 	</div>
 </template>
 
-<script></script>
+<script setup></script>
 
 <style scoped lang="less">
 @import "/src/global.less";

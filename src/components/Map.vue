@@ -3,111 +3,68 @@
 		<Creation 
 			v-if="showCreationPop"
 			:closePop="closeCreationPop"
-			ref="creation"
-			:locations="locations"
+			ref="creationRef"
 		/>
 		<div class="map">
 			<img src="/src/assets/worldmap.svg">
 			<Entity 
-				v-for="entity in this.entities"
+				v-for="entity in entities"
+				:entity="entity"
 				:color="entity.color"
 				:x="entity.x"
 				:y="entity.y"
 				:name="entity.text"
 				:visible="entity.visible"
-				@click="clickEntity(entity)"
+				@click="openEntity(entity.id);"
 			/>
 		</div>
 	</div>
 </template>
 
-<script>
-import Entity from './map/Entity.vue'
-import Creation from './map/Creation.vue'
+<script setup>
+	import { useMapStore } from '/src/stores/MapStore.js';
+	const MapStore = useMapStore(),
+	MapData = MapStore.MapData;
 
-export default {
-	props:[
-		'entities',
-		'locations',
-	],
-	components:  {Entity,Creation},
-	data() {
-		return {
-			showCreationPop: false,
-			tempEntity: {
-				name:'Benjamin Bak Egede',
-				story: [
-					{
-						name: 'Jyllinge',
-						startDateStr: '05.10.1992',
-						type: 'birth',
-					},
-					{
-						name: 'Roskilde',
-						startDateStr: '03.21.2001',
-						type: 'place',
-					},
-					{
-						name: 'T: 50% L: 10%',
-						startDateStr: '2004',
-						type: 'travel',
-					},
-					{
-						name: 'Jyllinge',
-						startDateStr: '03.02.2004',
-						type: 'place',
-					},
-					{
-						name: 'Roskilde',
-						startDateStr: '05.10.2023',
-						type: 'death',
-					},
-					{
-						name: 'Roskilde',
-						startDateStr: '05.10.2024',
-						type: 'birth',
-					},
-					{
-						name: 'Bing Bong',
-						startDateStr: '05.10.2024',
-						type: 'change',
-					},
-				]
-			}
+	import { ref, nextTick, onBeforeMount, onMounted } from 'vue';
+
+	import Creation from './map/Creation.vue';
+	import Entity from './map/Entity.vue';
+
+	const entities = MapData.entities;
+
+	const openCreationPop = () => {
+		showCreationPop.value = true;
+	};
+
+	const closeCreationPop = () => {
+		showCreationPop.value = false;
+	};
+
+	const creationRef = ref(null);
+
+	const openEntity = (entityId) => {
+		openCreationPop();
+		nextTick(() => {
+			creationRef.value.setEntity(entityId);
+		});
+	};
+
+	let showCreationPop = ref(false);
+
+	defineExpose({openEntity});
+
+	/** ZOOM */
+	let zoom = 100;
+	document.addEventListener("wheel", function(e) {
+		const ZOOM_SPEED = 10;
+		const zoomElement = document.querySelector(".map");
+		if (e.deltaY > 0) {    
+			zoomElement.style.width = `${zoom -= ZOOM_SPEED}%`;  
+		} else {    
+			zoomElement.style.width = `${zoom += ZOOM_SPEED}%`;
 		}
-	},
-	methods: {
-		openCreationPop() {
-			this.showCreationPop = true;
-		},
-		closeCreationPop() {
-			this.showCreationPop = false;
-		},
-		addEntity(){
-			this.openEntity(this.tempEntity);
-		},
-		openEntity(entity){
-			this.openCreationPop();
-			this.$nextTick(() => {
-				this.$refs.creation.setEntity(entity);
-			});
-		},
-		clickEntity(entity) {
-			this.$parent.clickedMapEntity(entity);
-		},
-	},
-}
-
-let zoom = 100;
-document.addEventListener("wheel", function(e) {
-	const ZOOM_SPEED = 10;
-    const zoomElement = document.querySelector(".map");
-	if (e.deltaY > 0) {    
-        zoomElement.style.width = `${zoom -= ZOOM_SPEED}%`;  
-    } else {    
-        zoomElement.style.width = `${zoom += ZOOM_SPEED}%`;
-	}
-});
+	});
 
 </script>
 

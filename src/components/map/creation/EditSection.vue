@@ -30,37 +30,19 @@
 	</div>
 </template>
 
-<script>
-import Categories from './editSection/Categories.vue';
+<script setup>
+import Nicknames from './editSection/Nicknames.vue';
 import Description from './editSection/Description.vue';
 import Images from './editSection/Images.vue';
-import Nicknames from './editSection/Nicknames.vue';
 import Skills from './editSection/Skills.vue';
 import Teams from './editSection/Teams.vue';
+import Categories from './editSection/Categories.vue';
 
-export default {
-	components: {
-		Categories,
-		Description,
-		Images,
-		Nicknames,
-		Skills,
-		Teams,
-	},
-	props: {
-		title: {
-			type: String,
-			default: () => {
-				return '';
-			}
-		}
-	},
-	methods: {
-		hideEditSection(){
-			console.log(this.title);
-			this.$parent.hideEditSection(this.title);
-		}
-	}
+const props = defineProps(['title',]);
+const emit = defineEmits(['hideEditSection']);
+
+const hideEditSection = () => {
+	emit('hideEditSection', props.title);
 }
 </script>
 

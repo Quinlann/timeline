@@ -1,18 +1,18 @@
 <template>
-    <div class="section">
-        <select class="category" name="Category" id="category">
-            <option value="Category">Category</option>
-            <option value="Stories">Stories</option>
-            <option value="Locations">Locations</option>
-        </select>
-		<div class="search-container">
-			<font-awesome-icon icon="fa-solid fa-magnifying-glass" />
-			<input class="search" value="Search">
-		</div>
+<div class="section">
+    <select class="category" name="Category" id="category">
+        <option value="Category">Category</option>
+        <option value="Stories">Stories</option>
+        <option value="Locations">Locations</option>
+    </select>
+    <div class="search-container">
+        <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+        <input class="search" value="Search">
     </div>
+</div>
 </template>
 
-<script></script>
+<script setup></script>
 
 <style scoped lang="less">
 @import "/src/global.less";

@@ -3,10 +3,10 @@
 		<div class="block__title">Story</div>
 		<div class="block__content">
 			<Entry
-				v-for="entry in this.entity.story"
+				v-for="entry in entity.story"
 				:entry="entry"
 				:key="entry.id"
-				:class="entry.id === this.entity.activeEntryId ? 'active' : ''"
+				:class="entry.id === entity.activeEntryId ? 'active' : ''"
 				@click="this.$emit('open-entry-creator', entry)"
 			/>
 			<button
@@ -16,22 +16,18 @@
 	</div>
 </template>
 
-<script>
-import Entry from './story/Entry.vue';
+<script setup>
+import { ref } from 'vue';
 
-export default {
-	components:{Entry},
-	data() {
-		return {
-			entity: {},
-		};
-	},
-	methods: {
-		setEntity(newEntity) {
-			this.entity = newEntity;
-		}
-	},
-}
+import Entry from './story/Entry.vue'
+
+let entity = ref({});
+
+const setEntity = (newEntity) => {
+	entity.value = newEntity;
+};
+
+defineExpose({setEntity});
 </script>
 
 <style scoped lang="less">

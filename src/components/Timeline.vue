@@ -1,30 +1,49 @@
 <template>
 	<div class="timeline__container">
-		<div class="timeline__counter">{{ this.pointLabel }}</div>
+		<div class="timeline__counter">{{ pointLabel }}</div>
 		<input type="range" min="0" max="100" class="timeline"
 			:step="stepPrecision"
 			@input="changedRange"
-			v-model="this.rangeValue"
+			v-model="rangeValue"
 		>
 		<div class="timeline__selection"></div>
 	</div>
 </template>
 
-<script>
-export default {
-	props: ['pointLabel'],
-	data() {
-		return {
-			rangeValue: 0,
-			stepPrecision: .1,
-		}
-	},
-	methods:{
-		changedRange() {
-			this.$emit('update-timeline-point', this.rangeValue);
-		}
-	}
+<script setup>
+import { useMapStore } from '/src/stores/MapStore.js';
+import { ref, onBeforeMount, onMounted } from 'vue';
+const MapStore = useMapStore();
+
+const stepPrecision = .1;
+let pointLabel = ref('');
+let rangeValue = 0;
+
+onBeforeMount(() => {
+	setTimelineDate(MapStore.timelineStartDateStr);	
+});
+
+const setTimelineDate = (dateStr) => {
+	pointLabel.value = dateStr;
+	MapStore.timelinePoint = rangeValue;
 }
+
+const changedRange = () => {
+	updateTimelinePoint();
+}
+
+const updateTimelinePoint = () => {
+	setTimelineDate(convertPctToDate(rangeValue));
+}
+
+const convertPctToDate = (pct) => {
+	const startDateInMilSec = MapStore.timelineStartDate.getTime(),
+		pctDateInMilSec = startDateInMilSec + (MapStore.startEndDateDiff * (pct/100)),
+		pctDateInString = new Date(pctDateInMilSec).toISOString().substring(0, 10);
+
+	return pctDateInString;
+}
+
 </script>
 
 <style scoped lang="less">

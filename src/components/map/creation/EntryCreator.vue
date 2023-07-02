@@ -1,5 +1,5 @@
 <template>
-    <div 
+	<div 
 		class="storyEntryCreator"
 		:class="entry.type"
 	>
@@ -49,7 +49,7 @@
 					name="locationList"
 				>
 					<option
-						v-for="location in locations"
+						v-for="location in MapData.locations"
 						:value="location.name"
 						:selected="entry.location === location.name"
 					>{{ location.name }}</option>
@@ -75,30 +75,27 @@
 	</div>
 </template>
 
-<script>
-export default {
-	props: [
-		'entry',
-		'locations',
-	],
-	data() {
-		return {
-			newLocation: ''
-		}
-	},
-	watch: {
-		entry() {
-			this.newLocation = this.entry.location;
-		}
-	},
-	mounted() {
-		this.newLocation = this.entry.location;
-	},
-}
+<script setup>
+import { useMapStore } from '/src/stores/MapStore.js';
+const MapStore = useMapStore(),
+	MapData = MapStore.MapData;
+import { ref, onMounted, watch } from 'vue';
+
+const props = defineProps(['entry']);
+
+let newLocation = ref('');
+
+onMounted(() => {
+	newLocation.value = props.entry.location;
+});
+
+// watch(entry, () => {
+// 	newLocation.value = entry.location;
+// });
+
 </script>
 
 <style scoped lang="less">
-
 @import "/src/global.less";
 
 .storyEntryCreator {
@@ -182,5 +179,4 @@ export default {
 
 	}
 }
-
 </style>

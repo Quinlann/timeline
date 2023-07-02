@@ -1,20 +1,17 @@
 <template>
-    <div class="sidebar left">
-        <SidebarSearch/>
-        <SidebarResults/>
-    </div>
+<div class="sidebar left">
+    <SidebarSearch/>
+    <SidebarResults/>
+</div>
 </template>
 
-<script>
+<script setup>
 import SidebarSearch from './sidebar/SidebarSearch.vue'
 import SidebarResults from './sidebar/SidebarResults.vue'
 
-export default{
-    components: {SidebarSearch,SidebarResults}
-}
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 .sidebar {
 	width: 15rem;
 	position: fixed;

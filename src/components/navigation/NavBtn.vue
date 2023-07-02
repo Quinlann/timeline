@@ -7,38 +7,66 @@
 		<font-awesome-icon v-if="title === 'Events'" icon="fa-solid fa-explosion" />
 		{{ title }}
 		<div class="list">
-		  <input class="search" onfocus="this.value=''" value="Search">
-		  <ul>
-			<li 
-				v-for="entity in items"
-				:key="entity.id"
-				@click="clickDropdownItem(entity.id)"
+			<input class="search" onfocus="this.value=''" value="Search">
+			<tempalte
+				v-if="title === 'Entities'"
 			>
-				{{ entity.name }}
-			</li>
-			<li 
-				@click="clickPlus(title)"
-				class="add"
+				<ul>
+					<li 
+						v-for="entity in MapData.entities"
+						:key="entity.id"
+						@click="clickDropdownItem(entity.id)"
+					>
+						{{ entity.name }}
+					</li>
+					<li 
+						@click="clickDropdownItem(null)"
+						class="add"
+					>
+						<font-awesome-icon icon="fa-solid fa-plus" />
+					</li>
+				</ul>
+			</tempalte>
+			<tempalte
+				v-if="title === 'Locations'"
 			>
-				<font-awesome-icon icon="fa-solid fa-plus" />
-			</li>
-		  </ul>
+				<ul>
+					<li 
+						v-for="location in MapData.locations"
+						:key="location.id"
+						@click="clickDropdownItem(location.id)"
+					>
+						{{ location.name }}
+					</li>
+					<li 
+						@click="clickDropdownItem(null)"
+						class="add"
+					>
+						<font-awesome-icon icon="fa-solid fa-plus" />
+					</li>
+				</ul>
+			</tempalte>
 		</div>
 	</button>
 </template>
 
-<script>
-export default {
-	props: ['title', 'items'],
-	methods:{
-		clickPlus(){
-			if(this.title === 'Entities') this.$emit('add-entity');
-		},
-		clickDropdownItem(entityId) {
-			if(this.title === 'Entities') this.$emit('open-entity',entityId);
-		}
-	}
-}
+<script setup>
+import {useMapStore} from '/src/stores/MapStore.js';
+
+const MapStore = useMapStore(),
+MapData = MapStore.MapData;
+
+const props = defineProps(['title', 'items']);
+const emit = defineEmits(['open-entity']);
+
+const clickDropdownItem = (entityId) => {
+	if(props.title === 'Entities') emit('open-entity', entityId);
+};
+
+const clickPlus = () => {
+	if(this.title === 'Entities') this.$emit('add-entity');
+};
+
 </script>
 
 <style scoped lang="less">
@@ -56,7 +84,7 @@ export default {
 	text-align: center;
 	position: relative;
 	background: @navBtn-color;
-    color: @navBtn-color-inverted;
+	color: @navBtn-color-inverted;
 	font-size: 1rem;
 	
 	&:hover {

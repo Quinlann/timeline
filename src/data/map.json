@@ -1,0 +1,253 @@
+{
+	"entities": [{
+		"name": "Agent 47",
+		"text": "47",
+		"visible": true,
+		"color": "black",
+		"activeEntryId": 0,
+		"story": [{
+			"name": "Romania",
+			"left": -1,
+			"top": -1,
+			"startDateStr": "1999-10-05",
+			"type": "place",
+			"location": "Romania",
+			"route": ""
+		}, {
+			"name": "Romania - Hong Kong",
+			"left": 0,
+			"top": 0,
+			"startDateStr": "2000-03-05",
+			"type": "travel",
+			"location": "",
+			"route": "r_0",
+			"routeBackward": false
+		}, {
+			"name": "Hong Kong",
+			"left": -1,
+			"top": -1,
+			"startDateStr": "2000-03-21",
+			"type": "place",
+			"location": "Hong Kong",
+			"route": ""
+		}, {
+			"name": "Colombia",
+			"left": -1,
+			"top": -1,
+			"startDateStr": "2000-05-10",
+			"type": "place",
+			"location": "Colombia",
+			"route": ""
+		}, {
+			"name": "Budapest",
+			"left": -1,
+			"top": -1,
+			"startDateStr": "2000-07-12",
+			"type": "place",
+			"location": "Budapest",
+			"route": ""
+		}, {
+			"name": "Rotterdam",
+			"left": -1,
+			"top": -1,
+			"startDateStr": "2000-08-26",
+			"type": "place",
+			"location": "Rotterdam",
+			"route": ""
+		}, {
+			"name": "Romania",
+			"left": -1,
+			"top": -1,
+			"startDateStr": "2000-09-04",
+			"type": "place",
+			"location": "Romania",
+			"route": ""
+		}]
+		}, {
+			"name": "Agent 17",
+			"text": "17",
+			"visible": true,
+			"color": "orange",
+			"activeEntryId": 0,
+			"story": [{
+				"name": "Romania",
+				"left": -1,
+				"top": -1,
+				"startDateStr": "1999-10-15",
+				"type": "place",
+				"location": "Romania",
+				"route": ""
+			}, {
+				"name": "Hong Kong",
+				"left": -1,
+				"top": -1,
+				"startDateStr": "2000-03-01",
+				"type": "place",
+				"location": "Hong Kong",
+				"route": ""
+			}, {
+				"name": "Romania - Hong Kong",
+				"left": -1,
+				"top": -1,
+				"startDateStr": "2000-03-23",
+				"type": "travel",
+				"location": "",
+				"route": "r_0",
+				"routeBackward": false
+			}, {
+				"name": "Colombia",
+				"left": -1,
+				"top": -1,
+				"startDateStr": "2000-06-15",
+				"type": "place",
+				"location": "Colombia",
+				"route": ""
+			}, {
+				"name": "A to B",
+				"left": -1,
+				"top": -1,
+				"startDateStr": "2000-06-24",
+				"type": "travel",
+				"location": "",
+				"route": "r_1",
+				"routeBackward": true
+			}, {
+				"name": "Colombia",
+				"left": -1,
+				"top": -1,
+				"startDateStr": "2000-09-04",
+				"type": "place",
+				"location": "Colombia",
+				"route": ""
+			}]
+		}
+	],
+	"routes": [{
+		"id": "r_0",
+		"name": "Romania - Hongkong",
+		"pins": [{
+			"left": 54.6,
+			"top": 38.6
+		}, {
+			"left": 56.6,
+			"top": 35.6
+		}, {
+			"left": 59.6,
+			"top": 39.6
+		}, {
+			"left": 60.6,
+			"top": 43.6
+		}, {
+			"left": 62.6,
+			"top": 45.6
+		}, {
+			"left": 66.6,
+			"top": 46.6
+		}, {
+			"left": 69.6,
+			"top": 48.6
+		}, {
+			"left": 73.6,
+			"top": 49.7
+		}, {
+			"left": 76.6,
+			"top": 50.2
+		}, {
+			"left": 79.1,
+			"top": 51
+		}, {
+			"left": 80.7,
+			"top": 51
+		}]
+		}, {
+			"id": "r_1",
+			"name": "A - B",
+			"pins": [{
+				"left": 33,
+				"top": 33
+			}, {
+				"left": 43,
+				"top": 33
+			}, {
+				"left": 53,
+				"top": 33
+			}, {
+				"left": 63,
+				"top": 33
+			}, {
+				"left": 73,
+				"top": 33
+			}, {
+				"left": 83,
+				"top": 33
+			}, {
+				"left": 93,
+				"top": 33
+			}]
+		}
+	],
+	"locations": [{
+			"name": "Romania",
+			"left": 54.6,
+			"top": 38.6
+		}, {
+			"name": "Hong Kong",
+			"left": 80.7,
+			"top": 51
+		}, {
+			"name": "Colombia",
+			"left": 26.7,
+			"top": 61
+		}, {
+			"name": "Budapest",
+			"left": 52.8,
+			"top": 37.7
+		}, {
+			"name": "Rotterdam",
+			"left": 48.9,
+			"top": 34.5
+		}
+	],
+	"tempEntity": {
+        "name": "Benjamin Bak Egede",
+        "text": "B",
+        "visible": true,
+        "color": "green",
+        "activeEntryId": 0,
+        "story": [{
+            "name": "Jyllinge",
+            "startDateStr": "05.10.1992",
+            "type": "birth"
+        },
+        {
+            "name": "Roskilde",
+            "startDateStr": "03.21.2001",
+            "type": "place"
+        },
+        {
+            "name": "T: 50% L: 10%",
+            "startDateStr": "2004",
+            "type": "travel"
+        },
+        {
+            "name": "Jyllinge",
+            "startDateStr": "03.02.2004",
+            "type": "place"
+        },
+        {
+            "name": "Roskilde",
+            "startDateStr": "05.10.2023",
+            "type": "death"
+        },
+        {
+            "name": "Roskilde",
+            "startDateStr": "05.10.2024",
+            "type": "birth"
+        },
+        {
+            "name": "Bing Bong",
+            "startDateStr": "05.10.2024",
+            "type": "change"
+        }]
+    }
+}

@@ -2,12 +2,7 @@
 	<input type="textarea">
 </template>
 
-<script>
-
-export default {
-
-}
-</script>
+<script setup></script>
 
 <style scoped lang="less">
 	@import "/src/global.less";

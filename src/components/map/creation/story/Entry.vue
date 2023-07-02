@@ -17,27 +17,25 @@
 	</button>
 </template>
 
-<script>
+<script setup>
+import { computed } from 'vue';
 
-export default {
-	props: ['entry'],
-	computed: {
-		entryIcon: () => {
-			const entryType = this.entry.type;
+const props = defineProps(['entry']);
+
+const entryIcon = computed(() => {
+	const entryType = this.entry.type;
 			
-			let entryIcon = '';
+	let entryIcon = '';
 
-			if (entryType === 'birth') entryIcon = 'fa-sun';
-			else if (entryType === 'location') entryIcon = 'fa-location-dot';
-			else if (entryType === 'route') entryIcon = 'fa-route';
-			else if (entryType === 'death') entryIcon = '';
-			else if (entryType === 'change') entryIcon = 'fa-feather-pointed';
-			else entryIcon = 'fa-location-crosshairs';
+	if (entryType === 'birth') entryIcon = 'fa-sun';
+	else if (entryType === 'location') entryIcon = 'fa-location-dot';
+	else if (entryType === 'route') entryIcon = 'fa-route';
+	else if (entryType === 'death') entryIcon = '';
+	else if (entryType === 'change') entryIcon = 'fa-feather-pointed';
+	else entryIcon = 'fa-location-crosshairs';
 
-			return `fa-solid ${entryIcon}`;
-		}
-	},
-}
+	return `fa-solid ${entryIcon}`;
+});
 
 </script>
 
