@@ -233,8 +233,8 @@
 @import "/src/global.less";
 
 @timelineColWidth: 18rem;
-@padding: .5rem;
-@margin: .5rem;
+@padding: 1rem;
+@margin: 1rem;
 
 .creation {
 	position: absolute;
@@ -252,9 +252,7 @@
 	&__header {
 		display: flex;
 		flex-direction: column;
-		border-bottom: 1px solid fade(black, 50%);
-		padding-bottom: .5rem;
-		padding: .5rem 1rem;
+		padding: @padding;
 		
 		.icon, .name {
 			padding: .25rem;
@@ -289,24 +287,24 @@
 	}
 
 	&__body {
+		display: flex;
 		padding: 1rem;
+		background-color: fade(black, 10%);
 	}
 
 	&__info {
-		float: left;
 		width: ~"calc(100% - (@{timelineColWidth} + @{margin}))";
 		margin-right: @margin;
 	}
 
 	&__story {
-		float: left;
 		width: @timelineColWidth;
 	}
 
 	&__footer {
 		width: 100%;
 		clear: both;
-		padding: 1rem;
+		padding: @padding;
 		display: flex;
 		justify-content: space-between;
 	}
