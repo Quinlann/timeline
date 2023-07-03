@@ -49,9 +49,6 @@ defineExpose({setEntity});
 
 		&__content {
 			flex-direction: column;
-			padding: .5rem;
-			background-color: fade(black, 20%);
-			border-radius: 1.5rem;
 			display: flex;
 		}
 
