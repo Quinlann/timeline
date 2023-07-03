@@ -110,6 +110,9 @@ const saveEntryCreator = (entryId, newLocation) => {
 	text-align: center;
 	border-radius: 1.5rem;
 	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	z-index: 1;
 
 	input, select {

@@ -12,111 +12,118 @@
 				<div class="path">World 1</div>
 			</div>
 		</div>
-		<div class="creation__info">
-			<EditSection 
-				v-if="showingNicknames"
-				:title="'Nicknames'"
-				@hideEditSection="hideEditSection"
-			/>
-			<EditSection
-				v-if="showingDescription"
-				:title="'Description'"
-				@hideEditSection="hideEditSection"
-			/>
-			<EditSection
-				v-if="showingImages"
-				:title="'Images'"
-				@hideEditSection="hideEditSection"
-			/>
-			<EditSection
-				v-if="showingSkills"
-				:title="'Skills'"
-				@hideEditSection="hideEditSection"
-			/>
-			<EditSection
-				v-if="showingTeams"
-				:title="'Teams'"
-				@hideEditSection="hideEditSection"
-			/>
-			<EditSection
-				v-if="showingCategories"
-				:title="'Categories'"
-				@hideEditSection="hideEditSection"
-			/>
+		<div class="creation__body">
+			<div class="creation__info">
+				<EditSection 
+					v-if="showingNicknames"
+					:title="'Nicknames'"
+					@hideEditSection="hideEditSection"
+				/>
+				<EditSection
+					v-if="showingDescription"
+					:title="'Description'"
+					@hideEditSection="hideEditSection"
+				/>
+				<EditSection
+					v-if="showingImages"
+					:title="'Images'"
+					@hideEditSection="hideEditSection"
+				/>
+				<EditSection
+					v-if="showingSkills"
+					:title="'Skills'"
+					@hideEditSection="hideEditSection"
+				/>
+				<EditSection
+					v-if="showingTeams"
+					:title="'Teams'"
+					@hideEditSection="hideEditSection"
+				/>
+				<EditSection
+					v-if="showingCategories"
+					:title="'Categories'"
+					@hideEditSection="hideEditSection"
+				/>
 
-			<div class="block">
-				<div class="block__add">
-					<button
-						class="block-bit"
-						v-if="!showingNicknames"
-						@click="showingNicknames = true;"
-					>
-						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
-						Nicknames
-					</button>
-					<button 
-						class="block-bit"
-						v-if="!showingDescription"
-						@click="showingDescription = true;"
-					>
-						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
-						Description
-					</button>
-					<button 
-						class="block-bit"
-						v-if="!showingImages"
-						@click="showingImages = true;"
-					>
-						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
-						Images
-					</button>
-					<button 
-						class="block-bit"
-						v-if="!showingSkills"
-						@click="showingSkills = true;"
-					>
-						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
-						Skills
-					</button>
-					<button 
-						class="block-bit"
-						v-if="!showingTeams"
-						@click="showingTeams = true;"
-					>
-						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
-						Teams
-					</button>
-					<button 
-						class="block-bit"
-						v-if="!showingCategories"
-						@click="showingCategories = true;"
-					>
-						<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
-						Categories
-					</button>
+				<div class="block">
+					<div class="block__add">
+						<button
+							class="block-bit"
+							v-if="!showingNicknames"
+							@click="showingNicknames = true;"
+						>
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+							Nicknames
+						</button>
+						<button 
+							class="block-bit"
+							v-if="!showingDescription"
+							@click="showingDescription = true;"
+						>
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+							Description
+						</button>
+						<button 
+							class="block-bit"
+							v-if="!showingImages"
+							@click="showingImages = true;"
+						>
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+							Images
+						</button>
+						<button 
+							class="block-bit"
+							v-if="!showingSkills"
+							@click="showingSkills = true;"
+						>
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+							Skills
+						</button>
+						<button 
+							class="block-bit"
+							v-if="!showingTeams"
+							@click="showingTeams = true;"
+						>
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+							Teams
+						</button>
+						<button 
+							class="block-bit"
+							v-if="!showingCategories"
+							@click="showingCategories = true;"
+						>
+							<div class="icon"><font-awesome-icon icon="fa-solid fa-plus" /></div>
+							Categories
+						</button>
+					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="creation__story">
-			<Story
-				ref="storyRef"
-				@openEntryCreator="(entry) => {showEntryCreatorEntry = entry; showEntryCreator = true;}"
-			/>
+			<div class="creation__story">
+				<Story
+					ref="storyRef"
+					@openEntryCreator="(entry) => {showEntryCreatorEntry = entry; showEntryCreator = true;}"
+				/>
+			</div>
 		</div>
 
 		<div class="creation__footer">
 			<button class="deleteBtn"><font-awesome-icon icon="fa-solid fa-trash" /></button>
 			<button class="acceptBtn"><font-awesome-icon icon="fa-solid fa-check" /></button>
 		</div>
+
+		<EntryCreator
+			v-if="showEntryCreator"
+			@closeEntryCreator="showEntryCreator = false;"
+			@saveEntryCreator="saveEntryLocation"
+			:entry="showEntryCreatorEntry"
+		></EntryCreator>
+
+		
+
 	</div>
 
-	<EntryCreator
-		v-if="showEntryCreator"
-		@closeEntryCreator="showEntryCreator = false;"
-		@saveEntryCreator="saveEntryLocation"
-		:entry="showEntryCreatorEntry"
-	></EntryCreator>
+	
 </template>
 
 <script setup>
@@ -236,7 +243,6 @@
 	max-width: 45rem;
 	width: 45rem;
 	border-radius: .5rem;
-	padding: 1rem;
 	z-index: 1;
 
 	&.entityCreator {
@@ -248,8 +254,7 @@
 		flex-direction: column;
 		border-bottom: 1px solid fade(black, 50%);
 		padding-bottom: .5rem;
-		margin-bottom: 1rem;
-		
+		padding: .5rem 1rem;
 		
 		.icon, .name {
 			padding: .25rem;
@@ -283,6 +288,10 @@
 		}
 	}
 
+	&__body {
+		padding: 1rem;
+	}
+
 	&__info {
 		float: left;
 		width: ~"calc(100% - (@{timelineColWidth} + @{margin}))";
@@ -297,7 +306,7 @@
 	&__footer {
 		width: 100%;
 		clear: both;
-		padding-top: 1rem;
+		padding: 1rem;
 		display: flex;
 		justify-content: space-between;
 	}
