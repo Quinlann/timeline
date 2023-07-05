@@ -119,7 +119,18 @@
 			:entry="showEntryCreatorEntry"
 		></EntryCreator>
 
-		
+		<div class="prompt__shadow">
+			<div class="prompt">
+				<div class="prompt__title"></div>
+				<div class="prompt__body">
+					<p>Are you sure you want to delete [EntityName]</p>
+				</div>
+				<div class="prompt__buttons">
+					<button class="decline">No</button>
+					<button class="accept">Yes</button>
+				</div>
+			</div>
+		</div>
 
 	</div>
 
@@ -242,7 +253,8 @@
 	backdrop-filter: blur(10px);
 	max-width: 45rem;
 	width: 45rem;
-	border-radius: .5rem;
+	border-radius: @padding;
+	overflow: hidden;
 	z-index: 1;
 
 	&.entityCreator {
@@ -289,7 +301,7 @@
 	&__body {
 		display: flex;
 		padding: 1rem;
-		background-color: fade(black, 10%);
+		background-color: fade(white, 2%);
 	}
 
 	&__info {
@@ -304,7 +316,6 @@
 	&__footer {
 		width: 100%;
 		clear: both;
-		padding: @padding;
 		display: flex;
 		justify-content: space-between;
 	}
@@ -319,6 +330,44 @@
 		color: @background-color-inverted;
 		&:hover { background-color: fade(@white, 20%); }
 		.icon { display: inline-block }
+	}
+}
+
+.prompt {
+	max-width: 60%;
+	padding: 1rem;
+	border-radius: 1rem;
+	background-color: fade(@black, 80%);
+	text-align: center;
+
+	&__shadow {
+		position: absolute;
+		width: 100%; height: 100%;
+		top: 0; left: 0;
+		background-color: fade(black, 50%);
+		display: flex;
+		align-items: center;
+    	justify-content: center;
+		z-index: 1;
+
+		display: none;
+	}
+
+	&__buttons {
+		display: flex;
+		justify-content: space-evenly;
+
+		button {
+			min-width: 5rem;
+			padding: .5rem;
+			font-size: 1rem;
+			align-items: center;
+			border-radius: .5rem;
+			background-color: fade(@white, 20%);
+			color: @white;
+			&:not(:last-child) { margin-right: .25rem }
+			&.accept { background: @item-color }
+		}
 	}
 }
 </style>
