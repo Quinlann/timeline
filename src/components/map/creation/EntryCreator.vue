@@ -105,14 +105,14 @@ const saveEntryCreator = (entryId, newLocation) => {
 .storyEntryCreator {
 	max-width: 12rem;
 	width: 12rem;
-	padding: .5rem;
 	background: @black;
 	text-align: center;
-	border-radius: 1.5rem;
+	border-radius: 1rem;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	overflow: hidden;
 	z-index: 1;
 
 	input, select {
@@ -123,9 +123,10 @@ const saveEntryCreator = (entryId, newLocation) => {
 	}
 
 	select {
-		background-color: fade(@black, 20%);
-		&:not(:last-child) { margin-bottom: .25rem; }
+		background-color: fade(black, 20%);
+		text-align: center;
 		option { background-color: fade(black, 80%) }
+		&:hover { background-color: fade(black, 30%) }
 	}
 
 	input {
@@ -133,6 +134,8 @@ const saveEntryCreator = (entryId, newLocation) => {
 	}
 
 	.block {
+		margin: .5rem;
+		
 		&__inner {
 			display: flex;
 			flex-direction: column;
@@ -143,12 +146,8 @@ const saveEntryCreator = (entryId, newLocation) => {
 		&.when input { text-align: center }
 
 		&.what {
-			.block__inner {
-				border-radius: 1.2rem;
-				padding: .25rem;
-			}
-
-			select { text-align: center }
+			.block__inner { border-radius: 1rem }
+			select { border-radius: 0 }
 		}
 	}
 
@@ -183,7 +182,11 @@ const saveEntryCreator = (entryId, newLocation) => {
 		padding-top: 1rem;
 		display: flex;
 		justify-content: space-between;
-
+		
+		button {
+			width: 100%;
+			height: 2.5rem;
+		}
 	}
 }
 </style>
