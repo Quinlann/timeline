@@ -112,12 +112,7 @@
 			<button class="acceptBtn"><font-awesome-icon icon="fa-solid fa-check" /></button>
 		</div>
 
-		<EntryCreator
-			v-if="showEntryCreator"
-			@closeEntryCreator="showEntryCreator = false;"
-			@saveEntryCreator="saveEntryLocation"
-			:entry="showEntryCreatorEntry"
-		></EntryCreator>
+		
 
 		<div class="prompt__shadow">
 			<div class="prompt">
@@ -131,10 +126,15 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 
-	
+	<EntryCreator
+			v-if="showEntryCreator"
+			@closeEntryCreator="showEntryCreator = false;"
+			@saveEntryCreator="saveEntryLocation"
+			:entry="showEntryCreatorEntry"
+	></EntryCreator>
+
 </template>
 
 <script setup>

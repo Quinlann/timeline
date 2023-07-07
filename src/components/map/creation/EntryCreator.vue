@@ -3,6 +3,9 @@
 		class="storyEntryCreator"
 		:class="entry.type"
 	>
+		<div class="storyEntryCreator__header">
+			<button class="closeBtn"><font-awesome-icon icon="fa-solid fa-xmark" /></button>
+		</div>
 		<div class="block when">
 			<h3>When</h3>
 			<div class="block__inner">
@@ -97,10 +100,52 @@ const saveEntryCreator = (entryId, newLocation) => {
 	emit('save-entry-creator', entryId, newLocation);
 }
 
+const createDrag = () => {
+	// https://www.w3schools.com/howto/howto_js_draggable.asp
+	const popupNode = document.querySelector('.storyEntryCreator');
+	dragElement(popupNode);
+
+	function dragElement(elmnt) {
+	var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+	popupNode.querySelector('.storyEntryCreator__header').onmousedown = dragMouseDown;
+
+		function dragMouseDown(e) {
+			e = e || window.event;
+			e.preventDefault();
+			pos3 = e.clientX;
+			pos4 = e.clientY;
+			document.onmouseup = closeDragElement;
+			document.onmousemove = elementDrag;
+		}
+
+		function elementDrag(e) {
+			e = e || window.event;
+			e.preventDefault();
+			pos1 = pos3 - e.clientX;
+			pos2 = pos4 - e.clientY;
+			pos3 = e.clientX;
+			pos4 = e.clientY;
+			elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+			elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+		}
+
+		function closeDragElement() {
+			document.onmouseup = null;
+			document.onmousemove = null;
+		}
+	}
+}
+
+onMounted(() => {
+	createDrag();
+});
+
 </script>
 
 <style scoped lang="less">
 @import "/src/global.less";
+
+@headerSize: 2rem;
 
 .storyEntryCreator {
 	max-width: 12rem;
@@ -133,6 +178,20 @@ const saveEntryCreator = (entryId, newLocation) => {
 		background-color: fade(@white, 20%);
 	}
 
+	&__header {
+		height: @headerSize;
+		width: 100%;
+	}
+
+	.closeBtn {
+		height: @headerSize;
+		width: @headerSize;
+		float: right;
+		opacity: .5;
+		color: @background-color-inverted;
+		&:hover { opacity: 1; }
+	}
+
 	.block {
 		margin: .5rem;
 		
@@ -157,13 +216,15 @@ const saveEntryCreator = (entryId, newLocation) => {
 	}
 	
 	&.place {
-		outline: .2rem solid @red;
-		.block.what .block__inner { .gradient(@red, darken(@red,10%)) }
+		//outline: .2rem solid @red;
+		.storyEntryCreator__header { background-color: @red }
+		.block.what .block__inner { background-color: @red }
 	}
 
 	&.travel {
-		outline: .2rem solid @blue;
-		.block.what .block__inner { .gradient(@blue, darken(@blue,10%)) }
+		//outline: .2rem solid @blue;
+		.storyEntryCreator__header { background-color: @blue }
+		.block.what .block__inner { background-color: @blue }
 	}
 
 	&.death {
