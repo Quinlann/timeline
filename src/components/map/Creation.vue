@@ -135,6 +135,20 @@
 			:entry="showEntryCreatorEntry"
 	></EntryCreator>
 
+		<div class="prompt__shadow">
+			<div class="prompt">
+				<div class="prompt__title"></div>
+				<div class="prompt__body">
+					<p>Are you sure you want to delete [EntityName]</p>
+				</div>
+				<div class="prompt__buttons">
+					<button class="decline">No</button>
+					<button class="accept">Yes</button>
+				</div>
+			</div>
+		</div>
+</div>
+
 </template>
 
 <script setup>
