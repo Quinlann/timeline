@@ -131,7 +131,8 @@
 	<EntryCreator
 			v-if="showEntryCreator"
 			@closeEntryCreator="showEntryCreator = false;"
-			@saveEntryCreator="saveEntryLocation"
+			@saveEntry="saveEntryLocation"
+			@deleteEntry="deleteEntry"
 			:entry="showEntryCreatorEntry"
 	></EntryCreator>
 
@@ -196,6 +197,14 @@
 		entry.location = newLocation;
 		entry.name = newLocation;
 		
+		MapStore.convertEntryLocations();
+	}
+
+	const deleteEntry = (entryId) => {
+		const entry = entity.value.story.find(x => x.id === entryId),
+		index = entity.value.story.indexOf(entry);
+		entity.value.story.splice(index, 1);
+
 		MapStore.convertEntryLocations();
 	}
 
