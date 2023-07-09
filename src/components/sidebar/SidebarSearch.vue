@@ -7,7 +7,7 @@
     </select>
     <div class="search-container">
         <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
-        <input class="search" value="Search">
+        <input class="search" onfocus="this.value=''" value="Search">
     </div>
 </div>
 </template>
