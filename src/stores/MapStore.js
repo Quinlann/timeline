@@ -129,6 +129,15 @@ export const useMapStore = defineStore('mapStore', () => {
 		});
 	};
 
+	/**
+	 * Converts american date string to eu date string
+	 * @param {String} dateStr 'yyyy-mm-dd'
+	 * @returns 'dd-mm-yyyy'
+	 */
+	const euConvertDateStr = (dateStr) => {
+		return dateStr.split("-").reverse().toString().replaceAll(",", "-");
+	}
+
 	return {
 		MapData,
 		timelinePoint,
@@ -139,5 +148,6 @@ export const useMapStore = defineStore('mapStore', () => {
 		startEndDateDiff,
 		init,
 		convertEntryLocations,
+		euConvertDateStr,
 	}
 });

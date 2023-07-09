@@ -16,7 +16,7 @@
 			<div class="block__inner">
 				<input 
 					type="text"
-					:value="entry.startDateStr"
+					:value="MapStore.euConvertDateStr(entry.startDateStr)"
 					disabled
 				>
 			</div>
