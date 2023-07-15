@@ -24,7 +24,7 @@ onBeforeMount(() => {
 });
 
 const setTimelineDate = (dateStr) => {
-	pointLabel.value = dateStr;
+	pointLabel.value = MapStore.euConvertDateStr(dateStr);
 	MapStore.timelinePoint = rangeValue;
 }
 

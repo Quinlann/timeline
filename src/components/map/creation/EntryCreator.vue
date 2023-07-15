@@ -4,14 +4,19 @@
 		:class="entry.type"
 	>
 		<div class="storyEntryCreator__header">
-			<button class="closeBtn"><font-awesome-icon icon="fa-solid fa-xmark" /></button>
+			<button 
+				class="closeBtn"
+				@click="closeEntryCreator"
+			>
+				<font-awesome-icon icon="fa-solid fa-xmark" />
+			</button>
 		</div>
 		<div class="block when">
 			<h3>When</h3>
 			<div class="block__inner">
 				<input 
 					type="text"
-					:value="entry.startDateStr"
+					:value="MapStore.euConvertDateStr(entry.startDateStr)"
 					disabled
 				>
 			</div>
@@ -68,11 +73,11 @@
 		<div class="storyEntryCreator__footer">
 			<button
 				class="deleteBtn"
-				@click="closeEntryCreator"
+				@click="deleteEntry(entry.id)"
 			><font-awesome-icon icon="fa-solid fa-trash" /></button>
 			<button
 				class="acceptBtn"
-				@click="saveEntryCreator(entry.id, newLocation)"
+				@click="saveEntry(entry.id, newLocation)"
 			><font-awesome-icon icon="fa-solid fa-check" /></button>
 		</div>
 	</div>
@@ -85,7 +90,7 @@ const MapStore = useMapStore(),
 import { ref, onMounted } from 'vue';
 
 const props = defineProps(['entry']);
-const emit = defineEmits(['close-entry-creator','save-entry-creator']);
+const emit = defineEmits(['close-entry-creator','save-entry', 'delete-entry']);
 
 let newLocation = ref('');
 
@@ -96,8 +101,13 @@ onMounted(() => {
 const closeEntryCreator = () => {
 	emit('close-entry-creator');
 }
-const saveEntryCreator = (entryId, newLocation) => {
-	emit('save-entry-creator', entryId, newLocation);
+const saveEntry = (entryId, newLocation) => {
+	emit('save-entry', entryId, newLocation);
+}
+
+const deleteEntry = (entryId) => {
+	emit('delete-entry', entryId);
+	closeEntryCreator();
 }
 
 const createDrag = () => {

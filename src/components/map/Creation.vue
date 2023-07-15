@@ -129,12 +129,27 @@
 	</div>
 
 	<EntryCreator
-		v-if="showEntryCreator"
-		@closeEntryCreator="showEntryCreator = false;"
-		@saveEntryCreator="saveEntryLocation"
-		:entry="showEntryCreatorEntry"
+			v-if="showEntryCreator"
+			@closeEntryCreator="showEntryCreator = false;"
+			@saveEntry="saveEntryLocation"
+			@deleteEntry="deleteEntry"
+			:entry="showEntryCreatorEntry"
 	></EntryCreator>
 
+	<div class="prompt__shadow">
+		<div class="prompt">
+			<div class="prompt__title"></div>
+			<div class="prompt__body">
+				<p>Are you sure you want to delete [EntityName]</p>
+			</div>
+			<div class="prompt__buttons">
+				<button class="decline">No</button>
+				<button class="accept">Yes</button>
+			</div>
+		</div>
+	</div>
+
+>>>>>>> ff7b69eb8972ff8977f06b97016b4c95850c36cf
 </template>
 
 <script setup>
@@ -183,6 +198,14 @@
 		entry.location = newLocation;
 		entry.name = newLocation;
 		
+		MapStore.convertEntryLocations();
+	}
+
+	const deleteEntry = (entryId) => {
+		const entry = entity.value.story.find(x => x.id === entryId),
+		index = entity.value.story.indexOf(entry);
+		entity.value.story.splice(index, 1);
+
 		MapStore.convertEntryLocations();
 	}
 

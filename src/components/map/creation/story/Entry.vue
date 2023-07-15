@@ -1,10 +1,10 @@
 <template>
 	<button class="entry">
 		<div 
-			class="type birth"
+			class="type"
 			:class="entry.type"
 		>
-			<div class="date">{{ entry.startDateStr }}</div>
+			<div class="date">{{ euConvertDate(entry.startDateStr) }}</div>
 			<div class="icon">
 				<font-awesome-icon v-if="entry.type === 'birth'" icon="fa-solid fa-sun"/>
 				<font-awesome-icon v-if="entry.type === 'place'" icon="fa-solid fa-location-dot"/>
@@ -19,6 +19,10 @@
 
 <script setup>
 import { computed } from 'vue';
+import { useMapStore } from '/src/stores/MapStore.js';
+
+const MapStore = useMapStore(),
+	MapData = MapStore.MapData;
 
 const props = defineProps(['entry']);
 
@@ -36,6 +40,10 @@ const entryIcon = computed(() => {
 
 	return `fa-solid ${entryIcon}`;
 });
+
+const euConvertDate = (dateStr) => {
+	return MapStore.euConvertDateStr(dateStr);
+}
 
 </script>
 
