@@ -169,6 +169,7 @@ onMounted(() => {
 	transform: translate(-50%, -50%);
 	overflow: hidden;
 	z-index: 1;
+	animation: windowReveal .3s;
 
 	input, select {
 		padding: .5rem;
@@ -178,10 +179,20 @@ onMounted(() => {
 	}
 
 	select {
-		background-color: fade(black, 20%);
+		background-color: fade(black, 10%);
+		appearance: none;
 		text-align: center;
+		cursor: pointer;
 		option { background-color: fade(black, 80%) }
-		&:hover { background-color: fade(black, 30%) }
+		&:hover { background-color: fade(black, 20%) }
+
+		&:after {
+			content: "";
+			clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+			width: 1rem;
+  			height: 1rem;
+			background-color: white;
+		}
 	}
 
 	input {

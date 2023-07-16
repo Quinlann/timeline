@@ -50,9 +50,8 @@ const hideEditSection = () => {
 @import "/src/global.less";
 
 .editSection {
-	max-height: 0;
-	opacity: 0;
-	animation: editSectionReveal .5s forwards;
+	max-height: 20rem;
+	animation: editSectionReveal .5s;
 
 	&:not(:last-child) { margin-bottom: 1rem }
 	&:hover .removeBtn { opacity: 1 }
@@ -84,9 +83,9 @@ const hideEditSection = () => {
 }
 
 @keyframes editSectionReveal {
-	to {
-		max-height: 20rem;
-		opacity: 1;
+	from {
+		max-height: 0;
+		opacity: 0;
 	}
 }
 </style>
