@@ -149,6 +149,7 @@
 		</div>
 	</div>
 
+>>>>>>> ff7b69eb8972ff8977f06b97016b4c95850c36cf
 </template>
 
 <script setup>
@@ -278,6 +279,7 @@
 	border-radius: @padding;
 	overflow: hidden;
 	z-index: 1;
+	animation: windowReveal .3s;
 
 	&.entityCreator {
 		.creation__header .path { display: none }
@@ -361,6 +363,7 @@
 	border-radius: 1rem;
 	background-color: fade(@black, 80%);
 	text-align: center;
+	animation: windowReveal .3s;
 
 	&__shadow {
 		position: absolute;
