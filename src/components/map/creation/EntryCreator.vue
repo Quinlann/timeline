@@ -4,6 +4,13 @@
 		:class="entry.type"
 	>
 		<div class="storyEntryCreator__header">
+			<div class="icon">
+				<font-awesome-icon v-if="entry.type === 'birth'" icon="fa-solid fa-sun"/>
+				<font-awesome-icon v-if="entry.type === 'place'" icon="fa-solid fa-location-dot"/>
+				<font-awesome-icon v-if="entry.type === 'travel'" icon="fa-solid fa-route"/>
+				<font-awesome-icon v-if="entry.type === 'death'" icon="fa-solid fa-skull"/>
+				<font-awesome-icon v-if="entry.type === 'change'" icon="fa-solid fa-feather-pointed"/>
+			</div>
 			<button 
 				class="closeBtn"
 				@click="closeEntryCreator"
@@ -188,7 +195,7 @@ onMounted(() => {
 
 		&:after {
 			content: "";
-			clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+			//clip-path: polygon(100% 0%, 0 0%, 50% 100%);
 			width: 1rem;
   			height: 1rem;
 			background-color: white;
@@ -202,15 +209,20 @@ onMounted(() => {
 	&__header {
 		height: @headerSize;
 		width: 100%;
-	}
+		display: flex;
+		justify-content: space-between;
 
-	.closeBtn {
-		height: @headerSize;
-		width: @headerSize;
-		float: right;
-		opacity: .5;
-		color: @background-color-inverted;
-		&:hover { opacity: 1; }
+		.icon {
+			padding: .5rem;
+		}
+
+		.closeBtn {
+			height: @headerSize;
+			width: @headerSize;
+			opacity: .5;
+			color: @background-color-inverted;
+			&:hover { opacity: 1; }
+		}
 	}
 
 	.block {

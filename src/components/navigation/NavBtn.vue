@@ -121,7 +121,7 @@ const clickDropdownItem = (entityId) => {
 		top: 100%;
 		list-style: none;
 		text-align: left;
-		padding: 0 @navBtn-padding @navBtn-padding;
+		padding: @navBtn-padding;
 		margin: 0;
 		background: transparent;
 		border-radius: 0 0 @navBtn-radius @navBtn-radius;
