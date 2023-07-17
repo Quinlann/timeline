@@ -136,20 +136,6 @@
 			:entry="showEntryCreatorEntry"
 	></EntryCreator>
 
-	<div class="prompt__shadow">
-		<div class="prompt">
-			<div class="prompt__title"></div>
-			<div class="prompt__body">
-				<p>Are you sure you want to delete [EntityName]</p>
-			</div>
-			<div class="prompt__buttons">
-				<button class="decline">No</button>
-				<button class="accept">Yes</button>
-			</div>
-		</div>
-	</div>
-
->>>>>>> ff7b69eb8972ff8977f06b97016b4c95850c36cf
 </template>
 
 <script setup>
@@ -324,6 +310,7 @@
 
 	&__body {
 		display: flex;
+		min-height: 12rem;
 		padding: 1rem;
 		background-color: fade(white, 2%);
 	}
