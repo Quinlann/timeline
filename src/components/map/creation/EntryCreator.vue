@@ -195,9 +195,9 @@ onMounted(() => {
 
 		&:after {
 			content: "";
-			//clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+			clip-path: polygon(100% 0%, 0 0%, 50% 100%);
 			width: 1rem;
-  			height: 1rem;
+  		height: 1rem;
 			background-color: white;
 		}
 	}
