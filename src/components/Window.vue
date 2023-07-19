@@ -15,7 +15,7 @@
 
 	import { ref, nextTick, onBeforeMount, onMounted } from 'vue';
 
-	import Creation from './map/Creation.vue';
+	import Creation from './window/Creation.vue';
 
 	const openCreationPop = () => {
 		showCreationPop.value = true;
@@ -53,6 +53,7 @@
     min-height: 100vh;
     width: 100%;
 	pointer-events: none;
+	color: @background-color-inverted;
 	div { pointer-events: auto }
 }
 </style>
