@@ -40,12 +40,19 @@
 
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 @import "/src/global.less";
 
 .window__container {
 	position: fixed;
 	left: 0;
 	top: 0;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+	pointer-events: none;
+	div { pointer-events: auto }
 }
 </style>
