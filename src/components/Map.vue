@@ -1,10 +1,5 @@
 <template>
 	<div class="map__container">
-		<Creation 
-			v-if="showCreationPop"
-			:closePop="closeCreationPop"
-			ref="creationRef"
-		/>
 		<div class="map">
 			<img src="/src/assets/worldmap.svg">
 			<Entity 
@@ -28,31 +23,17 @@
 
 	import { ref, nextTick, onBeforeMount, onMounted } from 'vue';
 
-	import Creation from './map/Creation.vue';
 	import Entity from './map/Entity.vue';
 
 	const entities = MapData.entities;
 
-	const openCreationPop = () => {
-		showCreationPop.value = true;
-	};
-
-	const closeCreationPop = () => {
-		showCreationPop.value = false;
-	};
-
-	const creationRef = ref(null);
+	const emit = defineEmits(['openEntity']);
 
 	const openEntity = (entityId) => {
-		openCreationPop();
-		nextTick(() => {
-			creationRef.value.setEntity(entityId);
-		});
+		emit('openEntity', entityId);
 	};
 
 	let showCreationPop = ref(false);
-
-	defineExpose({openEntity});
 
 	/** ZOOM */
 	let zoom = 100;

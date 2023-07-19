@@ -3,12 +3,13 @@
 	<Navigation
 		:openEntity="openEntity"
 	/>
-	<!-- :addEntity="addEntity"
-	:entities="entities"
-	:locations="locations" -->
 	<Timeline/>
 	<Map
 		ref="mapRef"
+		@openEntity="openEntity"
+	/>
+	<Window
+		ref="windowRef"
 	/>
 </template>
 
@@ -22,16 +23,18 @@
 	import Navigation from './components/Navigation.vue';
 	import Timeline from './components/Timeline.vue';
 	import Map from './components/Map.vue';
+	import Window from './components/Window.vue';
 
 
 	const mapRef = ref(null);
+	const windowRef = ref(null);
 
 	onBeforeMount(() => {
 		MapStore.init();
 	});
 
 	const openEntity = (entityId) => {
-		mapRef.value.openEntity(entityId);
+		windowRef.value.openEntity(entityId);
 	};
 
 </script>
