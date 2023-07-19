@@ -5,6 +5,19 @@
 			:closePop="closeCreationPop"
 			ref="creationRef"
 		/>
+
+		<InfoWindow />
+
+		<div class="prompt">
+			<div class="prompt__title"></div>
+			<div class="prompt__body">
+				<p>Are you sure you want to delete [EntityName]</p>
+			</div>
+			<div class="prompt__buttons">
+				<button class="decline">No</button>
+				<button class="accept">Yes</button>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -16,6 +29,7 @@
 	import { ref, nextTick, onBeforeMount, onMounted } from 'vue';
 
 	import Creation from './window/Creation.vue';
+	import InfoWindow from './window/InfoWindow.vue';
 
 	const openCreationPop = () => {
 		showCreationPop.value = true;
@@ -43,6 +57,9 @@
 <style lang="less">
 @import "/src/global.less";
 
+@padding: 1rem;
+@margin: 1rem;
+
 .window__container {
 	position: fixed;
 	left: 0;
@@ -54,6 +71,37 @@
     width: 100%;
 	pointer-events: none;
 	color: @background-color-inverted;
-	div { pointer-events: auto }
+	z-index: 1;
+	
+	& > div { 
+		pointer-events: auto;
+		animation: windowReveal .3s;
+		border-radius: @padding;
+	}
+}
+
+.prompt {
+	max-width: 60%;
+	padding: 1rem;
+	background-color: fade(@black, 80%);
+	text-align: center;
+
+	display: none;
+
+	&__buttons {
+		display: flex;
+		justify-content: space-evenly;
+
+		button {
+			min-width: 5rem;
+			padding: .5rem;
+			font-size: 1rem;
+			align-items: center;
+			border-radius: .5rem;
+			background-color: fade(@white, 20%);
+			color: @white;
+			&.accept { background: @item-color }
+		}
+	}
 }
 </style>

@@ -18,7 +18,6 @@ import SidebarResults from './sidebar/SidebarResults.vue'
 	top: 3rem;
 	opacity: .5;
 	transition: .5s;
-	z-index: 1;
 	&.left { left: 0 }
 	&.right { right: 0 }
 	.section { padding: 1rem }
