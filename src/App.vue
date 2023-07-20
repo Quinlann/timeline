@@ -1,13 +1,13 @@
 <template>
+	<Map
+		ref="mapRef"
+		@openEntity="openEntity"
+	/>
 	<SideBar />
 	<Navigation
 		:openEntity="openEntity"
 	/>
 	<Timeline/>
-	<Map
-		ref="mapRef"
-		@openEntity="openEntity"
-	/>
 	<Window
 		ref="windowRef"
 	/>

@@ -69,7 +69,7 @@ const props = defineProps(['entities','locations','addEntity','openEntity']);
 	height: @navigation-height;
 	width: 100%;
 	position: fixed;
-	z-index: 1;
+	top: 0;
 
 	.dropdowns {
 		display: inline-flex;
