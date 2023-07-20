@@ -99,7 +99,7 @@
 				</div>
 			</div>
 
-			<div class="creation__story">
+			<div class="creation__rightCol">
 				<Story
 					ref="storyRef"
 					@openEntryCreator="(entry) => {showEntryCreatorEntry = entry; showEntryCreator = true;}"
@@ -237,7 +237,7 @@
 
 @import "/src/global.less";
 
-@timelineColWidth: 18rem;
+@rightColWidth: 18rem;
 @padding: 1rem;
 @margin: 1rem;
 
@@ -299,12 +299,12 @@
 	}
 
 	&__info {
-		width: ~"calc(100% - (@{timelineColWidth} + @{margin}))";
+		width: ~"calc(100% - (@{rightColWidth} + @{margin}))";
 		margin-right: @margin;
 	}
 
-	&__story {
-		width: @timelineColWidth;
+	&__rightCol {
+		width: @rightColWidth;
 	}
 
 	&__footer {
