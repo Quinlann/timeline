@@ -47,6 +47,10 @@
 						<option value="right">Right</option>
 					</select>
 				</div>
+				<div class="settings__block">
+					<div class="setting"></div>
+					<button>Close all windows</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -136,6 +140,15 @@ const props = defineProps(['entities','locations','addEntity','openEntity']);
 			color: @white;
 			border: none;
 			option { background-color: fade(black, 80%) }
+		}
+
+		button {
+			padding: .25rem;
+			width: 100%;
+			border-radius: 1rem;
+			background: fade(black, 20%);
+			color: @white;
+			&:hover { background: @item-color }
 		}
 	}
 }
