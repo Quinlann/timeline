@@ -25,12 +25,30 @@
 					</div>
 				</div>
 				<div class="info__container ">
-					<p>Nicknames:</p>
-					<p>Birth:</p>
-					<p>Death:</p>
-					<p>Skills:</p>
-					<p>Teams:</p>
-					<p>Categories:</p>
+					<div class="info__row nickmames">
+						<div class="info__type">Nicknames</div>
+						<div class="info__data">Bem</div>
+					</div>
+					<div class="info__row birth">
+						<div class="info__type">Born</div>
+						<div class="info__data">05.10.1992</div>
+					</div>
+					<div class="info__row death">
+						<div class="info__type">Dead</div>
+						<div class="info__data">05.10.2024</div>
+					</div>
+					<div class="info__row skills">
+						<div class="info__type">Skills</div>
+						<div class="info__data"></div>
+					</div>
+					<div class="info__row teams">
+						<div class="info__type">Teams</div>
+						<div class="info__data"></div>
+					</div>
+					<div class="info__row categories">
+						<div class="info__type">Categories</div>
+						<div class="info__data"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -242,12 +260,21 @@
 			padding: 1rem;
 			border-radius: .5rem;
 		}
+
+		&__row {
+			display: flex;
+			font-weight: bold;
+			&:not(:last-child) { margin-bottom: .5rem }
+		}
+
+		&__type, &__data { width: 100% }
+		&__data { opacity: .5 }
 	}
 
 	.timeline {
 		&__container {
 			width: 100%;
-			padding: 1rem 1.5rem;
+			padding: 1rem 2rem;
 			position: relative;
 		}
 
@@ -258,7 +285,7 @@
 		}
 
 		&__bar {
-			width: ~"calc(100% - (1.5rem * 2))";
+			width: ~"calc(100% - (2rem * 2))";
 			height: .3rem;
 			background-color: fade(@white, 10%);
 			position: absolute;
