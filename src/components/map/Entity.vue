@@ -1,56 +1,89 @@
 <template>
-	<div :style="{ 
-		left: x + '%',
-		top: y + '%',
-		backgroundColor: color,
-		display: visible ? 'block' : 'none'
-		}" 
-		class="entity e4">{{ name }}</div>    
+	<div 
+		:style="{ 
+			left: x + '%',
+			top: y + '%',
+			backgroundColor: color
+			}" 
+			class="entity e4"
+			:class="locationUnknown === true ? 'location-unknown' : ''"
+	>{{ name }}</div>
 </template>
 
 <script setup>
-import { storeToRefs } from 'pinia';
-import { useMapStore } from '/src/stores/MapStore.js';
-const MapStore = useMapStore(),
-	MapData = MapStore.MapData;
-import { watch } from 'vue';
+	import { storeToRefs } from 'pinia';
+	import { useMapStore } from '/src/stores/MapStore.js';
+	const MapStore = useMapStore(),
+		MapData = MapStore.MapData;
+	import { watch } from 'vue';
+	import { computed } from 'vue';
 
-const props = defineProps(['entity','color','x','y','name','visible']);
+	const props = defineProps(['entity','color','x','y','name']);
 
-const { timelinePoint } = storeToRefs(MapStore)
+	const { timelinePoint } = storeToRefs(MapStore)
 
-watch(timelinePoint, () => {
-	const closestStoryEntry = getClosestStoryEntry();
-	if(closestStoryEntry) updateEntity(closestStoryEntry);
-});
+	let isBorn = true;
+	
+	let locationUnknown = computed(() => {
+		const closestStoryEntry = getClosestStoryEntry();
+		return closestStoryEntry ? false : true;
+	});
 
-const getClosestStoryEntry = () => {
-	const storyEntriesLowerThanPoint = props.entity.story.filter(x => x.startPct <= timelinePoint.value);
-	if(storyEntriesLowerThanPoint.length < 1) return false;
-	return storyEntriesLowerThanPoint[storyEntriesLowerThanPoint.length-1];
-}
+	watch(timelinePoint, () => {
+		const closestStoryEntry = getClosestStoryEntry();
+		if(closestStoryEntry) updateEntity(closestStoryEntry);
+	});
 
-const updateEntity = (entry) => {
-	props.entity.activeEntryId = entry.id;
-
-	if(entry.type === 'place') setEntityPos(entry.left, entry.top);
-	else if(entry.type === 'travel') {
-		getNextTravelPinPos(entry.route.pins);
+	const getClosestStoryEntry = () => {
+		const storyEntriesLowerThanPoint = props.entity.story.filter(x => x.startPct <= timelinePoint.value);
+		if(storyEntriesLowerThanPoint.length < 1) return false;
+		
+		return storyEntriesLowerThanPoint[storyEntriesLowerThanPoint.length-1];
 	}
-}
 
-const setEntityPos = (x, y) => {
-	props.entity.x = x;
-	props.entity.y = y;
-}
+	const updateEntity = (entry) => {
+		props.entity.activeEntryId = entry.id;
+		
+		checkForBirth(entry);
 
-const getNextTravelPinPos = (routePins) => {
-	const pinLowerThanPoint = routePins.filter(x => x.pct <= timelinePoint.value),
-		closestPin = pinLowerThanPoint[pinLowerThanPoint.length-1];
+		if(entry.type === 'place') setEntityPos(entry.left, entry.top);
+		else if(entry.type === 'travel') {
+			getNextTravelPinPos(entry.route.pins);
+		}
+	}
 
-	setEntityPos(closestPin.left, closestPin.top);
-}
+	const checkForBirth = (entry) => {
+		const allBirths = props.entity.story.filter(x => x.type === 'birth');
+
+		allBirths.forEach(birth => {
+			if(timelinePoint.value < birth.startPct) {
+				console.log('not born');
+				isBorn = false;
+			} else isBorn = true;
+			setEntityPos(entry.left, entry.top);
+		});
+	}
+
+	const setEntityPos = (x, y) => {
+		props.entity.x = x;
+		props.entity.y = y;
+	}
+
+	const getNextTravelPinPos = (routePins) => {
+		const pinLowerThanPoint = routePins.filter(x => x.pct <= timelinePoint.value),
+			closestPin = pinLowerThanPoint[pinLowerThanPoint.length-1];
+
+		setEntityPos(closestPin.left, closestPin.top);
+	}
 
 </script>
 
-<style></style>
+<style scoped lang="less">
+	.not-born {
+		display: none;
+	}
+
+	.location-unknown {
+		opacity: .25;
+	}
+</style>

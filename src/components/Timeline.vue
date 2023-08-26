@@ -11,38 +11,38 @@
 </template>
 
 <script setup>
-import { useMapStore } from '/src/stores/MapStore.js';
-import { ref, onBeforeMount, onMounted } from 'vue';
-const MapStore = useMapStore();
+	import { useMapStore } from '/src/stores/MapStore.js';
+	import { ref, onBeforeMount, onMounted } from 'vue';
+	const MapStore = useMapStore();
 
-const stepPrecision = .1;
-let pointLabel = ref('');
-let rangeValue = 0;
+	const stepPrecision = .1;
+	let pointLabel = ref('');
+	let rangeValue = 0;
 
-onBeforeMount(() => {
-	setTimelineDate(MapStore.timelineStartDateStr);	
-});
+	onBeforeMount(() => {
+		setTimelineDate(MapStore.timelineStartDateStr);	
+	});
 
-const setTimelineDate = (dateStr) => {
-	pointLabel.value = MapStore.euConvertDateStr(dateStr);
-	MapStore.timelinePoint = rangeValue;
-}
+	const setTimelineDate = (dateStr) => {
+		pointLabel.value = MapStore.euConvertDateStr(dateStr);
+		MapStore.timelinePoint = rangeValue;
+	}
 
-const changedRange = () => {
-	updateTimelinePoint();
-}
+	const changedRange = () => {
+		updateTimelinePoint();
+	}
 
-const updateTimelinePoint = () => {
-	setTimelineDate(convertPctToDate(rangeValue));
-}
+	const updateTimelinePoint = () => {
+		setTimelineDate(convertPctToDate(rangeValue));
+	}
 
-const convertPctToDate = (pct) => {
-	const startDateInMilSec = MapStore.timelineStartDate.getTime(),
-		pctDateInMilSec = startDateInMilSec + (MapStore.startEndDateDiff * (pct/100)),
-		pctDateInString = new Date(pctDateInMilSec).toISOString().substring(0, 10);
+	const convertPctToDate = (pct) => {
+		const startDateInMilSec = MapStore.timelineStartDate.getTime(),
+			pctDateInMilSec = startDateInMilSec + (MapStore.startEndDateDiff * (pct/100)),
+			pctDateInString = new Date(pctDateInMilSec).toISOString().substring(0, 10);
 
-	return pctDateInString;
-}
+		return pctDateInString;
+	}
 
 </script>
 
