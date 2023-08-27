@@ -29,7 +29,7 @@
 	import { ref, nextTick, onBeforeMount, onMounted } from 'vue';
 
 	import Creation from './window/Creation.vue';
-	import InfoWindow from './window/InfoWindow.vue';
+	import InfoWindow from './window/InfoPage.vue';
 
 	const openCreationPop = () => {
 		showCreationPop.value = true;
