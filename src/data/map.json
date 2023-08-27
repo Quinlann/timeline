@@ -1,126 +1,59 @@
 {
-	"entities": [{
-		"name": "Agent 47",
-		"text": "47",
-		"visible": true,
-		"color": "black",
-		"activeEntryId": 0,
-		"story": [{
-			"name": "Romania",
-			"left": -1,
-			"top": -1,
-			"startDateStr": "1999-10-05",
-			"type": "place",
-			"location": "Romania",
-			"route": ""
-		}, {
-			"name": "Romania - Hong Kong",
-			"left": 0,
-			"top": 0,
-			"startDateStr": "2000-03-05",
-			"type": "travel",
-			"location": "",
-			"route": "r_0",
-			"routeBackward": false
-		}, {
-			"name": "Hong Kong",
-			"left": -1,
-			"top": -1,
-			"startDateStr": "2000-03-21",
-			"type": "place",
-			"location": "Hong Kong",
-			"route": ""
-		}, {
-			"name": "Colombia",
-			"left": -1,
-			"top": -1,
-			"startDateStr": "2000-05-10",
-			"type": "place",
-			"location": "Colombia",
-			"route": ""
-		}, {
-			"name": "Budapest",
-			"left": -1,
-			"top": -1,
-			"startDateStr": "2000-07-12",
-			"type": "place",
-			"location": "Budapest",
-			"route": ""
-		}, {
-			"name": "Rotterdam",
-			"left": -1,
-			"top": -1,
-			"startDateStr": "2000-08-26",
-			"type": "place",
-			"location": "Rotterdam",
-			"route": ""
-		}, {
-			"name": "Romania",
-			"left": -1,
-			"top": -1,
-			"startDateStr": "2000-09-04",
-			"type": "place",
-			"location": "Romania",
-			"route": ""
-		}]
-		}, {
-			"name": "Agent 17",
-			"text": "17",
-			"visible": true,
-			"color": "orange",
+	"timelineStartDateStr": "2023-08-05",
+	"timelineEndDateStr": "2023-12-04",
+	"entities": [
+		{
+			"name": "Agent A",
+			"text": "A",
+			"color": "purple",
 			"activeEntryId": 0,
-			"story": [{
-				"name": "Romania",
-				"left": -1,
-				"top": -1,
-				"startDateStr": "1999-10-15",
-				"type": "place",
-				"location": "Romania",
-				"route": ""
-			}, {
-				"name": "Hong Kong",
-				"left": -1,
-				"top": -1,
-				"startDateStr": "2000-03-01",
-				"type": "place",
-				"location": "Hong Kong",
-				"route": ""
-			}, {
-				"name": "Romania - Hong Kong",
-				"left": -1,
-				"top": -1,
-				"startDateStr": "2000-03-23",
-				"type": "travel",
-				"location": "",
-				"route": "r_0",
-				"routeBackward": false
-			}, {
-				"name": "Colombia",
-				"left": -1,
-				"top": -1,
-				"startDateStr": "2000-06-15",
-				"type": "place",
-				"location": "Colombia",
-				"route": ""
-			}, {
-				"name": "A to B",
-				"left": -1,
-				"top": -1,
-				"startDateStr": "2000-06-24",
-				"type": "travel",
-				"location": "",
-				"route": "r_1",
-				"routeBackward": true
-			}, {
-				"name": "Colombia",
-				"left": -1,
-				"top": -1,
-				"startDateStr": "2000-09-04",
-				"type": "place",
-				"location": "Colombia",
-				"route": ""
-			}]
-		}
+			"story": [
+				{
+					"name": "Hong Kong",
+					"left": -1,
+					"top": -1,
+					"startDateStr": "2023-08-21",
+					"type": "place",
+					"location": "Hong Kong",
+					"route": ""
+				},
+				{
+					"name": "Budapest",
+					"left": -1,
+					"top": -1,
+					"startDateStr": "2023-09-05",
+					"type": "place",
+					"location": "Budapest",
+					"route": ""
+				}
+			]
+		},
+		{
+			"name": "Agent B",
+			"text": "B",
+			"color": "yellow",
+			"activeEntryId": 0,
+			"story": [
+				{
+					"name": "Colombia",
+					"left": -1,
+					"top": -1,
+					"startDateStr": "2023-08-11",
+					"type": "place",
+					"location": "Colombia",
+					"route": ""
+				},
+				{
+					"name": "Rotterdam",
+					"left": -1,
+					"top": -1,
+					"startDateStr": "2023-09-01",
+					"type": "place",
+					"location": "Rotterdam",
+					"route": ""
+				}
+			]
+		}		
 	],
 	"routes": [{
 		"id": "r_0",
@@ -211,7 +144,6 @@
 	"tempEntity": {
         "name": "Benjamin Bak Egede",
         "text": "B",
-        "visible": true,
         "color": "green",
         "activeEntryId": 0,
         "story": [{

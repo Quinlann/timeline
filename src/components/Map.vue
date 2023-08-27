@@ -9,7 +9,6 @@
 				:x="entity.x"
 				:y="entity.y"
 				:name="entity.text"
-				:visible="entity.visible"
 				@click="openEntity(entity.id);"
 			/>
 		</div>

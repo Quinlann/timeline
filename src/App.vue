@@ -11,6 +11,7 @@
 	<Window
 		ref="windowRef"
 	/>
+	<LocationUnknown/>
 </template>
 
 <script setup>
@@ -23,6 +24,7 @@
 	import Navigation from './components/Navigation.vue';
 	import Timeline from './components/Timeline.vue';
 	import Map from './components/Map.vue';
+	import LocationUnknown from './components/LocationUnknown.vue';
 	import Window from './components/Window.vue';
 
 
