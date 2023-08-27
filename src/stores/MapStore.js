@@ -10,8 +10,8 @@ export const useMapStore = defineStore('mapStore', () => {
 	routes = mapData.routes;
 
 	let timelinePoint = ref(0),
-	timelineStartDateStr = ref('1999-10-05'),
-	timelineEndDateStr = ref('2000-09-04');
+	timelineStartDateStr = ref(mapData.timelineStartDateStr),
+	timelineEndDateStr = ref(mapData.timelineEndDateStr);
 
 	const init = () => {
 		setEntityIds();
