@@ -26,7 +26,9 @@
 	
 	let locationUnknown = computed(() => {
 		const closestStoryEntry = getClosestStoryEntry();
-		return closestStoryEntry ? false : true;
+		const locationIsUnknown = closestStoryEntry ? false : true;
+		props.entity.locationUnknown = locationIsUnknown;
+		return locationIsUnknown;
 	});
 
 	watch(timelinePoint, () => {
@@ -84,6 +86,6 @@
 	}
 
 	.location-unknown {
-		opacity: .25;
+		display: none;
 	}
 </style>
