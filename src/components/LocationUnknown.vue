@@ -3,11 +3,11 @@
 		id="location-unknown"
 		v-if="entitiesWithUknownLocation.length > 0"
 	>
-		<div>Location Unknown</div>
+		<div class="location-unknown__title">Location Unknown</div>
 		<template
 			v-for="entity in entities"
 		>
-			<div
+			<div class="location-unknown__entity"
 				v-if="entity.locationUnknown"
 			>{{ entity.name }}</div>
 		</template>
@@ -39,7 +39,33 @@
 		position: fixed;
 		right: 0;
 		top: 50%;
-		background: white;
-		padding: 10px;
+		background: fade(@black, 80%);
+		color: white;
+		padding: .5rem;
+		border-radius: .5rem;
+		margin-right: .5rem;
+		animation: windowReveal .5s;
+	}
+
+	.location-unknown {
+		&__title {
+			font-weight: bold;
+			opacity: .2;
+			margin-bottom: .5rem;
+		}
+
+		&__entity {
+			opacity: .5;
+			width: 100%;
+			text-align: center;
+			border-radius: 1rem;
+			transition: .2s;
+			animation: windowReveal .5s;
+
+			&:hover {
+				opacity: 1;
+				background-color: fade(purple, 80%);
+			}
+		}
 	}
 </style>
