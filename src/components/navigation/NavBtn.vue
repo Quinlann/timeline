@@ -7,8 +7,8 @@
 		<font-awesome-icon v-if="title === 'Events'" icon="fa-solid fa-explosion" />
 		{{ title }}
 		<div class="list">
-			<input class="search" onfocus="this.value=''" value="Search">
-			<tempalte
+			<input id="searchField" class="search" onfocus="this.value=''" value="Search">
+			<template
 				v-if="title === 'Entities'"
 			>
 				<ul>
@@ -26,8 +26,8 @@
 						<font-awesome-icon icon="fa-solid fa-plus" />
 					</li>
 				</ul>
-			</tempalte>
-			<tempalte
+			</template>
+			<template
 				v-if="title === 'Locations'"
 			>
 				<ul>
@@ -45,7 +45,7 @@
 						<font-awesome-icon icon="fa-solid fa-plus" />
 					</li>
 				</ul>
-			</tempalte>
+			</template>
 		</div>
 	</button>
 </template>
@@ -62,6 +62,17 @@ const emit = defineEmits(['open-entity']);
 const clickDropdownItem = (entityId) => {
 	if(props.title === 'Entities') emit('open-entity', entityId);
 };
+
+/*const searchField = document.getElementById('searchField');
+const dropdown = document.querySelector('.dropdown');
+
+searchField.addEventListener('focus', () => {
+	dropdown.classList.add('active');
+});
+
+searchField.addEventListener('blur', () => {
+	dropdown.classList.remove('active');
+});*/
 
 </script>
 
@@ -92,10 +103,11 @@ const clickDropdownItem = (entityId) => {
 .dropdown {
 	position: relative;
 	
-	&:hover > .list {
-		opacity: 1;
-		background: @item-color;
-		max-height: 20rem;
+	&:hover,
+	&.active {
+		& > .list {
+			opacity: 1;
+		}
 	}
 	
 	.search {
@@ -116,14 +128,13 @@ const clickDropdownItem = (entityId) => {
 	
 	.list {
 		opacity: 0;
-		max-height: 0;
 		position: absolute;
 		top: 100%;
 		list-style: none;
 		text-align: left;
 		padding: @navBtn-padding;
 		margin: 0;
-		background: transparent;
+		background: @item-color;
 		border-radius: 0 0 @navBtn-radius @navBtn-radius;
 		overflow: auto;
 	}
