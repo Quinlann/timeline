@@ -63,7 +63,7 @@ const clickDropdownItem = (entityId) => {
 	if(props.title === 'Entities') emit('open-entity', entityId);
 };
 
-/*const searchField = document.getElementById('searchField');
+const searchField = document.getElementById('searchField');
 const dropdown = document.querySelector('.dropdown');
 
 searchField.addEventListener('focus', () => {
@@ -72,7 +72,7 @@ searchField.addEventListener('focus', () => {
 
 searchField.addEventListener('blur', () => {
 	dropdown.classList.remove('active');
-});*/
+});
 
 </script>
 
@@ -107,6 +107,8 @@ searchField.addEventListener('blur', () => {
 	&.active {
 		& > .list {
 			opacity: 1;
+			background: @item-color;
+			max-height: 20rem;
 		}
 	}
 	
@@ -128,13 +130,14 @@ searchField.addEventListener('blur', () => {
 	
 	.list {
 		opacity: 0;
+		max-height: 0;
 		position: absolute;
 		top: 100%;
 		list-style: none;
 		text-align: left;
 		padding: @navBtn-padding;
 		margin: 0;
-		background: @item-color;
+		background: transparent;
 		border-radius: 0 0 @navBtn-radius @navBtn-radius;
 		overflow: auto;
 	}
